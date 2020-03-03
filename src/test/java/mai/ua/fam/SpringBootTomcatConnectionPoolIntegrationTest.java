@@ -29,6 +29,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 //    "spring.datasource.tomcat.min-idle=4",
 //    "spring.datasource.tomcat.default-auto-commit=true"
 //})
+
+/**
+ * Проверяет создание пула Tomcat с заданными параметрами.
+ */
 @SpringBootTest
 @ActiveProfiles({"db-postgres", "da-jdbc"})
 public class SpringBootTomcatConnectionPoolIntegrationTest {

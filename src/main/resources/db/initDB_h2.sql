@@ -4,7 +4,7 @@ DROP SEQUENCE IF EXISTS seq_person;
 CREATE SEQUENCE seq_person START WITH 100000;
 CREATE TABLE person
 (
-    id          BIGINT PRIMARY KEY DEFAULT nextval('seq_person'),
+    id          BIGINT NOT NULL DEFAULT nextval('seq_person') PRIMARY KEY,
     surname     VARCHAR  NOT NULL,
     first_name  VARCHAR,
     middle_name VARCHAR,
