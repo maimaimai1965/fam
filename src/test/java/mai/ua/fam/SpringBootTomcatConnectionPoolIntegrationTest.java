@@ -34,7 +34,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Проверяет создание пула Tomcat с заданными параметрами.
  */
 @SpringBootTest
-@ActiveProfiles({"db-postgres", "da-jdbc"})
+@ActiveProfiles({"db-h2", "da-jdbc"})
 public class SpringBootTomcatConnectionPoolIntegrationTest {
 
     protected final Logger LOG = LoggerFactory.getLogger(getClass());
@@ -63,8 +63,7 @@ public class SpringBootTomcatConnectionPoolIntegrationTest {
     @Test
     public void givenTomcatConnectionPoolInstance_whenCheckedPoolClassName_thenCorrect() {
         String dataSourceName = dataSource.getClass().getName();
-        assertThat(dataSourceName)
-            .isEqualTo("org.apache.tomcat.jdbc.pool.DataSource");
+        assertThat(dataSourceName).isEqualTo("org.apache.tomcat.jdbc.pool.DataSource");
         DataSource tomcatDataSource = dataSource;
         if (initialSize != -1) {
             assertThat(tomcatDataSource.getInitialSize()).isEqualTo(initialSize);
