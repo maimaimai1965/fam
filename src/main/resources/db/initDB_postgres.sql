@@ -10,6 +10,6 @@ CREATE TABLE person
     middle_name VARCHAR,
     birth_date  TIMESTAMP,
     death_date  TIMESTAMP,
-    gender      CHAR(1),
-    CONSTRAINT cntr_person_gender CHECK (gender IN ('M','F'))
+    gender      VARCHAR(1),
+    CONSTRAINT cnstr_person_gender CHECK (gender IN ('M','F'))
 );

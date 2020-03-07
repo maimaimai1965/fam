@@ -1,7 +1,7 @@
 package mai.ua.fam.model.datajdbc;
 import mai.ua.fam.model.Person;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  */
@@ -15,12 +15,12 @@ public class Person4DataJdbc implements Person {
     private String surname;
     private String firstName;
     private String middleName;
-    private LocalDateTime birthDate;
-    private LocalDateTime deathDate;
-    private char gender;
+    private LocalDate birthDate;
+    private LocalDate deathDate;
+    private String gender;
 
-    public Person4DataJdbc(Long id, String surname, String firstName, String middleName, LocalDateTime birthDate,
-                           LocalDateTime deathDate, char gender) {
+    public Person4DataJdbc(Long id, String surname, String firstName, String middleName, LocalDate birthDate,
+                           LocalDate deathDate, String gender) {
         this.id = id;
         this.surname = surname;
         this.firstName = firstName;

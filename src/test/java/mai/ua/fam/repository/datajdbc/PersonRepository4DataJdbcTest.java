@@ -15,26 +15,25 @@
  */
 package mai.ua.fam.repository.datajdbc;
 
-import mai.ua.fam.config.DataJdbcConfig;
 import mai.ua.fam.model.datajdbc.Person4DataJdbc;
-import mai.ua.fam.model.PersonBuilder;
+import mai.ua.fam.model.person.PersonBuilder;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureJdbc;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Optional;
 
 /**
- * Demonstrates simple CRUD operations with a simple entity without any references.
  *
- * @author Jens Schauder
  */
 @SpringBootTest
-//@SpringBootTest(classes = DataJdbcConfig.class)
+@AutoConfigureMockMvc
+
+//@SpringBootTest(classes = {DataJdbcConfig.class, JdbcConfig.class})
 //@AutoConfigureJdbc
-@ActiveProfiles({"db-h2", "da-data-jdbc"})
+@ActiveProfiles({"db-h2", "da-jdbc"})
 public class PersonRepository4DataJdbcTest {
 
     @Autowired

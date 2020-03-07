@@ -1,8 +1,8 @@
-package mai.ua.fam.model;
+package mai.ua.fam.model.person;
 
 import mai.ua.fam.model.datajdbc.Person4DataJdbc;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class PersonBuilder {
 
@@ -10,9 +10,9 @@ public class PersonBuilder {
     private String surname;
     private String firstName;
     private String middleName;
-    private LocalDateTime birthDate;
-    private LocalDateTime deathDate;
-    private char gender;
+    private LocalDate birthDate;
+    private LocalDate deathDate;
+    private String gender;
 
     public PersonBuilder setId(Long id) {
         this.id = id;
@@ -34,23 +34,27 @@ public class PersonBuilder {
         return this;
     }
 
-    public PersonBuilder setBirthDate(LocalDateTime birthDate) {
+    public PersonBuilder setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
         return this;
     }
 
-    public PersonBuilder setDeathDate(LocalDateTime deathDate) {
+    public PersonBuilder setDeathDate(LocalDate deathDate) {
         this.deathDate = deathDate;
         return this;
     }
 
-    public PersonBuilder setGender(char gender) {
+    public PersonBuilder setGender(String gender) {
         this.gender = gender;
         return this;
     }
 
     public Person4DataJdbc createPerson4DataJdbc() {
         return new Person4DataJdbc(id, surname, firstName, middleName, birthDate, deathDate, gender);
+    }
+
+    public PersonTo createPersonTo() {
+        return new PersonTo(id, surname, firstName, middleName, birthDate, deathDate, gender);
     }
 
 }

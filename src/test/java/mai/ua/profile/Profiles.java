@@ -1,22 +1,28 @@
 package mai.ua.profile;
 
 public class Profiles {
-    public static final String
-           DB_H2       = "db-h2",
-           DB_H2_FILE  = "db-h2-file",
-           DB_ORACLE   = "db-oracle",
-           DB_POSTGRES = "db-postgres",
-           HEROKU = "heroku";
 
-    public static final String DB_IMPLEMENTATION = DB_POSTGRES;
+    //---------------
+    public static final String DB_H2       = "db-h2";
+    public static final String DB_H2_FILE  = "db-h2-file";
+    public static final String DB_POSTGRES = "db-postgres";
+    public static final String DB_ORACLE   = "db-oracle";
+    public static final String HEROKU      = "heroku";
 
-    public static final String
-           DA_JDBC      = "da-jdbc",
-           DA_DATA_JDBC = "da-data-jdbc",
-           DA_DATA_JPA  = "da-data-jpa",
-           DA_DATA_REST = "da-data-rest";
+    public static final String DB_IMPLEMENTATION =
+        DB_H2;
+//        DB_POSTGRES;
 
-    public static final String REPOSITORY_IMPLEMENTATION = DA_DATA_REST;
+    //---------------
+    public static final String DA_JDBC      = "da-jdbc";
+    public static final String DA_DATA_JDBC = "da-data-jdbc";
+    public static final String DA_DATA_JPA  = "da-data-jpa";
+
+    public static final String REPOSITORY_IMPLEMENTATION = DA_JDBC;
+
+    public static final String DA_DATA_REST = "da-data-rest";
+
+    public static final String REST_IMPLEMENTATION = DA_JDBC;
 
     /**
      * Get DB profile depending of DB driver in classpath
