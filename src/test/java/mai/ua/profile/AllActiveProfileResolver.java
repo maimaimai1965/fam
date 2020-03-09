@@ -1,8 +1,5 @@
 package mai.ua.profile;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.test.context.ActiveProfilesResolver;
 
@@ -35,7 +32,7 @@ public class AllActiveProfileResolver implements ActiveProfilesResolver {
 //        }
 //        if (testRepositoryImplementation != null) {
 //        }
-        return new String[]{Profiles.REPOSITORY_IMPLEMENTATION, Profiles.DB_IMPLEMENTATION};
+        return new String[]{TestProfiles.REPOSITORY_IMPLEMENTATION, TestProfiles.DB_IMPLEMENTATION};
 //        return new String[]{Profiles.REPOSITORY_IMPLEMENTATION, Profiles.getActiveDbProfile()};
     }
 }

@@ -7,6 +7,8 @@ import java.time.ZoneId;
 
 public class DateTimeUtil {
 
+    private DateTimeUtil() {}
+
     /**
      * Используется конвертация из {@link #convertUtilDateToLocalDateViaSqlDate(java.util.Date)} (
      * 

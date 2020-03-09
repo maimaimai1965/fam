@@ -1,5 +1,5 @@
 package mai.ua.fam.config;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
@@ -10,10 +10,8 @@ import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
 import org.springframework.data.relational.core.mapping.event.RelationalEvent;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.transaction.PlatformTransactionManager;
 
-import javax.activation.DataSource;
+import javax.sql.DataSource;
 
 @Configuration
 @EnableJdbcRepositories
@@ -33,9 +31,9 @@ public class DataJdbcConfig extends AbstractJdbcConfiguration {
         };
     }
 
-//    @Bean
-//    NamedParameterJdbcOperations operations(DataSource dataSource) {
-//        return new NamedParameterJdbcTemplate(dataSource);
-//    }
+    @Bean
+    NamedParameterJdbcOperations operations(DataSource dataSource) {
+        return new NamedParameterJdbcTemplate(dataSource);
+    }
 
 }

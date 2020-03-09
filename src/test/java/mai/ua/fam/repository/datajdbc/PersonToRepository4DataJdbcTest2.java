@@ -1,8 +1,10 @@
-package mai.ua.fam.repository.jdbc;
+package mai.ua.fam.repository.datajdbc;
 
 import mai.ua.fam.AbstractTimingExtension;
 import mai.ua.fam.repository.PersonToRepository;
 import mai.ua.fam.repository.abstr.AbstractPersonToRepositoryTest;
+import mai.ua.fam.repository.jdbc.PersonToRepository4Jdbc;
+import mai.ua.fam.repository.jdbc.ProfileResolver4RepositoryJdbc;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +16,8 @@ import org.springframework.test.context.ActiveProfiles;
  */
 @SpringBootTest
 @ExtendWith(AbstractTimingExtension.class)
-@ActiveProfiles(resolver = ProfileResolver4RepositoryJdbc.class)
-public class PersonToRepository4JdbcTest extends AbstractPersonToRepositoryTest {
+@ActiveProfiles(resolver = ProfileResolver4RepositoryDataJdbc.class)
+public class PersonToRepository4DataJdbcTest2 extends AbstractPersonToRepositoryTest {
 
     @Autowired
     //Нельзя объявлять класс PersonToRepository4Jdbc, т.к. есть transactionManager - должен быть интерфейс.
@@ -23,12 +25,12 @@ public class PersonToRepository4JdbcTest extends AbstractPersonToRepositoryTest 
     private PersonToRepository repository;
 
     @Override
-    public PersonToRepository getRepository() {
+    protected PersonToRepository getRepository() {
         return repository;
     }
     @Override
-    protected Class<PersonToRepository4Jdbc> getRepositoryClass() {
-        return PersonToRepository4Jdbc.class;
+    protected Class<PersonToRepository4DataJdbc> getRepositoryClass() {
+        return PersonToRepository4DataJdbc.class;
     }
 
 

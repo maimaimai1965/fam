@@ -7,7 +7,7 @@ public class ActiveDbProfileResolver implements ActiveProfilesResolver {
 
     @Override
     public String[] resolve(Class<?> aClass) {
-        return new String[]{Profiles.DB_IMPLEMENTATION};
+        return new String[]{TestProfiles.DB_IMPLEMENTATION};
 //        return new String[]{Profiles.getActiveDbProfile()};
     }
 

@@ -1,5 +1,9 @@
 package mai.ua.fam;
 
+import mai.ua.fam.repository.PersonToRepository;
+import mai.ua.fam.repository.datajdbc.PersonToRepository4DataJdbc;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -9,7 +13,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 //Не используем Security
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
-public class FamApplication {
+public class FamApplication implements CommandLineRunner {
+
+    @Autowired
+    PersonToRepository4DataJdbc repository;
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(FamApplication.class, args);
@@ -27,6 +34,11 @@ public class FamApplication {
 //        Optional<Person4DataJdbc> findedPerson = repository.findById(id);
 //
 //        id = 0L;
+    }
+
+    @Override
+    public void run(String... arg0) throws Exception {
+        System.out.println("count = " + repository.count());
     }
 
 }

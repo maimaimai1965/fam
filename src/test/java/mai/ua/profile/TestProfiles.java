@@ -1,6 +1,6 @@
 package mai.ua.profile;
 
-public class Profiles {
+public class TestProfiles {
 
     //---------------
     public static final String DB_H2       = "db-h2";
@@ -8,10 +8,6 @@ public class Profiles {
     public static final String DB_POSTGRES = "db-postgres";
     public static final String DB_ORACLE   = "db-oracle";
     public static final String HEROKU      = "heroku";
-
-    public static final String DB_IMPLEMENTATION =
-        DB_H2;
-//        DB_POSTGRES;
 
     //---------------
     public static final String DA_JDBC      = "da-jdbc";
@@ -22,7 +18,13 @@ public class Profiles {
 
     public static final String DA_DATA_REST = "da-data-rest";
 
-    public static final String REST_IMPLEMENTATION = DA_JDBC;
+    // Текущие тестируемые профили.
+    public static final String DB_IMPLEMENTATION =
+        DB_H2;
+//        DB_POSTGRES;
+    public static final String REST_IMPLEMENTATION =
+        DA_JDBC;
+//        DA_DATA_JPA;
 
     /**
      * Get DB profile depending of DB driver in classpath
@@ -37,12 +39,12 @@ public class Profiles {
         catch (ClassNotFoundException ex) {
             try {
                 Class.forName("org.h2.Driver");
-                return Profiles.DB_H2;
+                return TestProfiles.DB_H2;
             }
             catch (ClassNotFoundException e) {
                 try {
                     Class.forName("oracle.jdbc.driver.OracleDriver");
-                    return Profiles.DB_ORACLE;
+                    return TestProfiles.DB_ORACLE;
                 }
                 catch (ClassNotFoundException exs) {
                     throw new IllegalStateException("Could not find DB driver");

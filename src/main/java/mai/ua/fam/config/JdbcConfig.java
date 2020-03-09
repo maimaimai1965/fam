@@ -1,5 +1,6 @@
 package mai.ua.fam.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -11,6 +12,9 @@ import javax.sql.DataSource;
 @Configuration
 @Profile("da-jdbc")
 public class JdbcConfig {
+
+    @Autowired
+    DataSource dataSource;
 
 //    /**
 //     * @return {@link ApplicationListener} for {@link RelationalEvent}s.
