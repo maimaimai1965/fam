@@ -2,12 +2,18 @@ package mai.ua.fam.repository.jdbc;
 
 import mai.ua.fam.AbstractTimingExtension;
 import mai.ua.fam.repository.PersonRepository;
-import mai.ua.fam.repository.abstr.AbstractPersonToRepositoryTest;
+import mai.ua.fam.repository.AbstractPersonRepository4DataJdbcTest;
+import mai.ua.fam.repository.datajdbc.PersonRepository4DataJdbc;
+import mai.ua.fam.util.SpringUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  *
@@ -15,7 +21,9 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 @ExtendWith(AbstractTimingExtension.class)
 @ActiveProfiles(resolver = ProfileResolver4RepositoryJdbc.class)
-public class PersonRepository4JdbcTest extends AbstractPersonToRepositoryTest {
+public class PersonRepository4JdbcTest extends AbstractPersonRepository4DataJdbcTest {
+
+    private static final Logger LOG = LoggerFactory.getLogger(AbstractPersonRepository4DataJdbcTest.class);
 
     @Autowired
     //Нельзя объявлять класс PersonToRepository4Jdbc, т.к. есть transactionManager - должен быть интерфейс.
@@ -26,16 +34,13 @@ public class PersonRepository4JdbcTest extends AbstractPersonToRepositoryTest {
     public PersonRepository getRepository() {
         return repository;
     }
-    @Override
-    protected Class<PersonRepository4Jdbc> getRepositoryClass() {
-        return PersonRepository4Jdbc.class;
-    }
 
 
     @Test
-    @Override
-    public void classRepositoryTest() {
-        super.classRepositoryTest();
+    public void classRepositoryTest() throws Exception {
+        PersonRepository4DataJdbc usedRepository;
+        usedRepository = SpringUtil.unproxyBean(repository);
+        assertEquals(PersonRepository4Jdbc.class, usedRepository.getClass(), "Error!!! Not expected repository!!!");
     }
 
     @Test

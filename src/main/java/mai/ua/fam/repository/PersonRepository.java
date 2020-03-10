@@ -3,9 +3,12 @@ package mai.ua.fam.repository;
 import mai.ua.fam.model.person.Person;
 import mai.ua.fam.repository.datajdbc.PersonRepository4DataJdbc;
 import mai.ua.fam.util.exception.NotFoundException;
+import org.springframework.context.annotation.Profile;
+import org.springframework.data.repository.NoRepositoryBean;
 
 import java.util.Optional;
 
+@NoRepositoryBean
 public interface PersonRepository extends PersonRepository4DataJdbc {
 
     /**
@@ -30,7 +33,6 @@ public interface PersonRepository extends PersonRepository4DataJdbc {
      *
      * @param id
      * @throws IllegalArgumentException in case the given id is null.
-     * @throws NotFoundException - если нет записи с id
      */
     @Override
     void deleteById(Long id);

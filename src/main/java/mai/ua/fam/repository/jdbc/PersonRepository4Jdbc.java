@@ -14,6 +14,8 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,8 +52,8 @@ public class PersonRepository4Jdbc implements PersonRepository {
         return person;
     }
 
-    @Override
     @Transactional
+    @Override
     public Person save(Person person) {
         if (person == null) {
             throw new IllegalArgumentException("Person can't be null.");
@@ -74,19 +76,28 @@ public class PersonRepository4Jdbc implements PersonRepository {
         }
     }
 
-    @Override
     @Transactional
+    @Override
+    public <S extends Person> Iterable<S> saveAll(Iterable<S> entities) {
+        List<Person> list = new ArrayList<Person>((entities != null) ? ((Collection) entities).size() : 0);
+        entities.forEach(person -> { if (person != null) {
+                                         Person savedPerson = save(person);
+                                         list.add(savedPerson);
+                                     }});
+        return (Iterable<S>) list;
+    }
+
+    @Transactional
+    @Override
     public void deleteById(Long id) {
         if (id == null) {
             new IllegalArgumentException("id can't be null.");
         }
-        if (jdbcTemplate.update("DELETE FROM person WHERE id=?", id) == 0) {
-            throw new NotFoundException("Don't exist deleted row id=" + Long.toString(id));
-        }
+        jdbcTemplate.update("DELETE FROM person WHERE id=?", id);
     }
 
-    @Override
     @Transactional
+    @Override
     public void delete(Person person) {
         if (person == null) {
             throw new IllegalArgumentException("Person can't be null.");
@@ -94,6 +105,22 @@ public class PersonRepository4Jdbc implements PersonRepository {
         if (!person.isNew()) {
             deleteById(person.getId());
         }
+    }
+
+    @Transactional
+    @Override
+    public void deleteAll(Iterable<? extends Person> entities) {
+        if (entities != null) {
+            entities.forEach(person -> { if (person != null) {
+                                             delete(person);
+                                         }
+                                       });
+        }
+    }
+
+    @Override
+    public void deleteAll() {
+        throw new RuntimeException("PersonRepository4Jdbc.deleteAll() not realised!");
     }
 
     @Override
@@ -112,33 +139,31 @@ public class PersonRepository4Jdbc implements PersonRepository {
     }
 
     @Override
+    public Iterable<Person> findAllById(Iterable<Long> longs) {
+        List<Person> list = new ArrayList<Person>((longs != null) ? ((Collection) longs).size() : 0);
+        longs.forEach(id -> { Optional<Person> person = findById(id);
+                              if (person.isPresent()) {
+                                  list.add(person.get());
+                              } else {
+                                  throw new NotFoundException("Not exists Person with id = " + id);
+                              }
+                            });
+        return list;
+    }
+
+    @Override
+    public boolean existsById(Long id) {
+        if (id == null) {
+            return false;
+        }
+        Long findedId = jdbcTemplate.queryForObject("SELECT id FROM person WHERE id = ?", Long.class);
+        return findedId != null;
+    }
+
+    @Override
     public long count() {
         long count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM person", Long.class);
         return count;
     }
 
-    @Override
-    public <S extends Person> Iterable<S> saveAll(Iterable<S> entities) {
-        return null;
-    }
-
-    @Override
-    public boolean existsById(Long aLong) {
-        return false;
-    }
-
-    @Override
-    public Iterable<Person> findAllById(Iterable<Long> longs) {
-        return null;
-    }
-
-    @Override
-    public void deleteAll(Iterable<? extends Person> entities) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
 }

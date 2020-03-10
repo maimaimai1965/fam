@@ -20,20 +20,6 @@ public class FamApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(FamApplication.class, args);
-
-//        PersonRepository4DataJdbc repository =  (PersonRepository4DataJdbc)context.getBean("personRepository4DataJdbc");
-//        Long id = 1L;
-//        String surname = "Иванов";
-//        String firstName = "Сергей";
-//        String middleName = "Игнатьевич";
-//
-//        Person4DataJdbc person = new PersonBuilder().setId(id).setSurname(surname).setFirstName(firstName)
-//            .setMiddleName(middleName).createPerson4DataJdbc();
-//        repository.save(person);
-//
-//        Optional<Person4DataJdbc> findedPerson = repository.findById(id);
-//
-//        id = 0L;
     }
 
     @Override

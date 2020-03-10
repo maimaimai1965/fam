@@ -1,11 +1,11 @@
-package mai.ua.fam.repository.abstr;
+package mai.ua.fam.repository;
 
 import mai.ua.fam.AbstractTimingExtension;
 import mai.ua.fam.AbstractTimingTest;
 import mai.ua.fam.model.PersonTo4TestUtil;
 import mai.ua.fam.model.person.PersonBuilder;
 import mai.ua.fam.model.person.Person;
-import mai.ua.fam.repository.PersonRepository;
+import mai.ua.fam.repository.datajdbc.PersonRepository4DataJdbc;
 import mai.ua.fam.repository.jdbc.PersonRepository4Jdbc;
 import mai.ua.fam.util.SpringUtil;
 import mai.ua.fam.util.exception.NotFoundException;
@@ -21,27 +21,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
- *
+ * Тесты для реализаций репозитория.
  */
 @ExtendWith(AbstractTimingExtension.class)
-public abstract class AbstractPersonToRepositoryTest extends AbstractTimingTest {
+public abstract class AbstractPersonRepository4DataJdbcTest extends AbstractTimingTest {
+    private static final Logger LOG = LoggerFactory.getLogger(AbstractPersonRepository4DataJdbcTest.class);
 
-    private static final Logger LOG = LoggerFactory.getLogger(AbstractPersonToRepositoryTest.class);
+    abstract protected PersonRepository4DataJdbc getRepository();
 
-    abstract protected PersonRepository getRepository();
-    abstract protected <T extends PersonRepository> Class<T>  getRepositoryClass();
-
-
-    public void classRepositoryTest() {
-        PersonRepository usedRepository = getRepository();
-        try {
-            usedRepository = SpringUtil.unproxyBean(usedRepository);
-        }
-        catch (Exception e) {
-            LOG.error(e.getMessage());
-        }
-        assertEquals(PersonRepository4Jdbc.class, usedRepository.getClass(), "Error!!! Not expected repository!!!");
-    }
 
     public void countTest(){
         getRepository().count();
@@ -60,14 +47,15 @@ public abstract class AbstractPersonToRepositoryTest extends AbstractTimingTest 
     }
 
     public void insertNullPersonTest() {
-        assertThrows(IllegalArgumentException.class, () -> getRepository().insert(null));
+        //TODO
+//        assertThrows(IllegalArgumentException.class, () -> getRepository().insert(null));
     }
 
     /**
      * Удаление несуществующего person;
      */
     public void deleteNonExistsIdTest() {
-        assertThrows(NotFoundException.class, () -> getRepository().deleteById(-100L));
+        getRepository().deleteById(-100L);
     }
 
     public void deleteNullPersonTest() {
@@ -83,7 +71,9 @@ public abstract class AbstractPersonToRepositoryTest extends AbstractTimingTest 
 
         Person person = new PersonBuilder().setSurname(surname).setFirstName(firstName).setMiddleName(middleName)
                                              .createPerson();
-        getRepository().insert(person);
+        //TODO
+        //getRepository().insert(person);
+        getRepository().save(person);
         long currCount = getRepository().count();
         Assertions.assertEquals(startedCount + 1, currCount);
 
