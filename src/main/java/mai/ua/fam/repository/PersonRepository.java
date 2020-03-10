@@ -6,7 +6,7 @@ import mai.ua.fam.util.exception.NotFoundException;
 
 import java.util.Optional;
 
-public interface PersonRepository<T, ID> extends PersonRepository4DataJdbc {
+public interface PersonRepository extends PersonRepository4DataJdbc {
 
     /**
      * Insert person.

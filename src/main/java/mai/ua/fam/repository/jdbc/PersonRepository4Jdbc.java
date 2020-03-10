@@ -118,7 +118,7 @@ public class PersonRepository4Jdbc implements PersonRepository {
     }
 
     @Override
-    <S extends Person> Iterable<S> saveAll(Iterable<S> entities) {
+    public <S extends Person> Iterable<S> saveAll(Iterable<S> entities) {
         return null;
     }
 
