@@ -1,8 +1,8 @@
 package mai.ua.fam.repository.jdbc;
 
-import mai.ua.fam.model.person.PersonTo;
-import mai.ua.fam.model.person.PersonToUtil;
-import mai.ua.fam.repository.PersonToRepository;
+import mai.ua.fam.model.person.Person;
+import mai.ua.fam.model.person.PersonUtil;
+import mai.ua.fam.repository.PersonRepository;
 import mai.ua.fam.util.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -20,16 +20,16 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 @Profile("da-jdbc")
 @Repository
-public class PersonToRepository4Jdbc implements PersonToRepository {
+public class PersonRepository4Jdbc implements PersonRepository {
 
-    public static final PersonToUtil.PersonToRowMapper ROW_MAPPER = new PersonToUtil.PersonToRowMapper();
+    public static final PersonUtil.PersonToRowMapper ROW_MAPPER = new PersonUtil.PersonToRowMapper();
 
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     private final SimpleJdbcInsert simpleJdbcInsertPerson;
 
     @Autowired
-    public PersonToRepository4Jdbc(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+    public PersonRepository4Jdbc(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.simpleJdbcInsertPerson = new SimpleJdbcInsert(jdbcTemplate)
             .withTableName("person")
             .usingGeneratedKeyColumns("id");
@@ -40,11 +40,11 @@ public class PersonToRepository4Jdbc implements PersonToRepository {
 
     @Override
     @Transactional
-    public PersonTo insert(PersonTo person) {
+    public Person insert(Person person) {
         if (person == null) {
             throw new IllegalArgumentException("Person can't be null.");
         }
-        MapSqlParameterSource paramMap = PersonToUtil.getMapSqlParameterSource(person);
+        MapSqlParameterSource paramMap = PersonUtil.getMapSqlParameterSource(person);
         Number newId = simpleJdbcInsertPerson.executeAndReturnKey(paramMap);
         person.setId(newId.longValue());
         return person;
@@ -52,7 +52,7 @@ public class PersonToRepository4Jdbc implements PersonToRepository {
 
     @Override
     @Transactional
-    public PersonTo save(PersonTo person) {
+    public Person save(Person person) {
         if (person == null) {
             throw new IllegalArgumentException("Person can't be null.");
         }
@@ -60,7 +60,7 @@ public class PersonToRepository4Jdbc implements PersonToRepository {
         if (person.isNew()) {
             return insert(person);
         } else {
-            MapSqlParameterSource paramMap = PersonToUtil.getMapSqlParameterSource(person);
+            MapSqlParameterSource paramMap = PersonUtil.getMapSqlParameterSource(person);
 
             if (namedParameterJdbcTemplate.update("" +
                     "UPDATE person " +
@@ -87,7 +87,7 @@ public class PersonToRepository4Jdbc implements PersonToRepository {
 
     @Override
     @Transactional
-    public void delete(PersonTo person) {
+    public void delete(Person person) {
         if (person == null) {
             throw new IllegalArgumentException("Person can't be null.");
         }
@@ -97,17 +97,17 @@ public class PersonToRepository4Jdbc implements PersonToRepository {
     }
 
     @Override
-    public Optional<PersonTo> findById(Long id) {
+    public Optional<Person> findById(Long id) {
         if (id == null) {
             throw new IllegalArgumentException("id can't be null.");
         }
-        List<PersonTo> persons = jdbcTemplate.query("SELECT * FROM person WHERE id = ?", ROW_MAPPER, id);
+        List<Person> persons = jdbcTemplate.query("SELECT * FROM person WHERE id = ?", ROW_MAPPER, id);
         return Optional.ofNullable(DataAccessUtils.singleResult(persons));
     }
 
     @Override
-    public Iterable<PersonTo> findAll() {
-        List<PersonTo> persons = jdbcTemplate.query("SELECT * FROM person", ROW_MAPPER);
+    public Iterable<Person> findAll() {
+        List<Person> persons = jdbcTemplate.query("SELECT * FROM person", ROW_MAPPER);
         return persons;
     }
 
@@ -117,4 +117,28 @@ public class PersonToRepository4Jdbc implements PersonToRepository {
         return count;
     }
 
+    @Override
+    <S extends Person> Iterable<S> saveAll(Iterable<S> entities) {
+        return null;
+    }
+
+    @Override
+    public boolean existsById(Long aLong) {
+        return false;
+    }
+
+    @Override
+    public Iterable<Person> findAllById(Iterable<Long> longs) {
+        return null;
+    }
+
+    @Override
+    public void deleteAll(Iterable<? extends Person> entities) {
+
+    }
+
+    @Override
+    public void deleteAll() {
+
+    }
 }

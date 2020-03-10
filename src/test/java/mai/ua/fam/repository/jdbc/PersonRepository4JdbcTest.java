@@ -1,10 +1,8 @@
-package mai.ua.fam.repository.datajdbc;
+package mai.ua.fam.repository.jdbc;
 
 import mai.ua.fam.AbstractTimingExtension;
-import mai.ua.fam.repository.PersonToRepository;
+import mai.ua.fam.repository.PersonRepository;
 import mai.ua.fam.repository.abstr.AbstractPersonToRepositoryTest;
-import mai.ua.fam.repository.jdbc.PersonToRepository4Jdbc;
-import mai.ua.fam.repository.jdbc.ProfileResolver4RepositoryJdbc;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,21 +14,21 @@ import org.springframework.test.context.ActiveProfiles;
  */
 @SpringBootTest
 @ExtendWith(AbstractTimingExtension.class)
-@ActiveProfiles(resolver = ProfileResolver4RepositoryDataJdbc.class)
-public class PersonToRepository4DataJdbcTest2 extends AbstractPersonToRepositoryTest {
+@ActiveProfiles(resolver = ProfileResolver4RepositoryJdbc.class)
+public class PersonRepository4JdbcTest extends AbstractPersonToRepositoryTest {
 
     @Autowired
     //Нельзя объявлять класс PersonToRepository4Jdbc, т.к. есть transactionManager - должен быть интерфейс.
     //https://ru.stackoverflow.com/questions/663704/unsatisfieddependencyexception-error-creating-beanby-beannotofrequiredtypeexce
-    private PersonToRepository repository;
+    private PersonRepository repository;
 
     @Override
-    protected PersonToRepository getRepository() {
+    public PersonRepository getRepository() {
         return repository;
     }
     @Override
-    protected Class<PersonToRepository4DataJdbc> getRepositoryClass() {
-        return PersonToRepository4DataJdbc.class;
+    protected Class<PersonRepository4Jdbc> getRepositoryClass() {
+        return PersonRepository4Jdbc.class;
     }
 
 

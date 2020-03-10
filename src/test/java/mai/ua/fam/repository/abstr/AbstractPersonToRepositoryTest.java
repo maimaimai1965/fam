@@ -4,9 +4,9 @@ import mai.ua.fam.AbstractTimingExtension;
 import mai.ua.fam.AbstractTimingTest;
 import mai.ua.fam.model.PersonTo4TestUtil;
 import mai.ua.fam.model.person.PersonBuilder;
-import mai.ua.fam.model.person.PersonTo;
-import mai.ua.fam.repository.PersonToRepository;
-import mai.ua.fam.repository.jdbc.PersonToRepository4Jdbc;
+import mai.ua.fam.model.person.Person;
+import mai.ua.fam.repository.PersonRepository;
+import mai.ua.fam.repository.jdbc.PersonRepository4Jdbc;
 import mai.ua.fam.util.SpringUtil;
 import mai.ua.fam.util.exception.NotFoundException;
 import org.junit.jupiter.api.Assertions;
@@ -28,19 +28,19 @@ public abstract class AbstractPersonToRepositoryTest extends AbstractTimingTest 
 
     private static final Logger LOG = LoggerFactory.getLogger(AbstractPersonToRepositoryTest.class);
 
-    abstract protected PersonToRepository getRepository();
-    abstract protected <T extends PersonToRepository> Class<T>  getRepositoryClass();
+    abstract protected PersonRepository getRepository();
+    abstract protected <T extends PersonRepository> Class<T>  getRepositoryClass();
 
 
     public void classRepositoryTest() {
-        PersonToRepository usedRepository = getRepository();
+        PersonRepository usedRepository = getRepository();
         try {
             usedRepository = SpringUtil.unproxyBean(usedRepository);
         }
         catch (Exception e) {
             LOG.error(e.getMessage());
         }
-        assertEquals(PersonToRepository4Jdbc.class, usedRepository.getClass(), "Error!!! Not expected repository!!!");
+        assertEquals(PersonRepository4Jdbc.class, usedRepository.getClass(), "Error!!! Not expected repository!!!");
     }
 
     public void countTest(){
@@ -81,16 +81,16 @@ public abstract class AbstractPersonToRepositoryTest extends AbstractTimingTest 
         String firstName = "Сергей";
         String middleName = "Игнатьевич";
 
-        PersonTo person = new PersonBuilder().setSurname(surname).setFirstName(firstName).setMiddleName(middleName)
-                                             .createPersonTo();
+        Person person = new PersonBuilder().setSurname(surname).setFirstName(firstName).setMiddleName(middleName)
+                                             .createPerson();
         getRepository().insert(person);
         long currCount = getRepository().count();
         Assertions.assertEquals(startedCount + 1, currCount);
 
-        Optional<PersonTo> findedPerson = getRepository().findById(person.getId());
+        Optional<Person> findedPerson = getRepository().findById(person.getId());
         PersonTo4TestUtil.assertMatch(person, findedPerson.get());
 
-        Iterable<PersonTo> findedPersons = getRepository().findAll();
+        Iterable<Person> findedPersons = getRepository().findAll();
         Assertions.assertEquals(startedCount + 1, ((Collection)findedPersons).size());
 
         getRepository().deleteById(person.getId());

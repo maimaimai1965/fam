@@ -1,5 +1,4 @@
 package mai.ua.fam.model.person;
-import mai.ua.fam.model.Person;
 import mai.ua.fam.util.HasId;
 
 import java.time.LocalDate;
@@ -7,11 +6,12 @@ import java.util.Objects;
 
 /**
  */
-public class PersonTo implements Person, HasId {
+public class Person implements HasId {
 
 //    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)
 //    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
 //    @org.springframework.data.annotation.Id
+    @org.springframework.data.annotation.Id
     private Long id;
 
     private String surname;
@@ -71,10 +71,10 @@ public class PersonTo implements Person, HasId {
         this.gender = gender;
     }
 
-    public PersonTo() {}
+    public Person() {}
 
-    public PersonTo(Long id, String surname, String firstName, String middleName, LocalDate birthDate,
-                    LocalDate deathDate, String gender) {
+    public Person(Long id, String surname, String firstName, String middleName, LocalDate birthDate,
+                  LocalDate deathDate, String gender) {
         this.id = id;
         this.surname = surname;
         this.firstName = firstName;
@@ -88,7 +88,7 @@ public class PersonTo implements Person, HasId {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PersonTo personTo = (PersonTo) o;
+        Person personTo = (Person) o;
         return Objects.equals(id, personTo.id) &&
             surname.equals(personTo.surname) &&
             Objects.equals(firstName, personTo.firstName) &&

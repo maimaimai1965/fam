@@ -7,17 +7,17 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class PersonToUtil {
+public class PersonUtil {
 
-    private PersonToUtil(){}
+    private PersonUtil(){}
 
     /**
      *
      */
-    public static class PersonToRowMapper implements RowMapper<PersonTo> {
+    public static class PersonToRowMapper implements RowMapper<Person> {
         @Override
-        public PersonTo mapRow(ResultSet rs, int rowNum) throws SQLException {
-            PersonTo personTo = new PersonTo();
+        public Person mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Person personTo = new Person();
             personTo.setId(rs.getLong("id"));
             personTo.setSurname(rs.getString("surname"));
             personTo.setFirstName(rs.getString("first_name"));
@@ -29,7 +29,7 @@ public class PersonToUtil {
         }
     }
 
-    public static MapSqlParameterSource getMapSqlParameterSource(PersonTo personTo) {
+    public static MapSqlParameterSource getMapSqlParameterSource(Person personTo) {
         return new MapSqlParameterSource()
             .addValue("id", personTo.getId())
             .addValue("surname", personTo.getSurname())
@@ -40,7 +40,7 @@ public class PersonToUtil {
             .addValue("gender", personTo.getGender());
     }
 
-    public static MapSqlParameterSource getMapSqlParameterSource4Id(PersonTo personTo) {
+    public static MapSqlParameterSource getMapSqlParameterSource4Id(Person personTo) {
         return new MapSqlParameterSource().addValue("id", personTo.getId());
     }
 

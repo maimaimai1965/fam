@@ -1,7 +1,5 @@
 package mai.ua.fam.model.person;
 
-import mai.ua.fam.model.datajdbc.Person4DataJdbc;
-
 import java.time.LocalDate;
 
 public class PersonBuilder {
@@ -49,12 +47,8 @@ public class PersonBuilder {
         return this;
     }
 
-    public Person4DataJdbc createPerson4DataJdbc() {
-        return new Person4DataJdbc(id, surname, firstName, middleName, birthDate, deathDate, gender);
-    }
-
-    public PersonTo createPersonTo() {
-        return new PersonTo(id, surname, firstName, middleName, birthDate, deathDate, gender);
+    public Person createPerson() {
+        return new Person(id, surname, firstName, middleName, birthDate, deathDate, gender);
     }
 
 }

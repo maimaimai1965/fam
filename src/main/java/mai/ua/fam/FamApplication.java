@@ -1,7 +1,7 @@
 package mai.ua.fam;
 
-import mai.ua.fam.repository.PersonToRepository;
-import mai.ua.fam.repository.datajdbc.PersonToRepository4DataJdbc;
+import mai.ua.fam.repository.PersonRepository;
+import mai.ua.fam.repository.datajdbc.PersonRepository4DataJdbc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class FamApplication implements CommandLineRunner {
 
     @Autowired
-    PersonToRepository4DataJdbc repository;
+    PersonRepository4DataJdbc repository;
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(FamApplication.class, args);

@@ -8,13 +8,14 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.data.jdbc.repository.config.AbstractJdbcConfiguration;
 import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
 import org.springframework.data.relational.core.mapping.event.RelationalEvent;
+import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import javax.sql.DataSource;
 
 @Configuration
-@EnableJdbcRepositories
+@EnableJdbcRepositories(basePackages="mai.ua.fam.repository.datajdbc")
 @Profile("da-data-jdbc")
 public class DataJdbcConfig extends AbstractJdbcConfiguration {
 
@@ -32,8 +33,12 @@ public class DataJdbcConfig extends AbstractJdbcConfiguration {
     }
 
     @Bean
-    NamedParameterJdbcOperations operations(DataSource dataSource) {
-        return new NamedParameterJdbcTemplate(dataSource);
+    public NamedParameterJdbcTemplate namedParameterJdbcTemplate(JdbcOperations operations) {
+        return new NamedParameterJdbcTemplate(operations);
     }
+//    @Bean
+//    NamedParameterJdbcOperations operations(DataSource dataSource) {
+//        return new NamedParameterJdbcTemplate(dataSource);
+//    }
 
 }
