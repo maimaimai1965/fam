@@ -12,15 +12,13 @@ import java.util.Optional;
 public interface PersonRepository extends PersonRepository4DataJdbc {
 
     /**
-     * Insert person.
-     *
-     * @param person
-     * @return
-     * @throws IllegalArgumentException in case the given person is null.
-     */
-    Person insert(Person person);
-
-    /**
+     * Сохранение person.<br>
+     * Если в person идентификатора нет, то генерируется идентификатор и создается новая запись в таблице с этим
+     * идентификатором. Идентификатор прописывается в возвращаемом объекте.<br>
+     * Если в person идентификатор есть, и в таблице есть запись с этим идентификатором, то производится update этой
+     * записи в таблице.<br>
+     * Если в person идентификатор есть, и в таблице нет записи с этим идентификатором, то генерируется идентификатор и
+     * создается новая запись в таблице с этим идентификатором. Идентификатор прописывается в возвращаемом объекте.
      *
      * @param person
      * @return
@@ -28,6 +26,16 @@ public interface PersonRepository extends PersonRepository4DataJdbc {
      */
     @Override
     Person save(Person person);
+
+    /**
+     * Insert person.
+     *
+     * @param person
+     * @return
+     * @throws IllegalArgumentException in case the given person is null.
+     */
+    @Override
+    Person insert(Person person);
 
     /**
      *

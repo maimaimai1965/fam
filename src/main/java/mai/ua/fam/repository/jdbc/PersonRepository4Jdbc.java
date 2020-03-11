@@ -59,8 +59,9 @@ public class PersonRepository4Jdbc implements PersonRepository {
             throw new IllegalArgumentException("Person can't be null.");
         }
 //        ValidationUtil.validate(person);
-        if (person.isNew()) {
-            return insert(person);
+        if (person.isNew() || (!this.existsById(person.getId()))) {
+            //Если
+            return this.insert(person);
         } else {
             MapSqlParameterSource paramMap = PersonUtil.getMapSqlParameterSource(person);
 

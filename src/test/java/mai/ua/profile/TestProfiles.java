@@ -20,8 +20,8 @@ public class TestProfiles {
 
     // Текущие тестируемые профили.
     public static final String DB_IMPLEMENTATION =
-        DB_H2;
-//        DB_POSTGRES;
+//        DB_H2;
+        DB_POSTGRES;
     public static final String REST_IMPLEMENTATION =
         DA_JDBC;
 //        DA_DATA_JPA;

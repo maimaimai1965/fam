@@ -45,6 +45,34 @@ public class PersonRepository4JdbcTest extends AbstractPersonRepository4DataJdbc
 
     @Test
     @Override
+    public void insertTest() {
+        super.insertTest();
+    }
+    @Test
+    @Override
+    public void insertExistsTest() {
+        super.insertExistsTest();
+    }
+    @Test
+    @Override
+    public void insertNullPersonTest() {
+        super.insertNullPersonTest();
+    }
+
+    @Test
+    @Override
+    public void saveTest() {
+        super.saveTest();
+    }
+    @Test
+    @Override
+    public void saveNullPersonTest() {
+        super.saveNullPersonTest();
+    }
+
+
+    @Test
+    @Override
     public void countTest() {
         super.countTest();
     }
@@ -59,18 +87,6 @@ public class PersonRepository4JdbcTest extends AbstractPersonRepository4DataJdbc
     @Override
     public void findAllTest() {
         super.findAllTest();
-    }
-
-    @Test
-    @Override
-    public void saveNullPersonTest() {
-        super.saveNullPersonTest();
-    }
-
-    @Test
-    @Override
-    public void insertNullPersonTest() {
-        super.insertNullPersonTest();
     }
 
     @Test

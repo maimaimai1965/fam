@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class PersonTo4TestUtil {
+public class PersonTestUtil {
 
     public static void assertMatch(Person actual, Person expected) {
         assertThat(actual)//.isEqualToIgnoringGivenFields(expected, "registered", "roles");
