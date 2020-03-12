@@ -33,6 +33,6 @@ public interface WithOperations<T> {
 
 //    @Modifying
 //    @Query("UPDATE model set name = lower(name) WHERE name <> lower(name)")
-    T updateT(T t);
+//    T updateT(T t);
 
 }

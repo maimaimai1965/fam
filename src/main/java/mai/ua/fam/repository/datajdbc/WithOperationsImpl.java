@@ -34,8 +34,8 @@ public class WithOperationsImpl<T> implements WithOperations<T> {
         return template.insert(t);
     }
 
-    @Override
-    public T updateT(T t) {
-        return template.update(t);
-    }
+//    @Override
+//    public T updateT(T t) {
+//        return template.update(t);
+//    }
 }

@@ -27,6 +27,59 @@ public abstract class AbstractPersonRepository4DataJdbcTest extends AbstractTimi
 
     abstract protected PersonRepository4DataJdbc getRepository();
 
+    /**
+     * Когда в person нет идентификатора, то при сохранении должен генерироваться идентификатор и создаваться новая
+     * запись в таблице с этим идентификатором. Идентификатор прописывается в возвращаемом объекте.
+     */
+    public void saveNewPersonWithEmptyIdTest() {
+        //Если в person идентификатора нет, то генерируется идентификатор и создается новая запись в таблице с этим
+        //идентификатором. Идентификатор прописывается в возвращаемом объекте.
+        Person person = PersonTestData.getNewPersons01();
+        //Вставка без Id. Id генерится в БД.
+        Person savedPerson = getRepository().save(person);
+        Long id = savedPerson.getId();
+        assertTrue(id > 0, "При сохранении нового объекта без идентификатора не был сгенерирован Id.");
+        //Проверяем вставленный объект.
+        Optional<Person> findedPerson = getRepository().findById(id);
+        PersonTestUtil.assertMatch(findedPerson.get(), person);
+    }
+    /**
+     * Когда в person есть идентификатор, а в таблице есть запись с этим идентификатором, то должен производиться
+     * update этой записи в таблице.
+     */
+    public void savePersonWithIdWhenPersonExistsInDbTest(){
+        //Вставка в БД.
+        Person existsPerson = getRepository().save(PersonTestData.getNewPersons01());
+        assertTrue(existsPerson.getId() > 0, "При вставке нового объекта без идентификатора не был сгенерирован Id.");
+
+        Person person = PersonTestData.getNewPersons02();
+        person.setId(existsPerson.getId());
+        Person savedPerson = getRepository().save(person);
+        //Проверяем обновленный объект.
+        assertEquals(existsPerson.getId(), savedPerson.getId());
+        PersonTestUtil.assertMatch(savedPerson, person);
+    }
+    /**
+     * Когда в person есть идентификатор, а в таблице нет записи с этим идентификатором, то вызывается исключение.
+     */
+    public void savePersonWithIdWhenPersonNotExistsInDbTest(){
+        Long id = -100L;
+
+        Optional<Person> findedPerson = getRepository().findById(id);
+        if (findedPerson.isPresent()) {
+            assertTrue(false, "Объекта с Id = " + id + " не должно быть в БД!");
+        }
+
+        //Сохранение в БД.
+        Person person = PersonTestData.getNewPersons01();
+        person.setId(id);
+        assertThrows(Exception.class, () -> getRepository().save(person));
+    }
+    public void saveNullPersonTest() {
+        assertThrows(IllegalArgumentException.class, () -> getRepository().save(null));
+    }
+
+
 
     public void insertTest() {
         //Вставка без заданного идентификатора.
@@ -67,46 +120,6 @@ public abstract class AbstractPersonRepository4DataJdbcTest extends AbstractTimi
     public void insertNullPersonTest() {
         assertThrows(IllegalArgumentException.class, () -> getRepository().insert(null));
     }
-
-    public void saveTest(){
-        Long id;
-        //Если в person идентификатора нет, то генерируется идентификатор и создается новая запись в таблице с этим
-        //идентификатором. Идентификатор прописывается в возвращаемом объекте.
-        Person person = PersonTestData.getNewPersons01();
-        //Вставка без Id. Id генерится в БД.
-        Person savedPerson = getRepository().save(person);
-        id = savedPerson.getId();
-        assertTrue(id > 0, "При сохранении без идентификатора не был сгенерирован Id.");
-        //Проверяем вставленный объект.
-        Optional<Person> findedPerson = getRepository().findById(id);
-        PersonTestUtil.assertMatch(findedPerson.get(), person);
-
-        //Если в person идентификатор есть, и в таблице есть запись с этим идентификатором, то производится update этой
-        //записи в таблице.<br>
-        person = PersonTestData.getNewPersons02();
-        person.setId(id);
-        savedPerson = getRepository().save(person);
-        assertEquals(id , savedPerson.getId(), "При сохранении c идентификатором и наличии записи в БД, был сгенерирован новый Id.");
-        //Проверяем обновленный объект.
-        findedPerson = getRepository().findById(id);
-        PersonTestUtil.assertMatch(findedPerson.get(), person);
-
-        // Если в person идентификатор есть, и в таблице нет записи с этим идентификатором, то генерируется
-        // идентификатор и создается новая запись в таблице с этим идентификатором. Идентификатор прописывается в
-        // возвращаемом объекте.
-        person = PersonTestData.getNewPersons03();
-        person.setId(-300L);
-        savedPerson = getRepository().save(person);
-        id = person.getId();
-        assertTrue(id > 0, "При сохранении c идентификатором и отсутствием записи в БД не был сгенерирован Id.");
-        //Проверяем вставленный объект.
-        findedPerson = getRepository().findById(id);
-        PersonTestUtil.assertMatch(findedPerson.get(), person);
-    }
-    public void saveNullPersonTest() {
-        assertThrows(IllegalArgumentException.class, () -> getRepository().save(null));
-    }
-
 
     public void countTest(){
         getRepository().count();

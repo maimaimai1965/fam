@@ -59,7 +59,7 @@ public class PersonRepository4Jdbc implements PersonRepository {
             throw new IllegalArgumentException("Person can't be null.");
         }
 //        ValidationUtil.validate(person);
-        if (person.isNew() || (!this.existsById(person.getId()))) {
+        if (person.isNew()) {
             //Если
             return this.insert(person);
         } else {

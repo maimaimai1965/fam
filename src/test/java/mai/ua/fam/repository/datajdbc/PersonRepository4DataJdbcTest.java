@@ -26,6 +26,22 @@ public class PersonRepository4DataJdbcTest extends AbstractPersonRepository4Data
         return repository;
     }
 
+    @Test
+    @Override
+    public void saveNewPersonWithEmptyIdTest() {
+        super.saveNewPersonWithEmptyIdTest();
+    }
+    @Test
+    @Override
+    public void savePersonWithIdWhenPersonExistsInDbTest() {
+        super.savePersonWithIdWhenPersonExistsInDbTest();
+    }
+    @Test
+    @Override
+    public void saveNullPersonTest() {
+        super.saveNullPersonTest();
+    }
+
 
     @Test
     @Override
@@ -41,17 +57,6 @@ public class PersonRepository4DataJdbcTest extends AbstractPersonRepository4Data
     @Override
     public void insertNullPersonTest() {
         super.insertNullPersonTest();
-    }
-
-    @Test
-    @Override
-    public void saveTest() {
-        super.saveTest();
-    }
-    @Test
-    @Override
-    public void saveNullPersonTest() {
-        super.saveNullPersonTest();
     }
 
     @Test
