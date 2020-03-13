@@ -18,8 +18,7 @@ package mai.ua.fam.repository.datajdbc;
 import org.springframework.data.jdbc.core.JdbcAggregateTemplate;
 
 /**
- * Fragment implementation providing the {@link WithOperations#insert(Object)} implementation.
- *
+ * Реализация интерфейса с дополнительными методами, который можно добавлять к Data JDBC репозиторию.
  */
 public class WithOperationsImpl<T> implements WithOperations<T> {
 

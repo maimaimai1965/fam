@@ -31,10 +31,16 @@ public class PersonRepository4DataJdbcTest extends AbstractPersonRepository4Data
     public void saveNewPersonWithEmptyIdTest() {
         super.saveNewPersonWithEmptyIdTest();
     }
-    @Test
+    //@Test
     @Override
     public void savePersonWithIdWhenPersonExistsInDbTest() {
         super.savePersonWithIdWhenPersonExistsInDbTest();
+    }
+    //Открыть тест, когда будет реализовано для этого случая возникновение исключения для Data JDBC репозитория.
+    @Test
+    @Override
+    public void savePersonWithIdWhenPersonNotExistsInDbTest() {
+        super.savePersonWithIdWhenPersonNotExistsInDbTest();
     }
     @Test
     @Override
@@ -43,6 +49,11 @@ public class PersonRepository4DataJdbcTest extends AbstractPersonRepository4Data
     }
 
 
+    @Test
+    @Override
+    public void insertNewPersonWithEmptyIdTest() {
+        super.insertNewPersonWithEmptyIdTest();
+    }
     @Test
     @Override
     public void insertTest() {

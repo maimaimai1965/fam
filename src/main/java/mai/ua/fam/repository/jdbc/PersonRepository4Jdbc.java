@@ -40,18 +40,6 @@ public class PersonRepository4Jdbc implements PersonRepository {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
 
-    @Override
-    @Transactional
-    public Person insert(Person person) {
-        if (person == null) {
-            throw new IllegalArgumentException("Person can't be null.");
-        }
-        MapSqlParameterSource paramMap = PersonUtil.getMapSqlParameterSource(person);
-        Number newId = simpleJdbcInsertPerson.executeAndReturnKey(paramMap);
-        person.setId(newId.longValue());
-        return person;
-    }
-
     @Transactional
     @Override
     public Person save(Person person) {
@@ -71,10 +59,22 @@ public class PersonRepository4Jdbc implements PersonRepository {
                           "birth_date=:birth_date, death_date=:death_date, gender=:gender " +
                       "WHERE id=:id"
                 , paramMap) == 0) {
-                return null;
+                throw new NotFoundException("Not exists person with id=" + person.getId() + ".");
             }
             return person;
         }
+    }
+
+    @Override
+    @Transactional
+    public Person insert(Person person) {
+        if (person == null) {
+            throw new IllegalArgumentException("Person can't be null.");
+        }
+        MapSqlParameterSource paramMap = PersonUtil.getMapSqlParameterSource(person);
+        Number newId = simpleJdbcInsertPerson.executeAndReturnKey(paramMap);
+        person.setId(newId.longValue());
+        return person;
     }
 
     @Transactional

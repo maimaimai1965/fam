@@ -19,7 +19,7 @@ import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.data.jdbc.repository.query.Query;
 
 /**
- * Fragment interface providing the {@link WithOperations#insert(Object)} signature.
+ * Интерфейс с дополнительными методами, который можно добавлять к Data JDBC репозиторию.
  */
 public interface WithOperations<T> {
 

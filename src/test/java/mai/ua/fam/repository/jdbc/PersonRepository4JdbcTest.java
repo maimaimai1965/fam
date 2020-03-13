@@ -66,6 +66,16 @@ public class PersonRepository4JdbcTest extends AbstractPersonRepository4DataJdbc
 
     @Test
     @Override
+    public void insertNewPersonWithEmptyIdTest() {
+        super.insertNewPersonWithEmptyIdTest();
+    }
+    @Test
+    @Override
+    public void insertPersonWithIdWhenPersonExistsInDbTest() {
+        super.insertPersonWithIdWhenPersonExistsInDbTest();
+    }
+    @Test
+    @Override
     public void insertTest() {
         super.insertTest();
     }
