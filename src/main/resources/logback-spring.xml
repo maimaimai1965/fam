@@ -53,7 +53,7 @@
         </encoder>
     </appender>
 
-    <logger name="mai.ua.fam" level="debug"/>
+    <logger name="ua.mai.fam" level="debug"/>
     <!--<logger name="org.springframework.web.servlet" level="debug"/>-->
     <logger name="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver" level="debug"/>
     <logger name="org.springframework.security" level="debug"/>

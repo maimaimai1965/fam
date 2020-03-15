@@ -34,7 +34,7 @@
         </encoder>
     </appender>
 
-    <logger name="mai.ua.fam" level="debug"/>
+    <logger name="ua.mai.fam" level="debug"/>
     <logger name="org.postgresql" level="debug"/>
     <logger name="org.springframework.jdbc" level="debug"/>
 <!--    <logger name="org.springframework.web.servlet" level="debug"/>-->
