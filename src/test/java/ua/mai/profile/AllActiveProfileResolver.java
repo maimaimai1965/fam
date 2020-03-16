@@ -32,7 +32,7 @@ public class AllActiveProfileResolver implements ActiveProfilesResolver {
 //        }
 //        if (testRepositoryImplementation != null) {
 //        }
-        return new String[]{TestProfiles.REPOSITORY_IMPLEMENTATION, TestProfiles.DB_IMPLEMENTATION};
+        return new String[]{TestProfiles.DA_IMPLEMENTATION, TestProfiles.DB_IMPLEMENTATION};
 //        return new String[]{Profiles.REPOSITORY_IMPLEMENTATION, Profiles.getActiveDbProfile()};
     }
 }

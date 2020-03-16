@@ -12,7 +12,6 @@ import org.springframework.test.context.ActiveProfiles;
  *
  */
 @SpringBootTest
-@ExtendWith(AbstractTimingExtension.class)
 @ActiveProfiles(resolver = ProfileResolver4RepositoryDataJdbc.class)
 public class PersonRepository4DataJdbcTest extends AbstractPersonRepositoryTest {
 

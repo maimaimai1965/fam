@@ -20,11 +20,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Тесты для реализаций репозитория.
+ * Тесты для реализаций Person репозитория.
  */
 @ExtendWith(AbstractTimingExtension.class)
 public abstract class AbstractPersonRepositoryTest extends AbstractTimingTest {
-    private static final Logger LOG = LoggerFactory.getLogger(AbstractPersonRepositoryTest.class);
 
     abstract protected PersonRepository4DataJdbc getRepository();
 

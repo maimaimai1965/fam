@@ -20,11 +20,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  *
  */
 @SpringBootTest
-@ExtendWith(AbstractTimingExtension.class)
 @ActiveProfiles(resolver = ProfileResolver4RepositoryJdbc.class)
 public class PersonRepository4JdbcTest extends AbstractPersonRepositoryTest {
-
-    private static final Logger LOG = LoggerFactory.getLogger(AbstractPersonRepositoryTest.class);
 
     @Autowired
     //Нельзя объявлять класс PersonToRepository4Jdbc, т.к. есть transactionManager - должен быть интерфейс.
