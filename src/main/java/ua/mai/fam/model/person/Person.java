@@ -1,7 +1,10 @@
 package ua.mai.fam.model.person;
-import ua.mai.fam.util.HasId;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
+import ua.mai.fam.util.HasId;
 
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
@@ -9,6 +12,8 @@ import java.util.Objects;
 
 /**
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)  //Не выводить null поля в JSON
+@JsonIgnoreProperties(ignoreUnknown = false)
 public class Person implements HasId<Long> {
 
 //    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)
@@ -31,7 +36,6 @@ public class Person implements HasId<Long> {
     private LocalDate deathDate;
 
     private String gender;
-
 
     public Long getId() {
         return id;

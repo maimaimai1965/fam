@@ -58,6 +58,7 @@ public interface PersonRepository extends PersonRepository4DataJdbc {
      * @param person must not be null.
      * @return
      * @throws IllegalArgumentException in case the given person is null.
+     * @throws FoundException in case the given person contains id.
      */
     @Override
     Person insert(Person person);

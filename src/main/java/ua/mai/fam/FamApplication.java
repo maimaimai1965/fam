@@ -14,9 +14,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 public class FamApplication implements CommandLineRunner {
 
-    public static final String APPLICATION_ROOT_PATH = "fam";
     public static final String APPLICATION_VERSION_PATH = "v1";
-    public static final String APPLICATION_REST_PATH = APPLICATION_ROOT_PATH + "/api/" + APPLICATION_VERSION_PATH;
+    public static final String APPLICATION_REST_PATH = "api/" + APPLICATION_VERSION_PATH;
 
     @Autowired
     PersonRepository4DataJdbc repository;

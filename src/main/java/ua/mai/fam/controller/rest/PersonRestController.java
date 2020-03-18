@@ -1,20 +1,20 @@
 package ua.mai.fam.controller.rest;
 
-import org.springframework.context.annotation.Profile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import ua.mai.fam.model.person.Person;
-import ua.mai.fam.repository.PersonRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import ua.mai.fam.model.person.Person;
+import ua.mai.fam.repository.PersonRepository;
 import ua.mai.fam.util.CollectionUtil;
+import ua.mai.fam.util.exception.FoundException;
+import ua.mai.fam.util.exception.ResponceStatusExceptionWithCode;
+import ua.mai.fam.util.exception.RestErrorCodes;
 
 import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,14 +44,23 @@ public class PersonRestController {
 //        @ApiResponse(code = 201, response = Payment.class),
 //        @ApiResponse(code = 400, message = "Ошибка.", response = ErrorDetails.class)})
     public ResponseEntity<Person> add(@RequestBody Person person) {
-        person = personRepository.insert(person);
-        return new ResponseEntity<Person>(person, HttpStatus.CREATED/*201*/);
+        try {
+            person = personRepository.insert(person);
+            URI uri = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(person.getId())
+                .toUri();
+            return ResponseEntity.created(uri).body(person); //, HttpStatus.CREATED/*201*/);
+        }
+        catch (FoundException e) {
+            throw new ResponceStatusExceptionWithCode(HttpStatus.CONFLICT, e, RestErrorCodes.EXISTS_ID_CODE);
+        }
+        catch (Exception e) {
+            throw new ResponceStatusExceptionWithCode(HttpStatus.BAD_REQUEST, e, RestErrorCodes.BAD_REQUEST_CODE);
+        }
+//        return new ResponseEntity<Person>(person, HttpStatus.CREATED/*201*/);
 //        //https://stackoverflow.com/questions/42546141/add-location-header-to-spring-mvcs-post-response#52024684
-//        URI location = ServletUriComponentsBuilder
-//            .fromCurrentRequest()
-//            .path("/{id}")
-//            .buildAndExpand(person.getId())
-//            .toUri();
 //        return ResponseEntity.created(location).build();
     }
 
