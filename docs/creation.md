@@ -39,7 +39,7 @@
 
 ###[Getting Started](getting_started.md)
 
-###Задание свойств File/Settings:
+###Задание свойств File/Settings :
 * Узел Editor/File Encoding:
     - Global Encoding:   UTF-8
     - Project Encoding:  UTF-8
