@@ -21,8 +21,8 @@ public class TestProfiles {
     //---- Текущие тестируемые профили. ------------------------
     // Data Base
     public static final String DB_IMPLEMENTATION =
-        DB_H2;
-//        DB_POSTGRES;
+//        DB_H2;
+        DB_POSTGRES;
 
     // Data
     public static final String DA_IMPLEMENTATION =

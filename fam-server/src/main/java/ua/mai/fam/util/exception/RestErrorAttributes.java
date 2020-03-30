@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * Класс добавляющий код ошибки (code) и ее текст (error) в возвращамое REST-ом описание ошибки.
+ * Класс, добавляющий код ошибки (code) и ее текст (error) в возвращамое REST-ом описание ошибки.
  */
 @Profile({"ac-rest", "ac-data-rest"})
 @Component
@@ -23,10 +23,10 @@ public class RestErrorAttributes extends DefaultErrorAttributes {
 //        Throwable cause = throwable.getCause();
         if (throwable != null) {
             if (throwable instanceof HasErrorCode) {
-                HasErrorCode hasCode = (HasErrorCode)throwable;
-                errorAttributes.put("code", hasCode.getCode());
+                HasErrorCode hasErrorCode = (HasErrorCode)throwable;
+                errorAttributes.put("code", hasErrorCode.getCode());
 
-                Optional<String> error = hasCode.getError();
+                Optional<String> error = hasErrorCode.getError();
                 if (error.isPresent()) {
                     errorAttributes.put("error", error.get());
                 }

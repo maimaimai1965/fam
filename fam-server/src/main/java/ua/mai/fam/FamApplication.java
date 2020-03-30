@@ -1,5 +1,7 @@
 package ua.mai.fam;
 
+import org.springframework.http.ResponseEntity;
+import ua.mai.fam.controller.rest.PersonRestController;
 import ua.mai.fam.repository.datajdbc.PersonRepository4DataJdbc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -20,6 +22,9 @@ public class FamApplication implements CommandLineRunner {
     @Autowired
     PersonRepository4DataJdbc repository;
 
+    @Autowired
+    PersonRestController personRestController;
+
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(FamApplication.class, args);
     }
@@ -27,6 +32,13 @@ public class FamApplication implements CommandLineRunner {
     @Override
     public void run(String... arg0) throws Exception {
         System.out.println("count = " + repository.count());
+
+        ResponseEntity<?> responseEntity = personRestController.find(50000L);
+        Object entity = responseEntity.getBody();
+        System.out.println("find: " + entity.toString());
+
+        Object all = personRestController.findAll();
+        System.out.println("find: " + all.toString());
     }
 
 }

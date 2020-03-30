@@ -13,7 +13,6 @@ import ua.mai.fam.util.exception.FoundException;
 import ua.mai.fam.util.exception.ResponceStatusExceptionWithCode;
 import ua.mai.fam.util.exception.RestErrorCodes;
 
-import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -68,7 +67,9 @@ public class PersonRestController {
     public ResponseEntity<Person> save(@RequestBody(required=true) Person person,
                                        @PathVariable(required=true) Long id) {
         if (!id.equals(person.getId())) {
-            throw new IllegalArgumentException("id in path (" + id + ") is not equal in Entity (" + person.getId() + ")");
+            throw new ResponceStatusExceptionWithCode(HttpStatus.BAD_REQUEST,
+                "id in path (" + id + ") is not equal in Entity (" + person.getId() + ")",
+                RestErrorCodes.NOT_EQUAL_IDS_WHEN_UPDATE_CODE);
         }
         person = personRepository.save(person);
         return new ResponseEntity<Person>(person, HttpStatus.NO_CONTENT/*204*/);
@@ -81,7 +82,7 @@ public class PersonRestController {
     }
 
     @GetMapping()
-    public @ResponseBody List<Person> findAll(HttpServletResponse response) {
+    public @ResponseBody List<Person> findAll(/*HttpServletResponse response*/) {
         return CollectionUtil.makeList(personRepository.findAll());
     }
     @GetMapping("{id}")
@@ -92,4 +93,5 @@ public class PersonRestController {
         }
         return new ResponseEntity<Person>(person.get(), HttpStatus.OK/*200*/);
     }
+
 }

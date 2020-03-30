@@ -5,6 +5,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ua.mai.fam.model.person.Person;
 
+import java.util.List;
+
 public class FamRestClientApplication {
 
     @Autowired
@@ -14,15 +16,20 @@ public class FamRestClientApplication {
         return famClient;
     }
 
-    public void autowire() {
+    public void autowireAppBeans() {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(RestClientConfiguration.class);
         ctx.getAutowireCapableBeanFactory().autowireBean(this);
     }
 
     public static void main(String[] args) {
         FamRestClientApplication app = new FamRestClientApplication();
-        app.autowire();
-        Person person = app.getFamClient().find(50_000L);
+        app.autowireAppBeans();
+
+        Person person = app.getFamClient().findPerson(50_000L);
+        System.out.println("findPerson(): " + person);
+
+        List<Person> persons = app.getFamClient().findAllPersons();
+        System.out.println("findAllPersons(): " + persons);
     }
 
 }

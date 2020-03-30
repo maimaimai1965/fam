@@ -11,17 +11,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.client.RestTemplate;
 import ua.mai.fam.model.person.Person;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class FamClient {
 
-    String baseUri;
-
     private RestTemplate restTemplate;
+    private String baseUri;
+    private String personUri;
 
     public FamClient(String baseUri) {
         if ((baseUri == null) || (baseUri.isEmpty())) {
             throw new IllegalArgumentException("baseUri not defined!");
         }
-        this.baseUri = baseUri;
+        setBaseUri(baseUri);
         Log log = LogFactory.getLog(getClass());
         ClientHttpRequestInterceptor interceptor =
             (HttpRequest request, byte[] body, ClientHttpRequestExecution execution) -> {
@@ -34,12 +39,25 @@ public class FamClient {
 
     public FamClient(String baseUri, RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
-        this.restTemplate = restTemplate;
+        setBaseUri(baseUri);
     }
 
-    public Person find(Long id) {
-        Person person = (Person)restTemplate.getForObject(baseUri + "/" + id, Person.class);
+    public void setBaseUri(String baseUri) {
+        this.baseUri = baseUri;
+        personUri = this.baseUri + "/persons";
+    }
+
+    public Person findPerson(Long id) {
+        Person person = (Person)restTemplate.getForObject(personUri + "/" + id, Person.class);
         return person;
     }
 
+    public List<Person> findAllPersons() {
+        //https://www.baeldung.com/spring-rest-template-list#1-using-arrays
+        ResponseEntity<Person[]> response = restTemplate.getForEntity(personUri, Person[].class);
+        Person[] personArr = response.getBody();
+        //https://stackoverflow.com/questions/53940628/convert-an-array-to-list-with-specific-range-in-java-8#answer-53940664
+        List<Person> personList = Arrays.stream(personArr, 1, personArr.length).collect(Collectors.toList());
+        return personList;
+    }
 }
