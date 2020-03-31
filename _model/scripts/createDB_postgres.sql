@@ -55,6 +55,7 @@ create table artifact (
    id                   BIGINT               not null,
    artifact_type_code   VARCHAR(30)          not null,
    owner_id             BIGINT               not null,
+   name                 VARCHAR(100)         null,
    description          VARCHAR(500)         null,
    link                 VARCHAR(200)         null,
    box_id               BIGINT               null,

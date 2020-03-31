@@ -56,6 +56,17 @@
         <!--            <groupId>org.springframework.data</groupId>-->
         <!--            <artifactId>spring-data-rest-hal-browser</artifactId>-->
         <!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <exclusions>
+                <exclusion>
+                    <!-- Исключаем, т.к. по умолчанию не используется пул HikariCP -->
+                    <groupId>com.zaxxer</groupId>
+                    <artifactId>HikariCP</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -194,6 +205,23 @@
         </profile>
 
         <profile>
+            <id>da-jpa</id>
+<!--            <dependencies>-->
+<!--                <dependency>-->
+<!--                    <groupId>org.springframework.boot</groupId>-->
+<!--                    <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+<!--                    <exclusions>-->
+<!--                        <exclusion>-->
+<!--                            &lt;!&ndash; Исключаем, т.к. по умолчанию не используется пул HikariCP &ndash;&gt;-->
+<!--                            <groupId>com.zaxxer</groupId>-->
+<!--                            <artifactId>HikariCP</artifactId>-->
+<!--                        </exclusion>-->
+<!--                    </exclusions>-->
+<!--                </dependency>-->
+<!--            </dependencies>-->
+        </profile>
+
+        <profile>
             <id>da-data-jdbc</id>
             <!--            <dependencies>-->
             <!--                <dependency>-->
@@ -212,19 +240,19 @@
 
         <profile>
             <id>da-data-jpa</id>
-            <dependencies>
-                <dependency>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-data-jpa</artifactId>
-                    <exclusions>
-                        <exclusion>
-                            <!-- Исключаем, т.к. по умолчанию не используется пул HikariCP -->
-                            <groupId>com.zaxxer</groupId>
-                            <artifactId>HikariCP</artifactId>
-                        </exclusion>
-                    </exclusions>
-                </dependency>
-            </dependencies>
+<!--            <dependencies>-->
+<!--                <dependency>-->
+<!--                    <groupId>org.springframework.boot</groupId>-->
+<!--                    <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+<!--                    <exclusions>-->
+<!--                        <exclusion>-->
+<!--                            &lt;!&ndash; Исключаем, т.к. по умолчанию не используется пул HikariCP &ndash;&gt;-->
+<!--                            <groupId>com.zaxxer</groupId>-->
+<!--                            <artifactId>HikariCP</artifactId>-->
+<!--                        </exclusion>-->
+<!--                    </exclusions>-->
+<!--                </dependency>-->
+<!--            </dependencies>-->
         </profile>
 
         <profile>

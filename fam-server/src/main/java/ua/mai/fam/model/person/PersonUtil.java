@@ -7,6 +7,9 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Утилиты для Person.
+ */
 public class PersonUtil {
 
     private PersonUtil(){}

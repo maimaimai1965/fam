@@ -27,34 +27,28 @@ drop index I_box_PK;
 drop table box;
 
 drop index I_box_type_PK;
-
 drop table box_type;
-
 drop index I_NOTE3PERSON_ID_2_PERSON_FK;
-
 drop index I_NOTE3ARTIFACT_ID_FK;
-
 drop index I_note_PK;
-
 drop table note;
-
 drop index I_PARENT_CHILD3CHILD_ID_FK;
-
 drop index I_parent_child_PK;
-
 drop table parent_child;
-
 drop index person_PK;
-
 drop table person;
 
 /*==============================================================*/
 /* Table: artifact                                              */
 /*==============================================================*/
+DROP SEQUENCE IF EXISTS seq_artifact;
+CREATE SEQUENCE seq_artifact START WITH 100000;
+
 create table artifact (
-   id                   BIGINT               not null,
+   id                   BIGINT               DEFAULT nextval('seq_artifact'),
    artifact_type_code   VARCHAR(30)          not null,
    owner_id             BIGINT               not null,
+   name                 VARCHAR(100)         null,
    description          VARCHAR(500)         null,
    link                 VARCHAR(200)         null,
    box_id               BIGINT               null,
@@ -82,6 +76,7 @@ create  index I_ARTIFACT3OWNER_ID_2_PERSON_FK on artifact (
 owner_id
 );
 
+
 /*==============================================================*/
 /* Table: artifact_type                                         */
 /*==============================================================*/
@@ -98,11 +93,16 @@ create unique index I_artifact_type_PK on artifact_type (
 code
 );
 
+
+
 /*==============================================================*/
 /* Table: birth_place                                           */
 /*==============================================================*/
+DROP SEQUENCE IF EXISTS birth_place;
+CREATE SEQUENCE birth_place START WITH 100000;
+
 create table birth_place (
-   id                   BIGINT               not null,
+   id                   BIGINT               DEFAULT nextval('birth_place'),
    description          VARCHAR(200)         not null,
    constraint PK_BIRTH_PLACE primary key (id)
 );
@@ -114,11 +114,15 @@ create unique index I_birth_place_PK on birth_place (
 id
 );
 
+
 /*==============================================================*/
 /* Table: box                                                   */
 /*==============================================================*/
+DROP SEQUENCE IF EXISTS seq_box;
+CREATE SEQUENCE seq_box START WITH 100000;
+
 create table box (
-   id                   BIGINT               not null,
+   id                   BIGINT               DEFAULT nextval('seq_box'),
    description          VARCHAR(100)         null,
    box_type_code        VARCHAR(30)          not null,
    box_char             VARCHAR(1)           null,
@@ -140,6 +144,7 @@ create  index I_BOX3BOX_TYPE_CODE_FK on box (
 box_type_code
 );
 
+
 /*==============================================================*/
 /* Table: box_type                                              */
 /*==============================================================*/
@@ -157,11 +162,15 @@ create unique index I_box_type_PK on box_type (
 code
 );
 
+
 /*==============================================================*/
 /* Table: note                                                  */
 /*==============================================================*/
+DROP SEQUENCE IF EXISTS seq_note;
+CREATE SEQUENCE seq_note START WITH 100000;
+
 create table note (
-   id                   BIGINT               not null,
+   id                   BIGINT               DEFAULT nextval('seq_note'),
    person_id            BIGINT               not null,
    artifact_id          BIGINT               not null,
    description          VARCHAR(500)         not null,
@@ -189,6 +198,7 @@ create  index I_NOTE3PERSON_ID_2_PERSON_FK on note (
 person_id
 );
 
+
 /*==============================================================*/
 /* Table: parent_child                                          */
 /*==============================================================*/
@@ -213,11 +223,12 @@ create  index I_PARENT_CHILD3CHILD_ID_FK on parent_child (
 child_id
 );
 
-DROP SEQUENCE IF EXISTS seq_person;
-CREATE SEQUENCE seq_person START WITH 100000;
+
 /*==============================================================*/
 /* Table: person                                                */
 /*==============================================================*/
+DROP SEQUENCE IF EXISTS seq_person;
+CREATE SEQUENCE seq_person START WITH 100000;
 create table person (
    id                   BIGINT               DEFAULT nextval('seq_person'),
    surname              VARCHAR(50)          not null,

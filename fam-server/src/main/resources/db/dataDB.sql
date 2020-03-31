@@ -10,5 +10,9 @@ INSERT INTO person
   (50004, 'Мирошник',     'Наталия',  'Андреевна',    '1994-05-10', NULL,       'F')
 ;
 
+INSERT INTO public.parent_child (parent_id, child_id) VALUES (50000, 50002);
+INSERT INTO public.parent_child (parent_id, child_id) VALUES (50000, 50003);
+INSERT INTO public.parent_child (parent_id, child_id) VALUES (50000, 50004);
+INSERT INTO public.parent_child (parent_id, child_id) VALUES (50001, 50002);
 
-
+commit;
