@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ua.mai.fam.model.person.Person;
-import ua.mai.fam.model.person.PersonUtil;
+import ua.mai.fam.repository.jdbc.PersonUtil;
 import ua.mai.fam.repository.PersonRepository;
 import ua.mai.fam.util.exception.FoundException;
 import ua.mai.fam.util.exception.NotFoundException;
@@ -30,6 +30,7 @@ public class PersonRepository4Jpa implements PersonRepository {
 
     @PersistenceContext
     private EntityManager em;
+
 
     public static final PersonUtil.PersonToRowMapper ROW_MAPPER = new PersonUtil.PersonToRowMapper();
 

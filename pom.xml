@@ -22,8 +22,13 @@
     </properties>
 
     <modules>
-        <module>fam-server</module>
+        <module>fam-model</module>
+        <module>fam-repository-api</module>
+        <module>fam-repository-jdbc</module>
+        <module>fam-repository-data-jdbc</module>
         <module>fam-rest-client</module>
+        <module>fam-rest-server</module>
+        <module>fam-server</module>
     </modules>
 
 </project>

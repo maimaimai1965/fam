@@ -1,20 +1,18 @@
 package ua.mai.fam.model.person;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
 import ua.mai.fam.util.HasId;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.Objects;
 
 /**
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)  //Не выводить null поля в JSON
-@JsonIgnoreProperties(ignoreUnknown = false)
-public class Person implements HasId<Long> {
+@Entity
+public class FamilyPerson implements HasId<Long> {
 
 //    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)
 //    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
@@ -86,10 +84,10 @@ public class Person implements HasId<Long> {
         this.gender = gender;
     }
 
-    public Person() {}
+    public FamilyPerson() {}
 
-    public Person(Long id, String surname, String firstName, String middleName, LocalDate birthDate,
-                  LocalDate deathDate, String gender) {
+    public FamilyPerson(Long id, String surname, String firstName, String middleName, LocalDate birthDate,
+                        LocalDate deathDate, String gender) {
         this.id = id;
         this.surname = surname;
         this.firstName = firstName;
@@ -103,7 +101,7 @@ public class Person implements HasId<Long> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Person personTo = (Person) o;
+        FamilyPerson personTo = (FamilyPerson) o;
         return Objects.equals(id, personTo.id) &&
             surname.equals(personTo.surname) &&
             Objects.equals(firstName, personTo.firstName) &&
