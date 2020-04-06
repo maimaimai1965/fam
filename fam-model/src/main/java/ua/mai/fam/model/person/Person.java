@@ -19,7 +19,10 @@ public class Person implements HasId<Long> {
 //    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)
 //    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
 //    @org.springframework.data.annotation.Id
-    @Id
+    //Data JDBC
+    @org.springframework.data.annotation.Id
+    //JDBC
+    @javax.persistence.Id
     private Long id;
 
     @NotEmpty

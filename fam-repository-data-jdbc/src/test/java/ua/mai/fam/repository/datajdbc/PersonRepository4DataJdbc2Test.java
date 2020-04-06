@@ -15,7 +15,7 @@ import org.springframework.test.context.ActiveProfiles;
 public class PersonRepository4DataJdbc2Test extends AbstractPersonRepositoryTest {
 
     @Autowired
-    //Нельзя объявлять класс PersonToRepository4Jdbc, т.к. есть transactionManager - должен быть интерфейс.
+    //PersonRepository4DataJdbc должен быть интерфейсом, т.к. есть transactionManager.
     //https://ru.stackoverflow.com/questions/663704/unsatisfieddependencyexception-error-creating-beanby-beannotofrequiredtypeexce
     private PersonRepository4DataJdbc repository;
 

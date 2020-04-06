@@ -4,7 +4,7 @@ import ua.mai.fam.AbstractTimingExtension;
 import ua.mai.fam.model.PersonTestData;
 import ua.mai.fam.model.PersonTestUtil;
 import ua.mai.fam.model.person.Person;
-import ua.mai.fam.repository.datajdbc.PersonRepository4DataJdbc;
+import ua.mai.fam.repository.datajdbc.BasePersonRepository;
 import ua.mai.fam.util.exception.FoundException;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @ExtendWith(AbstractTimingExtension.class)
 public abstract class AbstractPersonRepositoryTest {
 
-    abstract protected PersonRepository4DataJdbc getRepository();
+    abstract protected BasePersonRepository getRepository();
 
     /**
      * Когда в person нет идентификатора, то при сохранении должен генерироваться идентификатор и создаваться новая

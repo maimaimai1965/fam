@@ -20,8 +20,8 @@ public class FamRestServerApplication implements CommandLineRunner {
     public static final String APPLICATION_VERSION_PATH = "v1";
     public static final String APPLICATION_REST_PATH = "api/" + APPLICATION_VERSION_PATH;
 
-    @Autowired
-    PersonRepository repository;
+//    @Autowired
+//    PersonRepository repository;
 
     @Autowired
     PersonRestController personRestController;
@@ -32,14 +32,11 @@ public class FamRestServerApplication implements CommandLineRunner {
 
     @Override
     public void run(String... arg0) throws Exception {
-        System.out.println("count = " + repository.count());
+//        System.out.println("count = " + repository.count());
 
         ResponseEntity<?> responseEntity = personRestController.find(50000L);
         Object entity = responseEntity.getBody();
-        System.out.println("find: " + entity.toString());
-
-        Object all = personRestController.findAll();
-        System.out.println("find: " + all.toString());
+        System.out.println("+++ personRestController.find(50000L): " + entity.toString());
     }
 
 }

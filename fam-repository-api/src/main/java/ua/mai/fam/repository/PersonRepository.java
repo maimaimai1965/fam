@@ -1,7 +1,7 @@
 package ua.mai.fam.repository;
 
 import ua.mai.fam.model.person.Person;
-import ua.mai.fam.repository.datajdbc.PersonRepository4DataJdbc;
+import ua.mai.fam.repository.datajdbc.BasePersonRepository;
 import ua.mai.fam.util.exception.FoundException;
 import ua.mai.fam.util.exception.NotFoundException;
 import org.springframework.data.repository.NoRepositoryBean;
@@ -9,7 +9,7 @@ import org.springframework.data.repository.NoRepositoryBean;
 import java.util.Optional;
 
 @NoRepositoryBean
-public interface PersonRepository extends PersonRepository4DataJdbc {
+public interface PersonRepository extends BasePersonRepository {
 
     /**
      * Сохранение person.<br>

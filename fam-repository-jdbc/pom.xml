@@ -46,10 +46,6 @@
             <scope>test</scope>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-web</artifactId>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
@@ -74,38 +70,6 @@
             </exclusions>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.codehaus.janino</groupId>-->
-<!--            <artifactId>janino</artifactId>-->
-<!--            <version>3.0.6</version>-->
-<!--        </dependency>-->
-
-        <dependency>
-            <!-- Используется пул из Tomcat -->
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.oracle.ojdbc</groupId>
-            <artifactId>ojdbc8</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.testng</groupId>-->
-<!--            <artifactId>testng</artifactId>-->
-<!--            <version>6.8.8</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test-autoconfigure</artifactId>
@@ -113,26 +77,6 @@
     </dependencies>
 
     <profiles>
-<!--        &lt;!&ndash; Data Base &ndash;&gt;-->
-<!--        <profile>-->
-<!--            <id>db-h2</id>-->
-<!--        </profile>-->
-
-<!--        <profile>-->
-<!--            <id>db-postgres</id>-->
-<!--            <activation>-->
-<!--                <activeByDefault>true</activeByDefault>-->
-<!--            </activation>-->
-<!--        </profile>-->
-
-<!--        <profile>-->
-<!--            <id>db-oracle</id>-->
-<!--        </profile>-->
-
-<!--        <profile>-->
-<!--            <id>db-jndi</id>-->
-<!--        </profile>-->
-
         <!-- Data Access -->
         <profile>
             <id>da-jdbc</id>

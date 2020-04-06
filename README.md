@@ -9,6 +9,10 @@ Java Spring Boot 2 Project
   - [fam-repository-api](fam-repository-api/README.md) - API репозиториев
   - [fam-repository-jdbc](fam-repository-jdbc/README.md) - реализация на Spring JDBC
   - [fam-repository-jpa](fam-repository-jpa/README.md) - реализация на Spring JPA
+- Сервер:
+  - [fam-rest-server](fam-rest-server/README.md) - REST сервер
+- Клиент:
+  - [fam-rest-client](fam-rest-client/README.md) - клиент к REST серверу
 
 Дополнительно 
 -------------

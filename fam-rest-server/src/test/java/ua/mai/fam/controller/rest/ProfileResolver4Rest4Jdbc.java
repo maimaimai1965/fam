@@ -11,8 +11,11 @@ public class ProfileResolver4Rest4Jdbc implements ActiveProfilesResolver {
 
     @Override
     public String[] resolve(Class<?> aClass) {
-        return new String[] { TestProfiles.DB_IMPLEMENTATION,
+        return new String[] {
+                              TestProfiles.DB_IMPLEMENTATION,
+
                               TestProfiles.DA_JDBC,
+
                               TestProfiles.AC_REST};
     }
 }

@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ua.mai</groupId>
-    <artifactId>fam-repository-data-jdbc</artifactId>
+    <artifactId>fam-repository-jpa</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>fam-repository-data-jdbc</name>
-    <description>Repository fam based on DATA JDBC</description>
+    <name>fam-repository-jpa</name>
+    <description>Repository fam based on JPA</description>
 
     <parent>
         <groupId>ua.mai</groupId>
@@ -48,7 +48,7 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jdbc</artifactId>
+            <artifactId>spring-boot-starter-jpa</artifactId>
             <exclusions>
                 <exclusion>
                     <!-- Исключаем, т.к. по умолчанию не используется пул HikariCP -->
@@ -58,6 +58,12 @@
             </exclusions>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-devtools</artifactId>-->
+<!--            <scope>runtime</scope>-->
+<!--            <optional>true</optional>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -69,6 +75,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.security</groupId>-->
+<!--            <artifactId>spring-security-test</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

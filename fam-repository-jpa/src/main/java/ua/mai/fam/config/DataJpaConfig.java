@@ -11,22 +11,22 @@ import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 @Configuration
-@EnableJdbcRepositories(basePackages="ua.mai.fam.repository.datajdbc")
-@Profile("da-data-jdbc")
-public class DataJdbcConfig extends AbstractJdbcConfiguration {
+@EnableJdbcRepositories(basePackages="ua.mai.fam.repository.jpa")
+@Profile("da-jpa")
+public class DataJpaConfig extends AbstractJdbcConfiguration {
 
     /**
      * @return {@link ApplicationListener} for {@link RelationalEvent}s.
      */
-//    @Bean
-//    public ApplicationListener<?> loggingListener() {
-//
-//        return (ApplicationListener<ApplicationEvent>) event -> {
-//            if (event instanceof RelationalEvent) {
-//                System.out.println("Received an event: " + event);
-//            }
-//        };
-//    }
+    @Bean
+    public ApplicationListener<?> loggingListener() {
+
+        return (ApplicationListener<ApplicationEvent>) event -> {
+            if (event instanceof RelationalEvent) {
+                System.out.println("Received an event: " + event);
+            }
+        };
+    }
 
     @Bean
     public NamedParameterJdbcTemplate namedParameterJdbcTemplate(JdbcOperations operations) {
