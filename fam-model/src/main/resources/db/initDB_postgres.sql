@@ -2,6 +2,14 @@
 /* DBMS name:      PostgreSQL 11, H2                            */
 /* Created on:     30.03.2020 22:26:22                          */
 /*==============================================================*/
+drop index IF EXISTS together3together_type_code_FK;
+drop index IF EXISTS together3member1_2_person_FK;
+drop index IF EXISTS together3member2_2_person_FK;
+drop index IF EXISTS together_PK;
+drop table IF EXISTS together;
+drop index IF EXISTS together_type_PK;
+drop table IF EXISTS together_type;
+
 drop index IF EXISTS I_NOTE3PERSON_ID_2_PERSON_FK;
 drop index IF EXISTS I_NOTE3ARTIFACT_ID_FK;
 drop index IF EXISTS I_note_PK;
@@ -273,3 +281,77 @@ alter table note
         references person (id)
         on delete restrict on update restrict;
 
+
+/*==============================================================*/
+/* Table: together_type                                         */
+/*==============================================================*/
+create table together_type (
+   code                 VARCHAR(30)          not null,
+   name                 VARCHAR(100)         not null,
+   constraint PK_TOGETHER_TYPE primary key (code)
+);
+/*==============================================================*/
+/* Index: together_type_PK                                      */
+/*==============================================================*/
+create unique index together_type_PK on together_type (
+code
+);
+		
+
+/*==============================================================*/
+/* Table: together                                              */
+/*==============================================================*/
+DROP SEQUENCE IF EXISTS seq_together;
+CREATE SEQUENCE seq_together START WITH 100000;
+
+create table together (
+   id                   BIGINT               DEFAULT nextval('seq_together'),
+   together_type_code   VARCHAR(30)          not null,
+   member1              BIGINT               not null,
+   member2              BIGINT               not null,
+   start_date           DATE                 null,
+   finish_date          DATE                 null,
+   description          VARCHAR(500)         null,
+   constraint PK_TOGETHER primary key (id)
+);
+/*==============================================================*/
+/* Index: together_PK                                           */
+/*==============================================================*/
+create unique index together_PK on together (
+id
+);
+/*==============================================================*/
+/* Index: together3member1_2_person_FK                          */
+/*==============================================================*/
+create  index together3member1_2_person_FK on together (
+member1
+);
+/*==============================================================*/
+/* Index: together3member2_2_person_FK                          */
+/*==============================================================*/
+create  index together3member2_2_person_FK on together (
+member2
+);
+/*==============================================================*/
+/* Index: together3together_type_code_FK                        */
+/*==============================================================*/
+create  index together3together_type_code_FK on together (
+together_type_code
+);
+
+alter table together
+   add constraint FK_TOGETHER3MEMBER1 foreign key (member1)
+      references person (id)
+      on delete restrict on update restrict;
+
+alter table together
+   add constraint FK_TOGETHER3MEMBER2 foreign key (member2)
+      references person (id)
+      on delete restrict on update restrict;
+
+alter table together
+   add constraint FK_TOGETHER3TOGETHER_TYPE_CODE foreign key (together_type_code)
+      references together_type (code)
+      on delete restrict on update restrict;
+		
+		

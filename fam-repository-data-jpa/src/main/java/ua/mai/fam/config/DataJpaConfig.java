@@ -11,7 +11,6 @@ import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 @Configuration
-@EnableJdbcRepositories(basePackages="ua.mai.fam.repository.jpa")
 @Profile("da-jpa")
 public class DataJpaConfig extends AbstractJdbcConfiguration {
 

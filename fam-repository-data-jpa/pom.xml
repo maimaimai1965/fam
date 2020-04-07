@@ -48,7 +48,7 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jpa</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
             <exclusions>
                 <exclusion>
                     <!-- Исключаем, т.к. по умолчанию не используется пул HikariCP -->
@@ -90,7 +90,7 @@
     <profiles>
         <!-- Data Access -->
         <profile>
-            <id>da-data-jdbc</id>
+            <id>da-data-jpa</id>
         </profile>
     </profiles>
 

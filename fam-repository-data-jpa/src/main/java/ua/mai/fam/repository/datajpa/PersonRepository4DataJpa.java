@@ -1,4 +1,4 @@
-package ua.mai.fam.repository.jpa;
+package ua.mai.fam.repository.datajpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -24,29 +24,16 @@ import java.util.List;
 import java.util.Optional;
 
 @Transactional(readOnly = true)
-@Profile("da-jpa")
+@Profile("da-data-jpa")
 @Repository
-public class PersonRepository4Jpa implements PersonRepository {
+public class PersonRepository4DataJpa implements PersonRepository {
 
     @PersistenceContext
     private EntityManager em;
 
-
-    public static final PersonUtil.PersonToRowMapper ROW_MAPPER = new PersonUtil.PersonToRowMapper();
-
-    private final JdbcTemplate jdbcTemplate;
-    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    private final SimpleJdbcInsert simpleJdbcInsertPerson;
-
-    @Autowired
-    public PersonRepository4Jpa(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
-        this.simpleJdbcInsertPerson = new SimpleJdbcInsert(jdbcTemplate)
-            .withTableName("person")
-            .usingGeneratedKeyColumns("id");
-
-        this.jdbcTemplate = jdbcTemplate;
-        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-    }
+//    @Autowired
+//    public PersonRepository4DataJpa(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+//    }
 
     @Transactional
     @Override

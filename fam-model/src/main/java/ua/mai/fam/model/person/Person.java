@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.format.annotation.DateTimeFormat;
 import ua.mai.fam.util.HasId;
 
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -14,31 +14,40 @@ import java.util.Objects;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)  //Не выводить null поля в JSON
 @JsonIgnoreProperties(ignoreUnknown = false)
+//--For Data JPA
+@javax.persistence.Entity
+@javax.persistence.Table(name = "person")
 public class Person implements HasId<Long> {
 
 //    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)
 //    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
-//    @org.springframework.data.annotation.Id
-    //Data JDBC
+    //--for Data JDBC
     @org.springframework.data.annotation.Id
-    //JDBC
+    //--for Data JPA
     @javax.persistence.Id
     private Long id;
 
-    @NotEmpty
+    @javax.validation.constraints.NotEmpty
+    @javax.persistence.Column(name = "surname")
     private String surname;
 
+    @javax.persistence.Column(name = "first_name")
     private String firstName;
 
+    @javax.persistence.Column(name = "surname")
     private String middleName;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @org.springframework.format.annotation.DateTimeFormat(pattern = "yyyy-MM-dd")
+    @javax.persistence.Column(name = "birth_date")
     private LocalDate birthDate;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @org.springframework.format.annotation.DateTimeFormat(pattern = "yyyy-MM-dd")
+    @javax.persistence.Column(name = "death_date")
     private LocalDate deathDate;
 
+    @javax.persistence.Column(name = "gender")
     private String gender;
+
 
     public Long getId() {
         return id;

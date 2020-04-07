@@ -1,4 +1,4 @@
-package ua.mai.fam.repository.jpa;
+package ua.mai.fam.repository.datajpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
