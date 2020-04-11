@@ -15,7 +15,7 @@ import ua.mai.fam.repository.PersonRepository;
  */
 @DataJpaTest
 @ActiveProfiles(resolver = ProfileResolver4RepositoryDataJpa.class)
-public class PersonRepository4DataJpa2Test extends AbstractPersonRepositoryTest {
+public class PersonRepository4DataJpaTest extends AbstractPersonRepositoryTest {
 
     @Autowired
     //Нельзя объявлять класс PersonToRepository4Jpa, т.к. есть transactionManager - должен быть интерфейс.

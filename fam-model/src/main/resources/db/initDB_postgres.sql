@@ -6,7 +6,6 @@
 /*==============================================================*/
 /* Table: person                                                */
 /*==============================================================*/
-DROP SEQUENCE IF EXISTS seq_person;
 CREATE SEQUENCE seq_person START WITH 100000 INCREMENT BY 20;
 create table person (
   id                   BIGINT               DEFAULT nextval('seq_person'),
@@ -80,7 +79,6 @@ create unique index I_box_type_PK on box_type (
 /*==============================================================*/
 /* Table: box                                                   */
 /*==============================================================*/
-DROP SEQUENCE IF EXISTS seq_box;
 CREATE SEQUENCE seq_box START WITH 100000 INCREMENT BY 20;
 
 create table box (
@@ -112,7 +110,6 @@ alter table box
 /*==============================================================*/
 /* Table: birth_place                                           */
 /*==============================================================*/
-DROP SEQUENCE IF EXISTS seq_birth_place;
 CREATE SEQUENCE seq_birth_place START WITH 100000 INCREMENT BY 20;
 
 create table birth_place (
@@ -151,7 +148,6 @@ create unique index I_artifact_type_PK on artifact_type (
 /*==============================================================*/
 /* Table: artifact                                              */
 /*==============================================================*/
-DROP SEQUENCE IF EXISTS seq_artifact;
 CREATE SEQUENCE seq_artifact START WITH 100000 INCREMENT BY 20;
 
 create table artifact (
@@ -199,7 +195,6 @@ alter table artifact
 /*==============================================================*/
 /* Table: note                                                  */
 /*==============================================================*/
-DROP SEQUENCE IF EXISTS seq_note;
 CREATE SEQUENCE seq_note START WITH 100000 INCREMENT BY 20;
 
 create table note (
@@ -256,7 +251,6 @@ code
 /*==============================================================*/
 /* Table: together                                              */
 /*==============================================================*/
-DROP SEQUENCE IF EXISTS seq_together;
 CREATE SEQUENCE seq_together START WITH 100000 INCREMENT BY 20;
 
 create table together (
