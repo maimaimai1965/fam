@@ -1,5 +1,12 @@
 package ua.mai.fam.repository.jdbc;
 
+import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import ua.mai.fam.repository.PersonRepository;
 import ua.mai.fam.repository.AbstractPersonRepositoryTest;
 import ua.mai.fam.ProfileResolver4RepositoryJdbc;
@@ -16,12 +23,21 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  *
  */
-@SpringBootTest
+@JdbcTest
+@Import(PersonRepository4JdbcTest.TestConfig.class)
 @ActiveProfiles(resolver = ProfileResolver4RepositoryJdbc.class)
 public class PersonRepository4JdbcTest extends AbstractPersonRepositoryTest {
 
+    @TestConfiguration
+    public static class TestConfig {
+        @Bean
+        public PersonRepository4Jdbc personRepository4Jdbc(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+           return new PersonRepository4Jdbc(jdbcTemplate, namedParameterJdbcTemplate);
+        }
+    }
+
     @Autowired
-    //Нельзя объявлять класс PersonToRepository4Jdbc, т.к. есть transactionManager - должен быть интерфейс.
+    //Нельзя объявлять класс PersonToRepository, т.к. есть transactionManager - должен быть интерфейс.
     //https://ru.stackoverflow.com/questions/663704/unsatisfieddependencyexception-error-creating-beanby-beannotofrequiredtypeexce
     private PersonRepository repository;
 

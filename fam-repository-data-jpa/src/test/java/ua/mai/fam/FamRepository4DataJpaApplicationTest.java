@@ -5,8 +5,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
-@ActiveProfiles(resolver = ProfileResolver4RepositoryJpa.class)
-class FamRepositoryDataJpaApplicationTest {
+@ActiveProfiles(resolver = ProfileResolver4RepositoryDataJpa.class)
+class FamRepository4DataJpaApplicationTest {
 
     @Test
     void contextLoads() {

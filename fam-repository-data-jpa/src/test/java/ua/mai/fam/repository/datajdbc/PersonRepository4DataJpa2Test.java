@@ -1,6 +1,8 @@
 package ua.mai.fam.repository.datajdbc;
 
-import ua.mai.fam.ProfileResolver4RepositoryJpa;
+import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import ua.mai.fam.ProfileResolver4RepositoryDataJpa;
 import ua.mai.fam.repository.AbstractPersonRepositoryTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +13,9 @@ import ua.mai.fam.repository.PersonRepository;
 /**
  *
  */
-@SpringBootTest
-@ActiveProfiles(resolver = ProfileResolver4RepositoryJpa.class)
-public class PersonRepository4DataJdbc2Test extends AbstractPersonRepositoryTest {
+@DataJpaTest
+@ActiveProfiles(resolver = ProfileResolver4RepositoryDataJpa.class)
+public class PersonRepository4DataJpa2Test extends AbstractPersonRepositoryTest {
 
     @Autowired
     //Нельзя объявлять класс PersonToRepository4Jpa, т.к. есть transactionManager - должен быть интерфейс.

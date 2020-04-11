@@ -7,8 +7,8 @@
     <artifactId>fam-repository-jpa</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>fam-repository-jpa</name>
-    <description>Repository fam based on JPA</description>
+    <name>fam-repository-data-jpa</name>
+    <description>Repository fam based on DATA JPA</description>
 
     <parent>
         <groupId>ua.mai</groupId>

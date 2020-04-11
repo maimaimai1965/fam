@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import ua.mai.fam.repository.PersonRepository;
 import ua.mai.fam.repository.datajdbc.PersonRepository4DataJdbc;
 
 @EnableTransactionManagement
@@ -17,7 +18,7 @@ import ua.mai.fam.repository.datajdbc.PersonRepository4DataJdbc;
 public class FamRepositoryDataJdbcApplication implements CommandLineRunner {
 
     @Autowired
-    PersonRepository4DataJdbc repository;
+    PersonRepository repository;
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(FamRepositoryDataJdbcApplication.class, args);

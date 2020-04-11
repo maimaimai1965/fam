@@ -12,7 +12,7 @@ import java.util.Objects;
 
 /**
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)  //Не выводить null поля в JSON
+@JsonInclude(JsonInclude.Include.NON_NULL)   //Не выводить null поля в JSON
 @JsonIgnoreProperties(ignoreUnknown = false)
 //--For Data JPA
 @javax.persistence.Entity
@@ -20,10 +20,11 @@ import java.util.Objects;
 public class Person implements HasId<Long> {
 
 //    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = START_SEQ)
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
     //--for Data JDBC
     @org.springframework.data.annotation.Id
     //--for Data JPA
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_person")
+    @SequenceGenerator(name="seq_person", sequenceName="SEQ_PERSON", allocationSize = 20)
     @javax.persistence.Id
     private Long id;
 
@@ -34,7 +35,7 @@ public class Person implements HasId<Long> {
     @javax.persistence.Column(name = "first_name")
     private String firstName;
 
-    @javax.persistence.Column(name = "surname")
+    @javax.persistence.Column(name = "middle_name")
     private String middleName;
 
     @org.springframework.format.annotation.DateTimeFormat(pattern = "yyyy-MM-dd")

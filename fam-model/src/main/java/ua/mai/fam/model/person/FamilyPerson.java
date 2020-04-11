@@ -13,10 +13,10 @@ import java.util.Objects;
 /**
  */
 //--For Data JPA
-@javax.persistence.Entity
+//@javax.persistence.Entity
 public class FamilyPerson extends Person {
 
 
-    private List<Person> relatives;
+//    private List<Person> relatives;
 
 }

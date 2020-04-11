@@ -1,16 +1,14 @@
 package ua.mai.fam.repository;
 
 import ua.mai.fam.model.person.Person;
-import ua.mai.fam.repository.datajdbc.BasePersonRepository;
 import ua.mai.fam.util.exception.FoundException;
 import ua.mai.fam.util.exception.NotFoundException;
-import org.springframework.data.repository.NoRepositoryBean;
 
 import java.util.Optional;
 
-@NoRepositoryBean
-public interface PersonRepository extends BasePersonRepository {
+public interface PersonRepository { // extends BasePersonRepository {
 
+    /** ------------------ Методы соответствующие интерфейсу CrudRepository ------------------------------------------*/
     /**
      * Сохранение person.<br>
      * Алгоритм сохранения:
@@ -31,7 +29,6 @@ public interface PersonRepository extends BasePersonRepository {
      * @return
      * @throws IllegalArgumentException in case the given person is null.
      */
-    @Override
     Person save(Person person);
 
     /**
@@ -43,7 +40,6 @@ public interface PersonRepository extends BasePersonRepository {
      * @throws NullPointerException in case one of its entities of the given {@link Iterable entities} is {@literal null}.
      * @throws IllegalArgumentException in case the given {@link Iterable entities} is {@literal null}.
      */
-    @Override
     <S extends Person> Iterable<S> saveAll(Iterable<S> entities);
 
     /**
@@ -60,7 +56,6 @@ public interface PersonRepository extends BasePersonRepository {
      * @throws IllegalArgumentException in case the given person is null.
      * @throws FoundException in case the given person contains id.
      */
-    @Override
     Person insert(Person person);
 
     /**
@@ -69,7 +64,6 @@ public interface PersonRepository extends BasePersonRepository {
      * @param id
      * @throws IllegalArgumentException in case the given id is null.
      */
-    @Override
     void deleteById(Long id);
 
     /**
@@ -78,7 +72,6 @@ public interface PersonRepository extends BasePersonRepository {
      * @param person must not be null.
      * @throws IllegalArgumentException in case the given person is null.
      */
-    @Override
     void delete(Person person);
 
     /**
@@ -87,10 +80,8 @@ public interface PersonRepository extends BasePersonRepository {
      * @param persons must not be {@literal null}. Must not contain {@literal null} elements.
      * @throws NullPointerException in case the given {@literal entities} or one of its persons is {@literal null}.
      */
-    @Override
     void deleteAll(Iterable<? extends Person> persons);
 
-    @Override
     void deleteAll();
 
     /**
@@ -100,7 +91,6 @@ public interface PersonRepository extends BasePersonRepository {
      * @return the entity with the given id or {@literal Optional#empty()} if none found.
      * @throws IllegalArgumentException if {@literal id} is {@literal null}.
      */
-    @Override
     Optional<Person> findById(Long id);
 
     /**
@@ -108,7 +98,6 @@ public interface PersonRepository extends BasePersonRepository {
      *
      * @return all persons
      */
-    @Override
     Iterable<Person> findAll();
 
     /**
@@ -124,7 +113,6 @@ public interface PersonRepository extends BasePersonRepository {
      * @throws NullPointerException in case one of items of the given {@link Iterable ids} is {@literal null}.
      * @throws IllegalArgumentException in case the given {@link Iterable ids} is {@literal null}.
      */
-    @Override
     Iterable<Person> findAllById(Iterable<Long> ids);
 
     /**
@@ -132,7 +120,6 @@ public interface PersonRepository extends BasePersonRepository {
      *
      * @return the number of persons.
      */
-    @Override
     long count();
 
 
@@ -143,7 +130,6 @@ public interface PersonRepository extends BasePersonRepository {
      * @return {@literal true} if an entity with the given id exists, {@literal false} otherwise.
      * @throws IllegalArgumentException if {@literal id} is {@literal null}.
      */
-    @Override
     boolean existsById(Long id);
 
 }
