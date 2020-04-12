@@ -3,7 +3,6 @@ package ua.mai.fam;
 import org.springframework.http.ResponseEntity;
 import ua.mai.fam.controller.rest.PersonRestController;
 import ua.mai.fam.repository.PersonRepository;
-import ua.mai.fam.repository.datajdbc.PersonRepository4DataJdbc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

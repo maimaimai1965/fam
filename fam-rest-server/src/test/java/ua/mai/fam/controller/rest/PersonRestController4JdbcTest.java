@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,7 +16,6 @@ import ua.mai.fam.model.PersonTestData;
 import ua.mai.fam.model.PersonTestUtil;
 import ua.mai.fam.model.person.Person;
 import ua.mai.fam.repository.PersonRepository;
-import ua.mai.fam.repository.datajdbc.PersonRepository4DataJdbc;
 //import ua.mai.fam.repository.datajdbc.ProfileResolver4RepositoryDataJdbc;
 //import ua.mai.fam.repository.jdbc.PersonRepository4Jdbc;
 
@@ -25,7 +23,7 @@ import ua.mai.fam.repository.datajdbc.PersonRepository4DataJdbc;
 @ActiveProfiles(resolver = ProfileResolver4Rest4Jdbc.class)
 @AutoConfigureMockMvc
 //@ContextConfiguration(classes = {JdbcConfig.class, PersonRestController.class, PersonRepository4Jdbc.class})
-@EnableJdbcRepositories(basePackages="ua.mai.fam.repository.datajdbc")
+//@EnableJdbcRepositories(basePackages="ua.mai.fam.repository.datajdbc")
 @WebMvcTest
 class PersonRestController4JdbcTest extends PersonRestControllerTest {
 
