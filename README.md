@@ -24,6 +24,7 @@ Java Spring Boot 2 Project
 
 Документация 
 ------------
+#####[Getting Started + links](docs/getting_started.md)
 #####[Примеры форматирования в md файлах (docs/formatting_md.md)](docs/formatting_md.md)
 #####[Создание проекта (docs/creation.md)](docs/creation.md)
 

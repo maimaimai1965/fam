@@ -1,6 +1,6 @@
 package ua.mai.fam.repository;
 
-import ua.mai.fam.model.person.Person;
+import ua.mai.fam.model.Together;
 import ua.mai.fam.util.exception.FoundException;
 import ua.mai.fam.util.exception.NotFoundException;
 
@@ -9,7 +9,7 @@ import java.util.Optional;
 /**
  * Содержит все методы которые определяет org.springframework.data.repository.CrudRepository.
  */
-public interface PersonRepository {
+public interface TogetherRepository {
 
     /** ------------------ Методы соответствующие интерфейсу CrudRepository ------------------------------------------*/
     /**
@@ -32,7 +32,7 @@ public interface PersonRepository {
      * @return
      * @throws IllegalArgumentException in case the given person is null.
      */
-    Person save(Person person);
+    Together save(Together together);
 
     /**
      * Saves all given entities.
@@ -43,26 +43,26 @@ public interface PersonRepository {
      * @throws NullPointerException in case one of its entities of the given {@link Iterable entities} is {@literal null}.
      * @throws IllegalArgumentException in case the given {@link Iterable entities} is {@literal null}.
      */
-    <S extends Person> Iterable<S> saveAll(Iterable<S> entities);
+    <S extends Together> Iterable<S> saveAll(Iterable<S> entities);
 
     /**
-     * Вставка person.<br>
+     * Вставка together.<br>
      * Алгоритм вставки:
      * <ul>
-     * <li>когда в person нет идентификатора, то при сохранении генерируется идентификатор и создается новая
+     * <li>когда в together нет идентификатора, то при сохранении генерируется идентификатор и создается новая
      *     запись в таблице с этим идентификатором. Идентификатор прописывается в возвращаемом объекте;
-     * <li>когда в person есть идентификатор, то при вставке вызывается исключение {@link FoundException}.
+     * <li>когда в together есть идентификатор, то при вставке вызывается исключение {@link FoundException}.
      * </ul>
      *
-     * @param person must not be null.
+     * @param together must not be null.
      * @return
-     * @throws IllegalArgumentException in case the given person is null.
-     * @throws FoundException in case the given person contains id.
+     * @throws IllegalArgumentException in case the given together is null.
+     * @throws FoundException in case the given together contains id.
      */
-    Person insert(Person person);
+    Together insert(Together together);
 
     /**
-     * Удаление person по его идентификатору.
+     * Удаление together по его идентификатору.
      *
      * @param id
      * @throws IllegalArgumentException in case the given id is null.
@@ -70,12 +70,12 @@ public interface PersonRepository {
     void deleteById(Long id);
 
     /**
-     * Удаление person.
+     * Удаление together.
      *
-     * @param person must not be null.
-     * @throws IllegalArgumentException in case the given person is null.
+     * @param together must not be null.
+     * @throws IllegalArgumentException in case the given together is null.
      */
-    void delete(Person person);
+    void delete(Together together);
 
     /**
      * Deletes the given entities.
@@ -83,7 +83,7 @@ public interface PersonRepository {
      * @param persons must not be {@literal null}. Must not contain {@literal null} elements.
      * @throws NullPointerException in case the given {@literal entities} or one of its persons is {@literal null}.
      */
-    void deleteAll(Iterable<? extends Person> persons);
+    void deleteAll(Iterable<? extends Together> persons);
 
     void deleteAll();
 
@@ -94,14 +94,14 @@ public interface PersonRepository {
      * @return the entity with the given id or {@literal Optional#empty()} if none found.
      * @throws IllegalArgumentException if {@literal id} is {@literal null}.
      */
-    Optional<Person> findById(Long id);
+    Optional<Together> findById(Long id);
 
     /**
      * Returns all instances of the type.
      *
      * @return all persons
      */
-    Iterable<Person> findAll();
+    Iterable<Together> findAll();
 
     /**
      * Returns all instances of the type {@code T} with the given IDs.
@@ -116,7 +116,7 @@ public interface PersonRepository {
      * @throws NullPointerException in case one of items of the given {@link Iterable ids} is {@literal null}.
      * @throws IllegalArgumentException in case the given {@link Iterable ids} is {@literal null}.
      */
-    Iterable<Person> findAllById(Iterable<Long> ids);
+    Iterable<Together> findAllById(Iterable<Long> ids);
 
     /**
      * Returns the number of persons available.

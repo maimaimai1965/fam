@@ -256,8 +256,8 @@ CREATE SEQUENCE seq_together START WITH 100000 INCREMENT BY 20;
 create table together (
    id                   BIGINT               DEFAULT nextval('seq_together'),
    together_type_code   VARCHAR(30)          not null,
-   member1              BIGINT               not null,
-   member2              BIGINT               not null,
+   person1_id           BIGINT               not null,
+   person2_id           BIGINT               not null,
    start_date           DATE                 null,
    finish_date          DATE                 null,
    description          VARCHAR(500)         null,
@@ -270,16 +270,16 @@ create unique index together_PK on together (
 id
 );
 /*==============================================================*/
-/* Index: together3member1_2_person_FK                          */
+/* Index: together3person1_id_2_person_FK                          */
 /*==============================================================*/
-create  index together3member1_2_person_FK on together (
-member1
+create  index together3person1_id_2_person_FK on together (
+person1_id
 );
 /*==============================================================*/
-/* Index: together3member2_2_person_FK                          */
+/* Index: together3person2_id_2_person_FK                          */
 /*==============================================================*/
-create  index together3member2_2_person_FK on together (
-member2
+create  index together3person2_id_2_person_FK on together (
+person2_id
 );
 /*==============================================================*/
 /* Index: together3together_type_code_FK                        */
@@ -288,11 +288,11 @@ create  index together3together_type_code_FK on together (
 together_type_code
 );
 alter table together
-   add constraint FK_TOGETHER3MEMBER1 foreign key (member1)
+   add constraint FK_TOGETHER3PERSON1_ID foreign key (person1_id)
       references person (id)
       on delete restrict on update restrict;
 alter table together
-   add constraint FK_TOGETHER3MEMBER2 foreign key (member2)
+   add constraint FK_TOGETHER3PERSON2_ID foreign key (person2_id)
       references person (id)
       on delete restrict on update restrict;
 alter table together

@@ -24,9 +24,9 @@
     <modules>
         <module>fam-model</module>
         <module>fam-repository-api</module>
-        <module>fam-repository-jdbc</module>
         <module>fam-repository-data-jdbc</module>
         <module>fam-repository-data-jpa</module>
+        <module>fam-repository-jdbc</module>
         <module>fam-repository-jpa</module>
         <module>fam-rest-client</module>
         <module>fam-rest-server</module>

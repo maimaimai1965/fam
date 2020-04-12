@@ -2,16 +2,9 @@
 /* DBMS name:      PostgreSQL 11, H2                            */
 /* Created on:     30.03.2020 22:26:22                          */
 /*==============================================================*/
-DROP SEQUENCE IF EXISTS seq_person;
-DROP SEQUENCE IF EXISTS seq_birth_place;
-DROP SEQUENCE IF EXISTS seq_artifact;
-DROP SEQUENCE IF EXISTS seq_note;
-DROP SEQUENCE IF EXISTS seq_together;
-DROP SEQUENCE IF EXISTS seq_box;
-
 drop index IF EXISTS together3together_type_code_FK;
-drop index IF EXISTS together3member1_2_person_FK;
-drop index IF EXISTS together3member2_2_person_FK;
+drop index IF EXISTS together3person1_id_2_person_FK;
+drop index IF EXISTS together3person2_id_2_person_FK;
 drop index IF EXISTS together_PK;
 drop table IF EXISTS together;
 drop index IF EXISTS together_type_PK;
@@ -47,4 +40,11 @@ drop table IF EXISTS parent_child;
 
 drop index IF EXISTS person_PK;
 drop table IF EXISTS person;
+
+DROP SEQUENCE IF EXISTS seq_person;
+DROP SEQUENCE IF EXISTS seq_birth_place;
+DROP SEQUENCE IF EXISTS seq_artifact;
+DROP SEQUENCE IF EXISTS seq_note;
+DROP SEQUENCE IF EXISTS seq_together;
+DROP SEQUENCE IF EXISTS seq_box;
 

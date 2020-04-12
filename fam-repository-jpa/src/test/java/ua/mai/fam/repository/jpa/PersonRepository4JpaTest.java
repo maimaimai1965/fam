@@ -1,20 +1,23 @@
 package ua.mai.fam.repository.jpa;
 
-import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import ua.mai.fam.ProfileResolver4RepositoryDataJpa;
-import ua.mai.fam.ProfileResolver4RepositoryJpa;
-import ua.mai.fam.repository.AbstractPersonRepositoryTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
+import ua.mai.fam.ProfileResolver4RepositoryJpa;
+import ua.mai.fam.config.JpaConfig;
+import ua.mai.fam.repository.AbstractPersonRepositoryTest;
 import ua.mai.fam.repository.PersonRepository;
 
 /**
  *
  */
-@DataJpaTest
+
+//@DataJpaTest - не получилось использовать, поэтому используется @SpringBootTest
+@SpringBootTest
 @ActiveProfiles(resolver = ProfileResolver4RepositoryJpa.class)
 public class PersonRepository4JpaTest extends AbstractPersonRepositoryTest {
 

@@ -21,6 +21,7 @@ import ua.mai.fam.util.exception.NotFoundException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -31,111 +32,73 @@ import java.util.Optional;
 @Repository
 public class PersonRepository4Jpa implements PersonRepository {
 
-//    private EntityManagerFactory entityManagerFactory;
-    private PlatformTransactionManager transactionManager;
+    @PersistenceContext
+    private EntityManager entityManager;
 
-    @Autowired
-    public PersonRepository4Jpa(PlatformTransactionManager transactionManager) {
-        this.transactionManager = transactionManager;
-    }
-
-
-//    public static final PersonUtil.PersonToRowMapper ROW_MAPPER = new PersonUtil.PersonToRowMapper();
-//
-//    private final JdbcTemplate jdbcTemplate;
-//    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-//    private final SimpleJdbcInsert simpleJdbcInsertPerson;
-
-//    @Autowired
-//    public PersonRepository4Jdbc(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
-//        this.simpleJdbcInsertPerson = new SimpleJdbcInsert(jdbcTemplate)
-//            .withTableName("person")
-//            .usingGeneratedKeyColumns("id");
-//
-//        this.jdbcTemplate = jdbcTemplate;
-//        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-//    }
 
     @Transactional
     @Override
     public Person save(Person person) {
-        //TODO
-        return null;
-//        if (person == null) {
-//            throw new IllegalArgumentException("Person can't be null.");
-//        }
-////        ValidationUtil.validate(person);
-//        if (person.isNew()) {
-//            //Если
-//            return this.insert(person);
-//        } else {
-//            MapSqlParameterSource paramMap = PersonUtil.getMapSqlParameterSource(person);
-//
-//            if (namedParameterJdbcTemplate.update("" +
-//                    "UPDATE person " +
-//                    "SET surname=:surname, first_name=:first_name, middle_name=:middle_name, " +
-//                    "birth_date=:birth_date, death_date=:death_date, gender=:gender " +
-//                    "WHERE id=:id"
-//                , paramMap) == 0) {
-//                throw new NotFoundException("Not exists person with id=" + person.getId() + ".");
-//            }
-//            return person;
-//        }
+        if (person == null) {
+            throw new IllegalArgumentException("Person can't be null.");
+        }
+        if (person.isNew()) {
+            //Если новый person
+            entityManager.persist(person);
+            return person;
+        } else {
+            return entityManager.merge(person);
+        }
     }
 
     @Override
     @Transactional
     public Person insert(Person person) {
-        //TODO
-        return null;
-//        if (person == null) {
-//            throw new IllegalArgumentException("Object can't be null.");
-//        }
-//        if (person.getId() != null) {
-//            throw new FoundException("Exists id=" + person.getId() + " in new inserted object.");
-//        }
-//        MapSqlParameterSource paramMap = PersonUtil.getMapSqlParameterSource(person);
-//        Number newId = simpleJdbcInsertPerson.executeAndReturnKey(paramMap);
-//        person.setId(newId.longValue());
-//        return person;
+        if (person == null) {
+            throw new IllegalArgumentException("Object can't be null.");
+        }
+        if (person.getId() != null) {
+            throw new FoundException("Exists id=" + person.getId() + " in new inserted object.");
+        }
+        entityManager.persist(person);
+        return person;
     }
 
     @Transactional
     @Override
     public <S extends Person> Iterable<S> saveAll(Iterable<S> entities) {
-        //TODO
-        return null;
-//        if (entities == null) {
-//            throw new IllegalArgumentException();
-//        }
-//        List<Person> list = new ArrayList<Person>((entities != null) ? ((Collection) entities).size() : 0);
-//        entities.forEach(person -> { if (person != null) {
-//            Person savedPerson = save(person);
-//            list.add(savedPerson);
-//        }});
-//        return (Iterable<S>) list;
+        if (entities == null) {
+            throw new IllegalArgumentException();
+        }
+        List<Person> list = new ArrayList<Person>((entities != null) ? ((Collection) entities).size() : 0);
+        entities.forEach(person -> { if (person != null) {
+            Person savedPerson = save(person);
+            list.add(savedPerson);
+        }});
+        return (Iterable<S>) list;
     }
 
     @Transactional
     @Override
     public void deleteById(Long id) {
-        //TODO
-//        if (id == null) {
-//            throw new IllegalArgumentException("id can't be null.");
-//        }
-//        jdbcTemplate.update("DELETE FROM person WHERE id=?", id);
+        if (id == null) {
+            throw new IllegalArgumentException("id can't be null.");
+        }
+        Query query = entityManager.createQuery("DELETE FROM Person p WHERE p.id=:id");
+        query.setParameter("id", id).executeUpdate();
+//        Person ref = entityManager.getReference(Person.class, id);
+//        entityManager.remove(ref);
     }
 
     @Transactional
     @Override
     public void delete(Person person) {
-        //TODO
-//        if (person == null) {
-//            throw new IllegalArgumentException("Person can't be null.");
-//        }
-//        if (!person.isNew()) {
-//            deleteById(person.getId());
-//        }
+        if (person == null) {
+            throw new IllegalArgumentException("Person can't be null.");
+        }
+        if (!person.isNew()) {
+            deleteById(person.getId());
+        }
     }
 
     @Transactional
@@ -152,13 +115,10 @@ public class PersonRepository4Jpa implements PersonRepository {
 
     @Override
     public Optional<Person> findById(Long id) {
-        //TODO
-        return null;
-//        if (id == null) {
-//            throw new IllegalArgumentException("id can't be null.");
-//        }
-//        List<Person> persons = jdbcTemplate.query("SELECT * FROM person WHERE id = ?", ROW_MAPPER, id);
-//        return Optional.ofNullable(DataAccessUtils.singleResult(persons));
+        if (id == null) {
+            throw new IllegalArgumentException("id can't be null.");
+        }
+        return Optional.ofNullable(entityManager.find(Person.class, id));
     }
 
     @Override
@@ -171,18 +131,17 @@ public class PersonRepository4Jpa implements PersonRepository {
 
     @Override
     public Iterable<Person> findAllById(Iterable<Long> longs) {
-        //TODO
-        return null;
-//        if (longs == null) {
-//            throw new IllegalArgumentException();
-//        }
-//        List<Person> list = new ArrayList<Person>((longs != null) ? ((Collection) longs).size() : 0);
-//        longs.forEach(id -> { Optional<Person> person = findById(id);
-//            if (person.isPresent()) {
-//                list.add(person.get());
-//            }
-//        });
-//        return list;
+        //TODO переписать
+        if (longs == null) {
+            throw new IllegalArgumentException();
+        }
+        List<Person> list = new ArrayList<Person>((longs != null) ? ((Collection) longs).size() : 0);
+        longs.forEach(id -> { Optional<Person> person = findById(id);
+            if (person.isPresent()) {
+                list.add(person.get());
+            }
+        });
+        return list;
     }
 
     @Override
@@ -195,17 +154,17 @@ public class PersonRepository4Jpa implements PersonRepository {
 
     @Override
     public boolean existsById(Long id) {
-        //TODO
-        return false;
-//        if (id == null) {
-//            throw new IllegalArgumentException();
-//        }
-//        try {
+        if (id == null) {
+            throw new IllegalArgumentException();
+        }
+        try {
+            Optional<Person> person = findById(id);
+            return person.isPresent();
+//TODO переписать на native query
 //            jdbcTemplate.queryForObject("SELECT id FROM person WHERE id = ?", Long.class, id);
-//            return true;
-//        } catch (EmptyResultDataAccessException e) {
-//            return false;
-//        }
+        } catch (EmptyResultDataAccessException e) {
+            return false;
+        }
     }
 
 }

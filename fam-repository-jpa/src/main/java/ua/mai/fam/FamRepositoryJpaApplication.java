@@ -30,10 +30,10 @@ public class FamRepositoryJpaApplication implements CommandLineRunner {
         System.out.println("repositoryJpa.findById(50000L) = " + repository.findById(50000L));
 
         //Вставка без Id. Id генерится в БД.
-//        Person person = new PersonBuilder().setSurname("surname01").setFirstName("firstName01")
-//            .setMiddleName("middleName01").createPerson();
-//        Person savedPerson = repository.save(person);
-//        System.out.println(" repositoryJpa.save() = " + savedPerson);
+        Person person = new PersonBuilder().setSurname("surname01").setFirstName("firstName01")
+                                           .setMiddleName("middleName01").createPerson();
+        Person savedPerson = repository.save(person);
+        System.out.println(" repositoryJpa.save() = " + savedPerson);
     }
 
 }

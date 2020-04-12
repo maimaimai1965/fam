@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ua.mai</groupId>
-    <artifactId>fam-repository-jpa</artifactId>
+    <artifactId>fam-repository-data-jpa</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>fam-repository-data-jpa</name>
