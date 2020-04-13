@@ -17,18 +17,28 @@ public class PersonTestData {
     public static final String firstName03 = "Елена";
     public static final String middleName03 = "Яковлевна";
 
-    public static Person getNewPersons01() {
-        return new PersonBuilder().setSurname(surname01).setFirstName(firstName01).setMiddleName(middleName01)
-                                  .createPerson();
-    }
-
-    public static Person getNewPersons02() {
-        return new PersonBuilder().setSurname(surname02).setFirstName(firstName02).setMiddleName(middleName02)
-                                  .createPerson();
-    }
-
-    public static Person getNewPersons03() {
-        return new PersonBuilder().setSurname(surname03).setFirstName(firstName03).setMiddleName(middleName03)
+    public static Person getPersons01(Long id) {
+        return new PersonBuilder().setId(id).setSurname(surname01).setFirstName(firstName01).setMiddleName(middleName01)
             .createPerson();
     }
+    public static Person getNewPersons01() {
+        return getPersons01(null);
+    }
+
+    public static Person getPersons02(Long id) {
+        return new PersonBuilder().setId(id).setSurname(surname02).setFirstName(firstName02).setMiddleName(middleName02)
+                                  .createPerson();
+    }
+    public static Person getNewPersons02() {
+        return getPersons02(null);
+    }
+
+    public static Person getPersons03(Long id) {
+        return new PersonBuilder().setId(id).setSurname(surname03).setFirstName(firstName03).setMiddleName(middleName03)
+                                  .createPerson();
+    }
+    public static Person getNewPersons03() {
+        return getPersons03(null);
+    }
+
 }

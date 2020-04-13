@@ -12,6 +12,8 @@ import ua.mai.fam.config.JpaConfig;
 import ua.mai.fam.repository.AbstractPersonRepositoryTest;
 import ua.mai.fam.repository.PersonRepository;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 /**
  *
  */
@@ -50,7 +52,7 @@ public class PersonRepository4JpaTest extends AbstractPersonRepositoryTest {
     @Test
     @Override
     public void save_NullPersonTest() {
-        super.save_NullPersonTest();
+        super.save_NullPersonTest(RuntimeException.class);
     }
 
     @Test
@@ -66,7 +68,7 @@ public class PersonRepository4JpaTest extends AbstractPersonRepositoryTest {
     @Test
     @Override
     public void saveAll_NullListTest() {
-        super.saveAll_NullListTest();
+        super.saveAll_NullListTest(RuntimeException.class);
     }
 
     @Test
@@ -82,7 +84,7 @@ public class PersonRepository4JpaTest extends AbstractPersonRepositoryTest {
     @Test
     @Override
     public void insert_NullPersonTest() {
-        super.insert_NullPersonTest();
+        super.insert_NullPersonTest(RuntimeException.class);
     }
 
     @Test
@@ -98,7 +100,7 @@ public class PersonRepository4JpaTest extends AbstractPersonRepositoryTest {
     @Test
     @Override
     public void deleteById_NullIdTest() {
-        super.deleteById_NullIdTest();
+        super.deleteById_NullIdTest(RuntimeException.class);
     }
 
     @Test
@@ -109,7 +111,7 @@ public class PersonRepository4JpaTest extends AbstractPersonRepositoryTest {
     @Test
     @Override
     public void delete_NullPersonTest() {
-        super.delete_NullPersonTest();
+        super.delete_NullPersonTest(RuntimeException.class);
     }
 
     @Test
@@ -141,7 +143,7 @@ public class PersonRepository4JpaTest extends AbstractPersonRepositoryTest {
     @Test
     @Override
     public void findById_NullIdTest() {
-        super.findById_NullIdTest();
+        super.findById_NullIdTest(RuntimeException.class);
     }
 
     @Test
@@ -173,7 +175,7 @@ public class PersonRepository4JpaTest extends AbstractPersonRepositoryTest {
     @Test
     @Override
     public void findAllByIdList_NullListTest() {
-        super.findAllByIdList_NullListTest();
+        super.findAllByIdList_NullListTest(RuntimeException.class);
     }
 
     @Test
@@ -195,7 +197,7 @@ public class PersonRepository4JpaTest extends AbstractPersonRepositoryTest {
     @Test
     @Override
     public void existsById_NullIdTest() {
-        super.existsById_NullIdTest();
+        super.existsById_NullIdTest(RuntimeException.class);
     }
 
 }

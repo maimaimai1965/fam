@@ -49,8 +49,7 @@ public abstract class AbstractPersonRepositoryTest {
         assertTrue(existsPerson.getId() > 0,
             "При вставке нового объекта без идентификатора (для тестирования) не был сгенерирован Id.");
 
-        Person person = PersonTestData.getNewPersons02();
-        person.setId(existsPerson.getId());
+        Person person = PersonTestData.getPersons02(existsPerson.getId());
         Person savedPerson = getRepository().save(person);
         //Проверяем обновленный объект.
         assertEquals(existsPerson.getId(), savedPerson.getId());
@@ -68,12 +67,16 @@ public abstract class AbstractPersonRepositoryTest {
         }
 
         //Сохранение в БД.
-        Person person = PersonTestData.getNewPersons01();
-        person.setId(id);
+        Person person = PersonTestData.getPersons01(id);
         assertThrows(Exception.class, () -> getRepository().save(person));
     }
     public void save_NullPersonTest() {
-        assertThrows(IllegalArgumentException.class, () -> getRepository().save(null));
+        save_NullPersonTest(null);
+    }
+    //Необходим, т.к. в JPA генерируемая ошибка IllegalArgumentException оборачивается в RuntimeException.
+    public void save_NullPersonTest(Class expectedExceptionClass) {
+        assertThrows((expectedExceptionClass != null) ? expectedExceptionClass : IllegalArgumentException.class,
+                     () -> getRepository().save(null));
     }
 
     public void saveAll_ListTest() {
@@ -99,7 +102,12 @@ public abstract class AbstractPersonRepositoryTest {
         assertThrows(NullPointerException.class, () -> getRepository().saveAll(Arrays.asList(null)));
     }
     public void saveAll_NullListTest() {
-        assertThrows(IllegalArgumentException.class, () -> getRepository().saveAll((Iterable<Person>)null));
+        saveAll_NullListTest(null);
+    }
+    //Необходим, т.к. в JPA генерируемая ошибка оборачивается в RuntimeException.
+    public void saveAll_NullListTest(Class expectedExceptionClass) {
+        assertThrows((expectedExceptionClass != null) ? expectedExceptionClass : IllegalArgumentException.class,
+                     () -> getRepository().saveAll((Iterable<Person>)null));
     }
 
     /**
@@ -125,12 +133,16 @@ public abstract class AbstractPersonRepositoryTest {
         assertTrue(existsPerson.getId() > 0,
             "При вставке нового объекта без идентификатора (для тестирования) не был сгенерирован Id.");
 
-        Person person = PersonTestData.getNewPersons02();
-        person.setId(existsPerson.getId());
+        Person person = PersonTestData.getPersons02(existsPerson.getId());
         assertThrows(FoundException.class, () -> getRepository().insert(person));
     }
     public void insert_NullPersonTest() {
-        assertThrows(IllegalArgumentException.class, () -> getRepository().insert(null));
+        insert_NullPersonTest(null);
+    }
+    //Необходим, т.к. в JPA генерируемая ошибка IllegalArgumentException оборачивается в RuntimeException.
+    public void insert_NullPersonTest(Class expectedExceptionClass) {
+        assertThrows((expectedExceptionClass != null) ? expectedExceptionClass : IllegalArgumentException.class,
+                     () -> getRepository().insert(null));
     }
 
     public void deleteByIdTest() {
@@ -159,7 +171,12 @@ public abstract class AbstractPersonRepositoryTest {
      * Удаление несуществующего Entity;
      */
     public void deleteById_NullIdTest() {
-        assertThrows(IllegalArgumentException.class, () -> getRepository().deleteById(null));
+        deleteById_NullIdTest(null);
+    }
+    //Необходим, т.к. в JPA генерируемая ошибка IllegalArgumentException оборачивается в RuntimeException.
+    public void deleteById_NullIdTest(Class expectedExceptionClass) {
+        assertThrows((expectedExceptionClass != null) ? expectedExceptionClass : IllegalArgumentException.class,
+                     () -> getRepository().deleteById(null));
     }
 
     public void deleteTest() {
@@ -174,7 +191,12 @@ public abstract class AbstractPersonRepositoryTest {
         assertFalse(notExistsPerson.isPresent(), "Entity не удален.");
     }
     public void delete_NullPersonTest() {
-        assertThrows(IllegalArgumentException.class, () -> getRepository().delete(null));
+        delete_NullPersonTest(null);
+    }
+    //Необходим, т.к. в JPA генерируемая ошибка IllegalArgumentException оборачивается в RuntimeException.
+    public void delete_NullPersonTest(Class expectedExceptionClass) {
+        assertThrows((expectedExceptionClass != null) ? expectedExceptionClass : IllegalArgumentException.class,
+                     () -> getRepository().delete(null));
     }
 
     public void deleteAll_ListTest() {
@@ -213,7 +235,12 @@ public abstract class AbstractPersonRepositoryTest {
         assertFalse(notExistsPerson.isPresent());
     }
     public void findById_NullIdTest(){
-        assertThrows(IllegalArgumentException.class, () -> getRepository().findById(null));
+        findById_NullIdTest(null);
+    }
+    //Необходим, т.к. в JPA генерируемая ошибка IllegalArgumentException оборачивается в RuntimeException.
+    public void findById_NullIdTest(Class expectedExceptionClass) {
+        assertThrows((expectedExceptionClass != null) ? expectedExceptionClass : IllegalArgumentException.class,
+                     () -> getRepository().findById(null));
     }
 
     public void findAllTest(){
@@ -259,7 +286,12 @@ public abstract class AbstractPersonRepositoryTest {
         assertThrows(NullPointerException.class, () -> getRepository().findAllById(Arrays.asList(null)));
     }
     public void findAllByIdList_NullListTest(){
-        assertThrows(IllegalArgumentException.class, () -> getRepository().findAllById(null));
+        findAllByIdList_NullListTest(null);
+    }
+    //Необходим, т.к. в JPA генерируемая ошибка IllegalArgumentException оборачивается в RuntimeException.
+    public void findAllByIdList_NullListTest(Class expectedExceptionClass) {
+        assertThrows((expectedExceptionClass != null) ? expectedExceptionClass : IllegalArgumentException.class,
+                     () -> getRepository().findAllById(null));
     }
 
     public void countTest(){
@@ -278,7 +310,12 @@ public abstract class AbstractPersonRepositoryTest {
         assertFalse(getRepository().existsById(-100L));
     }
     public void existsById_NullIdTest(){
-        assertThrows(IllegalArgumentException.class, () -> getRepository().existsById(null));
+        existsById_NullIdTest(null);
+    }
+    //Необходим, т.к. в JPA генерируемая ошибка IllegalArgumentException оборачивается в RuntimeException.
+    public void existsById_NullIdTest(Class expectedExceptionClass) {
+        assertThrows((expectedExceptionClass != null) ? expectedExceptionClass : IllegalArgumentException.class,
+                     () -> getRepository().existsById(null));
     }
 
 }

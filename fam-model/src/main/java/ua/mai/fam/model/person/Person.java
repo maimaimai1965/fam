@@ -104,6 +104,7 @@ public class Person implements HasId<Long> {
         this.gender = gender;
     }
 
+
     public Person() {}
 
     public Person(Long id, String surname, String firstName, String middleName, LocalDate birthDate,

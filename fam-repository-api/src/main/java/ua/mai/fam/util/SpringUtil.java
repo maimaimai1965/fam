@@ -17,4 +17,34 @@ public class SpringUtil {
         return possiblyProxiedObject;
     }
 
+    /**
+     * Проверяет соответствие используемого в DataSource драйвера профилю dbProfile.<br>
+     * Если драйвер не соответствует, то выбрасывает {@link RuntimeException}.
+     *
+     * @param dbProfile
+     * @param ds
+     */
+    public static void checkActiveDbProfile(String dbProfile, javax.sql.DataSource ds) {
+        org.apache.tomcat.jdbc.pool.DataSource dataSource = (org.apache.tomcat.jdbc.pool.DataSource)ds;
+        String nedeedDbProfile = "";
+        String driverClassName = dataSource.getDriverClassName();
+        switch (driverClassName) {
+            case "org.h2.Driver" :
+                nedeedDbProfile = Profiles.DB_H2;
+                break;
+            case "org.postgresql.Driver" :
+                nedeedDbProfile = Profiles.DB_POSTGRES;
+                break;
+            case "oracle.jdbc.driver.OracleDriver":
+                nedeedDbProfile = Profiles.DB_ORACLE;
+                break;
+        }
+        if (nedeedDbProfile.equals(dbProfile)) {
+            System.out.println("** Loaded driver '" + driverClassName + "' for db profile '" + dbProfile + "'");
+        } else {
+            throw new RuntimeException("Unexpexted driver '" + driverClassName + "' for db profile '" +
+                nedeedDbProfile +"'!");
+        }
+    }
+
 }

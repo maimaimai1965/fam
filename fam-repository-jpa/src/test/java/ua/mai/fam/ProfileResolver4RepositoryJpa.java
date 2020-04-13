@@ -1,6 +1,7 @@
 package ua.mai.fam;
 
 import org.springframework.test.context.ActiveProfilesResolver;
+import ua.mai.fam.util.Profiles;
 import ua.mai.profile.TestProfiles;
 
 /**
@@ -12,11 +13,11 @@ public class ProfileResolver4RepositoryJpa implements ActiveProfilesResolver {
     @Override
     public String[] resolve(Class<?> aClass) {
         return new String[] {
-//                              TestProfiles.DB_H2,
-                              TestProfiles.DB_POSTGRES,
-//                              TestProfiles.DB_IMPLEMENTATION,
+//                              Profiles.DB_H2,
+                              Profiles.DB_POSTGRES,
+//                              Profiles.DB_IMPLEMENTATION,
 
-                              TestProfiles.DA_JPA
+                              Profiles.DA_JPA
                             };
     }
 }

@@ -7,7 +7,7 @@ public interface HasId<ID> {
 
     ID getId();
 
-    void setId(ID id);
+//    void setId(ID id);
 
     @JsonIgnore
     default boolean isNew() {

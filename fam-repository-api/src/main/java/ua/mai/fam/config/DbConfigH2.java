@@ -1,14 +1,25 @@
 package ua.mai.fam.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import ua.mai.fam.util.Profiles;
+import ua.mai.fam.util.SpringUtil;
+
+import javax.sql.DataSource;
 
 /*
  *
  */
 @Configuration
-@Profile("db-h2")
+@Profile(Profiles.DB_H2)
 public class DbConfigH2 {
+
+    @Bean
+    public String dbProfile(DataSource dataSource) {
+        SpringUtil.checkActiveDbProfile(Profiles.DB_H2, dataSource);
+        return Profiles.DB_H2;
+    }
 
 //have infrastructure related beans like DataSource, JNDI, etc.
 //  @Bean

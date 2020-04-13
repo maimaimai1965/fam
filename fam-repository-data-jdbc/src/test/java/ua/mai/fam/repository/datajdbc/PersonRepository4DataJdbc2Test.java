@@ -13,7 +13,8 @@ import ua.mai.fam.repository.PersonRepository;
 /**
  *
  */
-@DataJdbcTest
+//@DataJdbcTest - не получилось использовать, поэтому используется @SpringBootTest
+@SpringBootTest
 @ActiveProfiles(resolver = ProfileResolver4RepositoryDataJdbc.class)
 public class PersonRepository4DataJdbc2Test extends AbstractPersonRepositoryTest {
 
