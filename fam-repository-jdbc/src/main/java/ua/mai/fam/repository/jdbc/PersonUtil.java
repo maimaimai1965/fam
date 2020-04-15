@@ -1,5 +1,6 @@
 package ua.mai.fam.repository.jdbc;
 
+import ua.mai.fam.model.Gender;
 import ua.mai.fam.model.person.Person;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -28,7 +29,7 @@ public class PersonUtil {
             personTo.setMiddleName(rs.getString("middle_name"));
             personTo.setBirthDate(DateTimeUtil.convertUtilDateToLocalDate(rs.getDate("birth_date")));
             personTo.setDeathDate(DateTimeUtil.convertUtilDateToLocalDate(rs.getDate("death_date")));
-            personTo.setGender(rs.getString("gender"));
+            personTo.setGender(Gender.valueOf(rs.getString("gender")));
             return personTo;
         }
     }
@@ -41,7 +42,7 @@ public class PersonUtil {
             .addValue("middle_name", personTo.getMiddleName())
             .addValue("birth_date", DateTimeUtil.convertLocalDateToUtilDate(personTo.getBirthDate()))
             .addValue("death_date", DateTimeUtil.convertLocalDateToUtilDate(personTo.getDeathDate()))
-            .addValue("gender", personTo.getGender());
+            .addValue("gender", personTo.getGender().name());
     }
 
     public static MapSqlParameterSource getMapSqlParameterSource4Id(Person personTo) {

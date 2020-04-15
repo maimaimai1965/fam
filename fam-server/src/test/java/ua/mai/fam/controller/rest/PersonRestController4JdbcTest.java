@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.jdbc.repository.config.EnableJdbcRepositories;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
@@ -14,11 +13,8 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import ua.mai.fam.config.JdbcConfig;
 import ua.mai.fam.model.PersonTestData;
-import ua.mai.fam.model.PersonTestUtil;
 import ua.mai.fam.model.person.Person;
 import ua.mai.fam.repository.PersonRepository;
-import ua.mai.fam.repository.datajdbc.PersonRepository4DataJdbc;
-import ua.mai.fam.repository.datajdbc.ProfileResolver4RepositoryDataJdbc;
 import ua.mai.fam.repository.jdbc.PersonRepository4Jdbc;
 
 //@SpringBootTest

@@ -1,8 +1,7 @@
-package ua.mai.fam.model;
+package ua.mai.fam.model.util;
 
 import ua.mai.fam.model.person.Person;
-
-import java.util.Arrays;
+import ua.mai.fam.model.util.EntityTestUtil;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

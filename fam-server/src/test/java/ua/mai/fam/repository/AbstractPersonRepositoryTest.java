@@ -8,8 +8,6 @@ import ua.mai.fam.model.person.Person;
 import ua.mai.fam.repository.datajdbc.PersonRepository4DataJdbc;
 import ua.mai.fam.util.exception.FoundException;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;

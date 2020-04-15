@@ -4,24 +4,26 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)   //Не выводить null поля в JSON
 @JsonIgnoreProperties(ignoreUnknown = false)
 //--For JPA
 @Entity
-@Table(name = "artifact_type")
+@Table(name = "ARTIFACT_TYPE")
 public class ArtifactType {
 
     //--for Data JDBC
     @org.springframework.data.annotation.Id
-    //--for Data JPA
+    //--for JPA
     @Id
     @Column(name = "code", nullable = false, length = 30)
     private String code;
 
     @Basic
-    @Column(name = "name", nullable = false, length = 100)
+    @NotNull
+    @Column(name = "name", length = 100)
     private String name;
 
 

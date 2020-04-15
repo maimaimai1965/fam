@@ -25,8 +25,8 @@ class FamRestClientApplicationTests {
         Person person = famClient.findPerson(50_000L);
         System.out.println("findPerson(): " + person);
 
-        List<Person> persons = famClient.findAllPersons();
-        System.out.println("findAllPersons(): " + persons);
+//        List<Person> persons = famClient.findAllPersons();
+//        System.out.println("findAllPersons(): " + persons);
 
     }
 

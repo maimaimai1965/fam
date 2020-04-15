@@ -4,20 +4,23 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)   //Не выводить null поля в JSON
 @JsonIgnoreProperties(ignoreUnknown = false)
 //--For JPA
 @Entity
-@Table(name = "birth_place")
+@Table(name = "BIRTH_PLACE")
 public class BirthPlace {
 
     @Id
     @Column(name = "id", nullable = false)
     private long id;
+
     @Basic
-    @Column(name = "description", nullable = false, length = 200)
+    @NotNull
+    @Column(name = "description", length = 200)
     private String description;
 
     public long getId() {

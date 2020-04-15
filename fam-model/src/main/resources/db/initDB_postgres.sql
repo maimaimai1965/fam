@@ -14,9 +14,9 @@ create table person (
   middle_name          VARCHAR(30)          null,
   birth_date           TIMESTAMP            null,
   death_date           TIMESTAMP            null,
-  gender               CHAR(1)              null,
+  gender               CHAR(1)              not null,
   constraint PK_PERSON primary key (id),
-  CONSTRAINT cnstr_person_gender CHECK (gender IN ('M','F'))
+  CONSTRAINT cnstr_person_gender CHECK (gender IN ('M','F','U'))
 );
 /*==============================================================*/
 /* Index: person_PK                                             */
@@ -85,8 +85,8 @@ create table box (
   id                   BIGINT               DEFAULT nextval('seq_box'),
   description          VARCHAR(100)         null,
   box_type_code        VARCHAR(30)          not null,
-  box_char             VARCHAR(1)           null,
-  box_bin              CHAR                 null,
+  box_char             TEXT                 null,
+  box_bin              BYTEA                null,
   constraint PK_BOX primary key (id)
 );
 /*==============================================================*/

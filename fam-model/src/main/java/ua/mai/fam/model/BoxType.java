@@ -4,13 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)   //Не выводить null поля в JSON
 @JsonIgnoreProperties(ignoreUnknown = false)
 //--For JPA
 @Entity
-@Table(name = "box_type")
+@Table(name = "BOX_TYPE")
 public class BoxType {
 
     @Id
@@ -18,11 +19,13 @@ public class BoxType {
     private String code;
 
     @Basic
-    @Column(name = "description", nullable = false, length = 100)
+    @NotNull
+    @Column(name = "description", length = 100)
     private String description;
 
     @Basic
-    @Column(name = "is_bin", nullable = false, length = -1)
+    @NotNull
+    @Column(name = "is_bin", length = 1)
     private String isBin;
 
 

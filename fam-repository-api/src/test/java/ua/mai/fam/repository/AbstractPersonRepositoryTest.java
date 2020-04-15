@@ -2,7 +2,7 @@ package ua.mai.fam.repository;
 
 import ua.mai.fam.AbstractTimingExtension;
 import ua.mai.fam.model.PersonTestData;
-import ua.mai.fam.model.PersonTestUtil;
+import ua.mai.fam.model.util.PersonTestUtil;
 import ua.mai.fam.model.person.Person;
 import ua.mai.fam.util.exception.FoundException;
 import org.junit.jupiter.api.extension.ExtendWith;

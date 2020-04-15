@@ -10,23 +10,28 @@ import java.util.Objects;
 @JsonIgnoreProperties(ignoreUnknown = false)
 //--For JPA
 @Entity
-@Table(name = "box")
+@Table(name = "BOX")
 public class Box {
 
+    //--for Data JDBC
+    @org.springframework.data.annotation.Id
+    //--for JPA
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_box")
+    @SequenceGenerator(name="seq_box", sequenceName="SEQ_BOX", allocationSize = 20)
     @Column(name = "id", nullable = false)
     private long id;
 
     @Basic
-    @Column(name = "description", nullable = true, length = 100)
+    @Column(name = "description", length = 100)
     private String description;
 
     @Basic
-    @Column(name = "box_char", nullable = true, length = 1)
+    @Column(name = "box_char", length = 1)
     private String boxChar;
 
     @Basic
-    @Column(name = "box_bin", nullable = true, length = -1)
+    @Column(name = "box_bin", length = -1)
     private String boxBin;
 
 

@@ -14,9 +14,9 @@ create table person (
                         middle_name          VARCHAR(30)          null,
                         birth_date           TIMESTAMP            null,
                         death_date           TIMESTAMP            null,
-                        gender               CHAR(1)              null,
+                        gender               CHAR(1)              not null,
                         constraint PK_PERSON primary key (id),
-                        CONSTRAINT cnstr_person_gender CHECK (gender IN ('M','F'))
+                        CONSTRAINT cnstr_person_gender CHECK (gender IN ('M','F','U'))
 );
 /*==============================================================*/
 /* Index: person_PK                                             */

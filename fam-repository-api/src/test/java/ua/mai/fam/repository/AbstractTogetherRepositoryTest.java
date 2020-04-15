@@ -2,16 +2,10 @@ package ua.mai.fam.repository;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 import ua.mai.fam.AbstractTimingExtension;
-import ua.mai.fam.model.PersonTestData;
-import ua.mai.fam.model.PersonTestUtil;
+import ua.mai.fam.model.util.PersonTestUtil;
 import ua.mai.fam.model.Together;
 import ua.mai.fam.model.TogetherTestData;
-import ua.mai.fam.model.person.Person;
-import ua.mai.fam.util.exception.FoundException;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;

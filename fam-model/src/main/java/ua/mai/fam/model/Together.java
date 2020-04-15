@@ -13,48 +13,51 @@ import java.util.Objects;
 @JsonIgnoreProperties(ignoreUnknown = false)
 //--For JPA
 @Entity
-@Table(name = "together")
+@Table(name = "TOGETHER")
 public class Together {
 
     //--for Data JDBC
     @org.springframework.data.annotation.Id
-    //--for Data JPA
+    //--for JPA
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_person")
-    @SequenceGenerator(name="seq_person", sequenceName="SEQ_PERSON", allocationSize = 20)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_together")
+    @SequenceGenerator(name="seq_together", sequenceName="SEQ_TOGETHER", allocationSize = 20)
     @Column(name = "id", nullable = false)
     private long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "together_type_code", nullable = false)
+    @NotNull
+    @JoinColumn(name = "together_type_code")
 //    @OnDelete(action = OnDeleteAction.CASCADE)
     @NotNull
     private TogetherType togetherType;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "person1_id", nullable = false)
+    @NotNull
+    @JoinColumn(name = "person1_id")
 //    @OnDelete(action = OnDeleteAction.CASCADE)
     @NotNull
     private Person person1;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "person2_id", nullable = false)
+    @NotNull
+    @JoinColumn(name = "person2_id")
 //    @OnDelete(action = OnDeleteAction.CASCADE)
     @NotNull
     private Person person2;
 
     @org.springframework.format.annotation.DateTimeFormat(pattern = "yyyy-MM-dd")
     @Basic
-    @Column(name = "start_date", nullable = true)
+    @Column(name = "start_date")
     private LocalDate startDate;
 
     @org.springframework.format.annotation.DateTimeFormat(pattern = "yyyy-MM-dd")
     @Basic
-    @Column(name = "finish_date", nullable = true)
+    @Column(name = "finish_date")
     private LocalDate finishDate;
 
     @Basic
-    @Column(name = "description", nullable = true, length = 500)
+    @Column(name = "description", length = 500)
     private String description;
 
 

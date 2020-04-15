@@ -1,7 +1,5 @@
 package ua.mai.fam;
 
-import ua.mai.fam.model.person.Person;
-import ua.mai.fam.model.person.PersonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -10,7 +8,11 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import ua.mai.fam.repository.PersonRepository;
-import ua.mai.fam.repository.datajdbc.PersonRepository4DataJdbc;
+import ua.mai.fam.repository.TogetherTypeRepository;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 @EnableTransactionManagement
 //Не используем Security
@@ -18,7 +20,10 @@ import ua.mai.fam.repository.datajdbc.PersonRepository4DataJdbc;
 public class FamRepositoryDataJdbcApplication implements CommandLineRunner {
 
     @Autowired
-    PersonRepository repository;
+    PersonRepository personRepository;
+
+    @Autowired
+    TogetherTypeRepository togetherTypeRepository;
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(FamRepositoryDataJdbcApplication.class, args);
@@ -26,14 +31,19 @@ public class FamRepositoryDataJdbcApplication implements CommandLineRunner {
 
     @Override
     public void run(String... arg0) throws Exception {
-        System.out.println("** repositoryDataJdbc.count = " + repository.count());
-        System.out.println("** repositoryDataJdbc.findById(50000L) = " + repository.findById(50000L));
+        System.out.println("** Person repositoryDataJdbc.count = " + personRepository.count());
+        System.out.println("** Person repositoryDataJdbc.findById(50000L) = " + personRepository.findById(50000L));
 
-//        Person person = new PersonBuilder().setSurname("surname01").setFirstName("firstName01")
-//            .setMiddleName("middleName01").createPerson();
-//        //Вставка без Id. Id генерится в БД.
-//        Person savedPerson = repository.save(person);
-//        System.out.println(" repositoryDataJdbc.save() = " + savedPerson);
+        System.out.println("** TogetherType repositoryDataJdbc.findById('MARRIAGE') = " +
+            togetherTypeRepository.findByCode("MARRIAGE"));
+
+//        System.out.println("** TogetherType repositoryDataJdbc.findById('MARRIAGE') = " +
+//            togetherTypeRepository.existsByCode("MARRIAGE"));
+//        List<String> list = new ArrayList<>();
+//        list.add("MARRIAGE");
+//        System.out.println("** TogetherType repositoryDataJdbc.findById('MARRIAGE') = " +
+//            togetherTypeRepository.findAllByCode(list));
+
     }
 
 }

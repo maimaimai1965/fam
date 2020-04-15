@@ -1,4 +1,4 @@
-package ua.mai.fam.model;
+package ua.mai.fam.model.util;
 
 import ua.mai.fam.model.person.Person;
 

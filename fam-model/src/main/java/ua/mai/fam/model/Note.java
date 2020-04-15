@@ -4,21 +4,28 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)   //Не выводить null поля в JSON
 @JsonIgnoreProperties(ignoreUnknown = false)
 //--For JPA
 @Entity
-@Table(name = "note")
+@Table(name = "NOTE")
 public class Note {
 
+    //--for Data JDBC
+    @org.springframework.data.annotation.Id
+    //--for JPA
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_note")
+    @SequenceGenerator(name="seq_note", sequenceName="SEQ_NOTE", allocationSize = 20)
     @Column(name = "id", nullable = false)
     private long id;
 
     @Basic
-    @Column(name = "description", nullable = false, length = 500)
+    @NotNull
+    @Column(name = "description", length = 500)
     private String description;
 
 

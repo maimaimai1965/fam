@@ -1,5 +1,7 @@
 package ua.mai.fam.model.person;
 
+import ua.mai.fam.model.Gender;
+
 import java.time.LocalDate;
 
 public class PersonBuilder {
@@ -10,7 +12,7 @@ public class PersonBuilder {
     private String middleName;
     private LocalDate birthDate;
     private LocalDate deathDate;
-    private String gender;
+    private Gender gender = Gender.U;
 
     public PersonBuilder setId(Long id) {
         this.id = id;
@@ -42,7 +44,7 @@ public class PersonBuilder {
         return this;
     }
 
-    public PersonBuilder setGender(String gender) {
+    public PersonBuilder setGender(Gender gender) {
         this.gender = gender;
         return this;
     }

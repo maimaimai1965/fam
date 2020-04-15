@@ -10,7 +10,7 @@ import java.util.Objects;
 @JsonIgnoreProperties(ignoreUnknown = false)
 //--For JPA
 @Entity
-@Table(name = "parent_child")
+@Table(name = "PARENT_CHILD")
 @IdClass(ParentChildPK.class)
 public class ParentChild {
 

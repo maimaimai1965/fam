@@ -10,23 +10,28 @@ import java.util.Objects;
 @JsonIgnoreProperties(ignoreUnknown = false)
 //--For JPA
 @Entity
-@Table(name = "artifact")
+@Table(name = "ARTIFACT")
 public class Artifact {
 
+    //--for Data JDBC
+    @org.springframework.data.annotation.Id
+    //--for Data JPA
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_artifact")
+    @SequenceGenerator(name="seq_artifact", sequenceName="SEQ_ARTIFACT", allocationSize = 20)
     @Column(name = "id", nullable = false)
     private long id;
 
     @Basic
-    @Column(name = "name", nullable = true, length = 100)
+    @Column(name = "name", length = 100)
     private String name;
 
     @Basic
-    @Column(name = "description", nullable = true, length = 500)
+    @Column(name = "description", length = 500)
     private String description;
 
     @Basic
-    @Column(name = "link", nullable = true, length = 200)
+    @Column(name = "link", length = 200)
     private String link;
 
 

@@ -6,6 +6,7 @@ import org.springframework.util.Assert;
 public interface HasId<ID> {
 
     ID getId();
+    String getTableName();
 
 //    void setId(ID id);
 
@@ -14,9 +15,11 @@ public interface HasId<ID> {
         return getId() == null;
     }
 
+
+
     // doesn't work for hibernate lazy proxy
     default ID id() {
-        Assert.notNull(getId(), "Entity must has id");
+        Assert.notNull(getId(), "Entity must has Primary Key");
         return getId();
     }
 

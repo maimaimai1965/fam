@@ -3,10 +3,12 @@ package ua.mai.fam.model.person;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.format.annotation.DateTimeFormat;
+import ua.mai.fam.model.Gender;
 import ua.mai.fam.util.HasId;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -16,12 +18,12 @@ import java.util.Objects;
 @JsonIgnoreProperties(ignoreUnknown = false)
 //--For JPA
 @javax.persistence.Entity
-@javax.persistence.Table(name = "person")
+@javax.persistence.Table(name = "PERSON")
 public class Person implements HasId<Long> {
 
     //--for Data JDBC
     @org.springframework.data.annotation.Id
-    //--for Data JPA
+    //--for JPA
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_person")
     @SequenceGenerator(name="seq_person", sequenceName="SEQ_PERSON", allocationSize = 20)
@@ -29,30 +31,33 @@ public class Person implements HasId<Long> {
     private Long id;
 
     @Basic
-    @Column(name = "surname", nullable = false, length = 50)
+    @NotNull
+    @Column(name = "surname", length = 50)
     private String surname;
 
     @Basic
-    @Column(name = "first_name", nullable = true, length = 25)
+    @Column(name = "first_name", length = 25)
     private String firstName;
 
     @Basic
-    @Column(name = "middle_name", nullable = true, length = 30)
+    @Column(name = "middle_name", length = 30)
     private String middleName;
 
     @Basic
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "birth_date", nullable = true)
+    @Column(name = "birth_date")
     private LocalDate birthDate;
 
     @Basic
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "death_date", nullable = true)
+    @Column(name = "death_date")
     private LocalDate deathDate;
 
     @Basic
-    @Column(name = "gender", nullable = true, length = -1)
-    private String gender;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gender", length = 1)
+    private Gender gender;
 
 
     public Long getId() {
@@ -97,18 +102,25 @@ public class Person implements HasId<Long> {
         this.deathDate = deathDate;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+
+    /* */
+    @Override
+    public String getTableName() {
+        return "PERSON";
     }
 
 
     public Person() {}
 
     public Person(Long id, String surname, String firstName, String middleName, LocalDate birthDate,
-                  LocalDate deathDate, String gender) {
+                  LocalDate deathDate, Gender gender) {
         this.id = id;
         this.surname = surname;
         this.firstName = firstName;
