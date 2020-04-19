@@ -8,11 +8,11 @@ import java.util.Objects;
 public class ParentChildPK implements Serializable {
 
     @Id
-    @Column(name = "parent_id", nullable = false)
+    @Column(name = "PARENT_ID", nullable = false)
     private long parentId;
 
     @Id
-    @Column(name = "child_id", nullable = false)
+    @Column(name = "CHILD_ID", nullable = false)
     private long childId;
 
 
@@ -36,12 +36,12 @@ public class ParentChildPK implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ParentChildPK that = (ParentChildPK) o;
-        return parentId == that.parentId &&
-            childId == that.childId;
+        return parentId == that.parentId && childId == that.childId;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(parentId, childId);
     }
+
 }

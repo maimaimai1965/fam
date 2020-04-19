@@ -1,54 +1,76 @@
 package ua.mai.fam.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import ua.mai.fam.model.person.Person;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)   //Не выводить null поля в JSON
-@JsonIgnoreProperties(ignoreUnknown = false)
-//--For JPA
 @Entity
 @Table(name = "PARENT_CHILD")
-@IdClass(ParentChildPK.class)
 public class ParentChild {
 
-    @Id
-    @Column(name = "parent_id", nullable = false)
-    private long parentId;
+    @Embeddable
+    public static class Id implements Serializable {
 
-    @Id
-    @Column(name = "child_id", nullable = false)
-    private long childId;
+        @Column(name = "PARENT_ID")
+        protected Long parentId;
 
+        @Column(name = "CHILD_ID")
+        protected Long childId;
 
-    public long getParentId() {
-        return parentId;
+        public Id() {
+        }
+
+        public Id(Long parentId, Long childId) {
+            this.parentId = parentId;
+            this.childId = childId;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Id id = (Id) o;
+            if (!parentId.equals(id.parentId)) return false;
+            return childId.equals(id.childId);
+        }
+
+        @Override
+        public int hashCode() {
+            int result = parentId.hashCode();
+            result = 31 * result + childId.hashCode();
+            return result;
+        }
     }
-    public void setParentId(long parentId) {
-        this.parentId = parentId;
+
+    @EmbeddedId
+    private Id id = new Id();
+
+    @ManyToOne
+    @JoinColumn(name = "PERSON_ID", insertable = false, updatable = false)
+    protected Person parent;
+
+    @ManyToOne
+    @JoinColumn(name = "CHILD_ID", insertable = false, updatable = false)
+    protected Person child;
+
+
+    public ParentChild() {
     }
 
-    public long getChildId() {
-        return childId;
-    }
-    public void setChildId(long childId) {
-        this.childId = childId;
+    public ParentChild(Person parent, Person child) {
+        this.parent = parent;
+        this.child = child;
+
+        // Set identifier values
+        this.id.parentId = parent.getId();
+        this.id.childId = child.getId();
+
+        // Guarantee referential integrity if made bidirectional
+        parent.getChildren().add(this);
+        child.getParents().add(this);
     }
 
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ParentChild that = (ParentChild) o;
-        return parentId == that.parentId &&
-            childId == that.childId;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(parentId, childId);
-    }
 }

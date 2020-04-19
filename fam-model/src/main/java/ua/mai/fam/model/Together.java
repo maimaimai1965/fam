@@ -26,24 +26,15 @@ public class Together {
     private long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @NotNull
-    @JoinColumn(name = "together_type_code")
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-    @NotNull
+    @JoinColumn(name = "together_type_code", nullable = false)
     private TogetherType togetherType;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @NotNull
-    @JoinColumn(name = "person1_id")
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-    @NotNull
+    @JoinColumn(name = "person1_id", nullable = false)
     private Person person1;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @NotNull
-    @JoinColumn(name = "person2_id")
-//    @OnDelete(action = OnDeleteAction.CASCADE)
-    @NotNull
+    @JoinColumn(name = "person2_id", nullable = false)
     private Person person2;
 
     @org.springframework.format.annotation.DateTimeFormat(pattern = "yyyy-MM-dd")

@@ -1,9 +1,12 @@
-package ua.mai.fam.restclient;
+package ua.mai.fam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ua.mai.fam.model.person.Person;
+import ua.mai.fam.restclient.FamClient;
+import ua.mai.fam.restclient.RestClientConfiguration;
+import ua.mai.fam.restclient.client.PersonClient;
 
 import java.util.List;
 
@@ -25,10 +28,13 @@ public class FamRestClientApplication {
         FamRestClientApplication app = new FamRestClientApplication();
         app.autowireAppBeans();
 
-        Person person = app.getFamClient().findPerson(50_000L);
+        FamClient appClient = app.getFamClient();
+        PersonClient personClient = appClient.createPersonClient();
+
+        Person person = personClient.findPerson(50_000L);
         System.out.println("findPerson(): " + person);
 
-        List<Person> persons = app.getFamClient().findAllPersons();
+        List<Person> persons = personClient.findAllPersons();
         System.out.println("findAllPersons(): " + persons);
     }
 

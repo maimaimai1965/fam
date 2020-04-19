@@ -7,9 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import ua.mai.fam.model.person.Person;
-import ua.mai.fam.model.person.PersonBuilder;
 import ua.mai.fam.repository.PersonRepository;
+import ua.mai.fam.service.PersonService;
 
 @EnableTransactionManagement
 //Не используем Security
@@ -17,7 +16,10 @@ import ua.mai.fam.repository.PersonRepository;
 public class FamRepositoryJpaApplication implements CommandLineRunner {
 
     @Autowired
-    PersonRepository repository;
+    PersonRepository personRepository;
+
+    @Autowired
+    PersonService personService;
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(FamRepositoryJpaApplication.class, args);
@@ -25,15 +27,18 @@ public class FamRepositoryJpaApplication implements CommandLineRunner {
 
     @Override
     public void run(String... arg0) throws Exception {
-        System.out.println("repositoryJpa.count = " + repository.count());
+        System.out.println("** Person Repository Jpa.count = " + personRepository.count());
+        System.out.println("** Person Repository Jpa.findById(50000L) = " + personRepository.findById(50000L));
 
-        System.out.println("repositoryJpa.findById(50000L) = " + repository.findById(50000L));
+//        //Вставка без Id. Id генерится в БД.
+//        Person person = new PersonBuilder().setSurname("surname01").setFirstName("firstName01")
+//                                           .setMiddleName("middleName01").createPerson();
+//        Person savedPerson = repository.save(person);
+//        System.out.println(" repositoryJpa.save() = " + savedPerson);
 
-        //Вставка без Id. Id генерится в БД.
-        Person person = new PersonBuilder().setSurname("surname01").setFirstName("firstName01")
-                                           .setMiddleName("middleName01").createPerson();
-        Person savedPerson = repository.save(person);
-        System.out.println(" repositoryJpa.save() = " + savedPerson);
+        System.out.println("** Person Service Jpa.count = " + personService.count());
+        System.out.println("** Person Service Jpa.findById(50000L) = " + personService.findById(50000L));
+
     }
 
 }

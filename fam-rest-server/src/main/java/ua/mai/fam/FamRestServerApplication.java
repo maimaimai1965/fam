@@ -1,8 +1,6 @@
 package ua.mai.fam;
 
 import org.springframework.http.ResponseEntity;
-import ua.mai.fam.controller.rest.PersonRestController;
-import ua.mai.fam.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -10,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import ua.mai.fam.controller.rest.PersonRestController;
 
 @EnableTransactionManagement
 //Не используем Security
@@ -35,7 +34,7 @@ public class FamRestServerApplication implements CommandLineRunner {
 
         ResponseEntity<?> responseEntity = personRestController.find(50000L);
         Object entity = responseEntity.getBody();
-        System.out.println("+++ personRestController.find(50000L): " + entity.toString());
+        System.out.println("** Person RestController.find(50000L): " + entity.toString());
     }
 
 }

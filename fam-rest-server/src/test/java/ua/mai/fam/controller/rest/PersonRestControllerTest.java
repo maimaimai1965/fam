@@ -8,7 +8,7 @@ import ua.mai.fam.repository.PersonRepository;
 abstract class PersonRestControllerTest {
 
     abstract protected PersonRestController getPersonRestController();
-    abstract protected PersonRepository getPersonRepository();
+//    abstract protected PersonRepository getPersonRepository();
 
     @BeforeEach
     void setUp() {

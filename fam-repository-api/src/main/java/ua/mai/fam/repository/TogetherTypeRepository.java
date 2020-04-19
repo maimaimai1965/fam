@@ -16,9 +16,9 @@ public interface TogetherTypeRepository {
      * Сохранение togetherType.<br>
      * Алгоритм сохранения:
      * <ul>
+     * <li>Если в togetherType есть код, а в таблице нет записи с этим кодом, то производится insert в таблицу.
      * <li>Если в togetherType есть код, и в таблице есть запись с этим идентификатором, то производится update этой
      *     записи в таблице.
-     * <li>Если в togetherType есть код, а в таблице нет записи с этим кодом, то производится insert в таблицу.
      * <li>Если в togetherType нет кода или названия, то генерируется исключение.
      * </ul>
      *
@@ -77,7 +77,9 @@ public interface TogetherTypeRepository {
      * @param togetherTypes must not be {@literal null}. Must not contain {@literal null} elements.
      * @throws NullPointerException in case the given {@literal entities} or one of its persons is {@literal null}.
      */
-    void deleteAll(Iterable<? extends TogetherType> togetherTypes);
+    default void deleteAll(Iterable<? extends TogetherType> togetherTypes) {
+        togetherTypes.forEach(togetherType -> delete(togetherType));
+    }
 
     void deleteAll();
 

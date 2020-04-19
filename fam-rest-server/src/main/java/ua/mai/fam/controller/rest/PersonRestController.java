@@ -4,11 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import ua.mai.fam.controller.BaseController;
+import ua.mai.fam.dto.PersonDto;
 import ua.mai.fam.model.person.Person;
+import ua.mai.fam.repository.PersonDtoRepository;
 import ua.mai.fam.repository.PersonRepository;
+import ua.mai.fam.repository.PersonRepositoryMarker;
+import ua.mai.fam.service.PersonDtoService;
+import ua.mai.fam.service.PersonService;
+import ua.mai.fam.service.PersonServiceMarker;
 import ua.mai.fam.util.CollectionUtil;
+import ua.mai.fam.util.SpringUtil;
 import ua.mai.fam.util.exception.FoundException;
 import ua.mai.fam.util.exception.ResponceStatusExceptionWithCode;
 import ua.mai.fam.util.exception.RestErrorCodes;
@@ -19,38 +28,77 @@ import java.util.Optional;
 
 import static ua.mai.fam.FamRestServerApplication.APPLICATION_REST_PATH;
 
-@RestController
+@Controller
 @RequestMapping(PersonRestController.REST_PERSON_PATH)
-@Profile("ac-rest")
-public class PersonRestController {
+public class PersonRestController implements BaseController {
 
     public static final String REST_PERSON_PATH = APPLICATION_REST_PATH  + "/persons";
 
-    private PersonRepository personRepository;
-
     @Autowired
-    public PersonRestController(PersonRepository personRepository) {
-        this.personRepository = personRepository;
+    public PersonRestController(PersonServiceMarker service, PersonRepositoryMarker repository) {
+        if (service instanceof PersonDtoService) {
+            jdbcImplementation = true;
+            this.dtoRepository = (PersonDtoRepository)repository;
+            System.out.println("** Use PersonDtoRepository");
+        }
+        else {
+            jdbcImplementation = false;
+            this.service = (PersonService)service;
+            System.out.println("** Use " + SpringUtil.unproxyBean(service).getClass().getSimpleName());
+        }
     }
 
-    public PersonRepository getPersonRepository() {
-        return personRepository;
+    private boolean jdbcImplementation;
+    private PersonService service;
+    private PersonDtoRepository dtoRepository;
+
+    @Override
+    public boolean isJdbcImplementation() {
+        return jdbcImplementation;
     }
+    @Override
+    public PersonService getService() {
+        if (!jdbcImplementation) {
+            return service;
+        }
+        else {
+            throw new RuntimeException("Controller " + this.getClass().getSimpleName() +
+                " that used DTO(JDBC) repository cannot use service JPA! ");
+        }
+    }
+    @Override
+    public PersonDtoRepository getDtoRepository() {
+        if (jdbcImplementation) {
+            return dtoRepository;
+        }
+        else {
+            throw new RuntimeException("Controller " + this.getClass().getSimpleName() +
+                " that used JPA service cannot used DTO repository! ");
+        }
+    }
+
 
     @PostMapping()
 //    @ApiResponses(value = {
 //        @ApiResponse(code = 200, message = "Не используется!", response = String.class),
 //        @ApiResponse(code = 201, response = Payment.class),
 //        @ApiResponse(code = 400, message = "Ошибка.", response = ErrorDetails.class)})
-    public ResponseEntity<Person> add(@RequestBody Person person) {
+    public ResponseEntity<PersonDto> add(@RequestBody PersonDto personDto) {
         try {
-            person = personRepository.insert(person);
+            if (isJdbcImplementation()) {
+                personDto = dtoRepository.insert(personDto);
+            }
+            else {
+                Person person = personDto.toEntity();
+                person = service.insert(person);
+                personDto = person.toDto();
+            }
             URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(person.getId())
+                .buildAndExpand(personDto.getId())
                 .toUri();
-            return ResponseEntity.created(uri).body(person); //, HttpStatus.CREATED/*201*/);
+            return ResponseEntity.created(uri).body(personDto); //, HttpStatus.CREATED/*201*/);
         }
         catch (FoundException e) {
             throw new ResponceStatusExceptionWithCode(HttpStatus.CONFLICT, e, RestErrorCodes.EXISTS_ID_CODE);
@@ -64,34 +112,62 @@ public class PersonRestController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Person> save(@RequestBody(required=true) Person person,
-                                       @PathVariable(required=true) Long id) {
-        if (!id.equals(person.getId())) {
+    public ResponseEntity<PersonDto> save(@RequestBody(required=true) PersonDto personDto,
+                                          @PathVariable(required=true) Long id) {
+        if (!id.equals(personDto.getId())) {
             throw new ResponceStatusExceptionWithCode(HttpStatus.BAD_REQUEST,
-                "id in path (" + id + ") is not equal in Entity (" + person.getId() + ")",
+                "id in path (" + id + ") is not equal in Entity (" + personDto.getId() + ")",
                 RestErrorCodes.NOT_EQUAL_IDS_WHEN_UPDATE_CODE);
         }
-        person = personRepository.save(person);
-        return new ResponseEntity<Person>(person, HttpStatus.NO_CONTENT/*204*/);
+        if (isJdbcImplementation()) {
+            personDto = dtoRepository.save(personDto);
+        }
+        else {
+            Person person = personDto.toEntity();
+            person = service.save(person);
+            personDto = person.toDto();
+        }
+        return new ResponseEntity<PersonDto>(personDto, HttpStatus.NO_CONTENT/*204*/);
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Void> delete(@PathVariable(required=true) Long id) {
-        personRepository.deleteById(id);
+        if (isJdbcImplementation()) {
+            dtoRepository.deleteById(id);
+        }
+        else {
+            service.deleteById(id);
+        }
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT/*204*/);
     }
 
     @GetMapping()
-    public @ResponseBody List<Person> findAll(/*HttpServletResponse response*/) {
-        return CollectionUtil.makeList(personRepository.findAll());
+    public @ResponseBody List<PersonDto> findAll(/*HttpServletResponse response*/) {
+        Iterable<PersonDto> iter;
+        if (isJdbcImplementation()) {
+            return CollectionUtil.makeList(dtoRepository.findAll());
+        }
+        else {
+            return Person.toDtos(CollectionUtil.makeList(service.findAll()));
+        }
     }
     @GetMapping("{id}")
     public ResponseEntity<?> find(@PathVariable(required=true) Long id) {
-        Optional<Person> person = personRepository.findById(id);
-        if (!person.isPresent()) {
+        Optional<PersonDto> personDto = Optional.empty();
+        if (isJdbcImplementation()) {
+            personDto = dtoRepository.findById(id);
+        }
+        else {
+            Optional<Person> person = service.findById(id);
+            if (person.isPresent()) {
+                personDto = Optional.of(person.get().toDto());
+            }
+        }
+
+        if (!personDto.isPresent()) {
             return new ResponseEntity<Void>(HttpStatus.NOT_FOUND/*404*/);
         }
-        return new ResponseEntity<Person>(person.get(), HttpStatus.OK/*200*/);
+        return new ResponseEntity<PersonDto>(personDto.get(), HttpStatus.OK/*200*/);
     }
 
 }

@@ -9,7 +9,7 @@ import java.util.Optional;
 /**
  * Содержит все методы которые определяет org.springframework.data.repository.CrudRepository.
  */
-public interface PersonRepository {
+public interface PersonRepository extends PersonRepositoryMarker {
 
     /** ------------------ Методы соответствующие интерфейсу CrudRepository ------------------------------------------*/
     /**

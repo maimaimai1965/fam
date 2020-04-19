@@ -27,7 +27,7 @@ class PersonRestController4JdbcTest extends PersonRestControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Autowired
+//    @Autowired
     private PersonRestController personRestController;
 //    @Autowired
 //    private PersonRepository personRepository;
@@ -42,15 +42,18 @@ class PersonRestController4JdbcTest extends PersonRestControllerTest {
     protected PersonRestController getPersonRestController() {
         return personRestController;
     }
+/*
     @Override
     protected PersonRepository getPersonRepository() {
-        return personRestController.getPersonRepository();
+        return personRestController.getDtoRepository();
     }
+*/
 
     @Test
     @Override
     void find() throws Exception {
-        Person isertedPesron = getPersonRepository().insert(PersonTestData.getNewPersons01());
+        Person isertedPesron = null;
+//            getPersonRepository().insert(PersonTestData.getNewPerson01());
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/persons/" + isertedPesron.getId())
 //            .with(user(TEST_USER_ID))

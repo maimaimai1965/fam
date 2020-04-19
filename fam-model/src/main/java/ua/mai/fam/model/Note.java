@@ -2,6 +2,7 @@ package ua.mai.fam.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import ua.mai.fam.model.person.Person;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -23,6 +24,14 @@ public class Note {
     @Column(name = "id", nullable = false)
     private long id;
 
+    @ManyToOne
+    @JoinColumn(name = "PERSON_ID", nullable = false)
+    private Person person;
+
+    @ManyToOne
+    @JoinColumn(name = "ARTIFACT_ID", nullable = false)
+    private Artifact artifact;
+
     @Basic
     @NotNull
     @Column(name = "description", length = 500)
@@ -34,6 +43,20 @@ public class Note {
     }
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public Artifact getArtifact() {
+        return artifact;
+    }
+    public void setArtifact(Artifact artifact) {
+        this.artifact = artifact;
     }
 
     public String getDescription() {
@@ -48,13 +71,21 @@ public class Note {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Note note = (Note) o;
-        return id == note.id &&
-            Objects.equals(description, note.description);
+
+        if (id != note.id) return false;
+        if (!person.equals(note.person)) return false;
+        if (!artifact.equals(note.artifact)) return false;
+        return description.equals(note.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, description);
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + person.hashCode();
+        result = 31 * result + artifact.hashCode();
+        return result;
     }
+
 }

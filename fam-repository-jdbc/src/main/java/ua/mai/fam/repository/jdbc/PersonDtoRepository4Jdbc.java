@@ -1,9 +1,5 @@
 package ua.mai.fam.repository.jdbc;
 
-import ua.mai.fam.model.person.Person;
-import ua.mai.fam.repository.PersonRepository;
-import ua.mai.fam.util.exception.FoundException;
-import ua.mai.fam.util.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -14,6 +10,10 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import ua.mai.fam.dto.PersonDto;
+import ua.mai.fam.repository.PersonDtoRepository;
+import ua.mai.fam.util.exception.FoundException;
+import ua.mai.fam.util.exception.NotFoundException;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,16 +23,17 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 @Profile("da-jdbc")
 @Repository
-public class PersonRepository4Jdbc implements PersonRepository {
+public class
+PersonDtoRepository4Jdbc implements PersonDtoRepository {
 
-    public static final PersonUtil.PersonToRowMapper ROW_MAPPER = new PersonUtil.PersonToRowMapper();
+    public static final PersonDtoUtil.PersonDtoToRowMapper ROW_MAPPER = new PersonDtoUtil.PersonDtoToRowMapper();
 
     private final JdbcTemplate jdbcTemplate;
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
     private final SimpleJdbcInsert simpleJdbcInsertPerson;
 
     @Autowired
-    public PersonRepository4Jdbc(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+    public PersonDtoRepository4Jdbc(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.simpleJdbcInsertPerson = new SimpleJdbcInsert(jdbcTemplate)
             .withTableName("person")
             .usingGeneratedKeyColumns("id");
@@ -43,16 +44,16 @@ public class PersonRepository4Jdbc implements PersonRepository {
 
     @Transactional
     @Override
-    public Person save(Person person) {
-        if (person == null) {
+    public PersonDto save(PersonDto entity) {
+        if (entity == null) {
             throw new IllegalArgumentException("Person can't be null.");
         }
 //        ValidationUtil.validate(person);
-        if (person.isNew()) {
+        if (entity.isNew()) {
             //Если
-            return this.insert(person);
+            return this.insert(entity);
         } else {
-            MapSqlParameterSource paramMap = PersonUtil.getMapSqlParameterSource(person);
+            MapSqlParameterSource paramMap = PersonDtoUtil.getMapSqlParameterSource(entity);
 
             if (namedParameterJdbcTemplate.update("" +
                     "UPDATE person " +
@@ -60,37 +61,37 @@ public class PersonRepository4Jdbc implements PersonRepository {
                           "birth_date=:birth_date, death_date=:death_date, gender=:gender " +
                       "WHERE id=:id"
                 , paramMap) == 0) {
-                throw new NotFoundException("Not exists person with id=" + person.getId() + ".");
+                throw new NotFoundException("Not exists person with id=" + entity.getId() + ".");
             }
-            return person;
+            return entity;
         }
     }
 
     @Override
     @Transactional
-    public Person insert(Person person) {
-        if (person == null) {
+    public PersonDto insert(PersonDto entity) {
+        if (entity == null) {
             throw new IllegalArgumentException("Object can't be null.");
         }
-        if (person.getId() != null) {
-            throw new FoundException("Exists id=" + person.getId() + " in new inserted object.");
+        if (entity.getId() != null) {
+            throw new FoundException("Exists id=" + entity.getId() + " in new inserted object.");
         }
-        MapSqlParameterSource paramMap = PersonUtil.getMapSqlParameterSource(person);
+        MapSqlParameterSource paramMap = PersonDtoUtil.getMapSqlParameterSource(entity);
         Number newId = simpleJdbcInsertPerson.executeAndReturnKey(paramMap);
-        person.setId(newId.longValue());
-        return person;
+        entity.setId(newId.longValue());
+        return entity;
     }
 
     @Transactional
     @Override
-    public <S extends Person> Iterable<S> saveAll(Iterable<S> entities) {
+    public <S extends PersonDto> Iterable<S> saveAll(Iterable<S> entities) {
         if (entities == null) {
             throw new IllegalArgumentException();
         }
-        List<Person> list = new ArrayList<Person>((entities != null) ? ((Collection) entities).size() : 0);
-        entities.forEach(person -> { if (person != null) {
-                                         Person savedPerson = save(person);
-                                         list.add(savedPerson);
+        List<PersonDto> list = new ArrayList<PersonDto>((entities != null) ? ((Collection) entities).size() : 0);
+        entities.forEach(entity -> { if (entity != null) {
+                                         PersonDto savedEntity = save(entity);
+                                         list.add(savedEntity);
                                      }});
         return (Iterable<S>) list;
     }
@@ -101,24 +102,24 @@ public class PersonRepository4Jdbc implements PersonRepository {
         if (id == null) {
             throw new IllegalArgumentException("id can't be null.");
         }
-        jdbcTemplate.update("DELETE FROM person WHERE id=?", id);
+        jdbcTemplate.update("DELETE FROM person WHERE id = ?", id);
     }
 
     @Transactional
     @Override
-    public void delete(Person person) {
-        if (person == null) {
+    public void delete(PersonDto entity) {
+        if (entity == null) {
             throw new IllegalArgumentException("Person can't be null.");
         }
-        if (!person.isNew()) {
-            deleteById(person.getId());
+        if (!entity.isNew()) {
+            deleteById(entity.getId());
         }
     }
 
     @Transactional
     @Override
-    public void deleteAll(Iterable<? extends Person> entities) {
-        entities.forEach(person -> delete(person));
+    public void deleteAll(Iterable<? extends PersonDto> entities) {
+        entities.forEach(entity -> delete(entity));
 //        if (entities != null) {
 //            entities.forEach(person -> delete(person));
 //                                       { if (person != null) {
@@ -130,31 +131,31 @@ public class PersonRepository4Jdbc implements PersonRepository {
     @Transactional
     @Override
     public void deleteAll() {
-        throw new RuntimeException("PersonRepository4Jdbc.deleteAll() not realised!");
+        throw new RuntimeException("PersonDtoRepository4Jdbc.deleteAll() not realised!");
     }
 
     @Override
-    public Optional<Person> findById(Long id) {
+    public Optional<PersonDto> findById(Long id) {
         if (id == null) {
             throw new IllegalArgumentException("id can't be null.");
         }
-        List<Person> persons = jdbcTemplate.query("SELECT * FROM person WHERE id = ?", ROW_MAPPER, id);
-        return Optional.ofNullable(DataAccessUtils.singleResult(persons));
+        List<PersonDto> entities = jdbcTemplate.query("SELECT * FROM person  WHERE id = ?", ROW_MAPPER, id);
+        return Optional.ofNullable(DataAccessUtils.singleResult(entities));
     }
 
     @Override
-    public Iterable<Person> findAll() {
-        List<Person> persons = jdbcTemplate.query("SELECT * FROM person", ROW_MAPPER);
-        return persons;
+    public Iterable<PersonDto> findAll() {
+        List<PersonDto> entities = jdbcTemplate.query("SELECT * FROM person", ROW_MAPPER);
+        return entities;
     }
 
     @Override
-    public Iterable<Person> findAllById(Iterable<Long> longs) {
-        if (longs == null) {
+    public Iterable<PersonDto> findAllById(Iterable<Long> ids) {
+        if (ids == null) {
             throw new IllegalArgumentException();
         }
-        List<Person> list = new ArrayList<Person>((longs != null) ? ((Collection) longs).size() : 0);
-        longs.forEach(id -> { Optional<Person> person = findById(id);
+        List<PersonDto> list = new ArrayList<>((ids != null) ? ((Collection) ids).size() : 0);
+        ids.forEach(id -> { Optional<PersonDto> person = findById(id);
                               if (person.isPresent()) {
                                   list.add(person.get());
                               }

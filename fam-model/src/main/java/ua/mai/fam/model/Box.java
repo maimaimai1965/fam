@@ -22,6 +22,10 @@ public class Box {
     @Column(name = "id", nullable = false)
     private long id;
 
+    @ManyToOne
+    @JoinColumn(name = "BOX_TYPE_CODE", nullable = false)
+    private BoxType boxType;
+
     @Basic
     @Column(name = "description", length = 100)
     private String description;
@@ -40,6 +44,13 @@ public class Box {
     }
     public void setId(long id) {
         this.id = id;
+    }
+
+    public BoxType getBoxType() {
+        return boxType;
+    }
+    public void setBoxType(BoxType boxType) {
+        this.boxType = boxType;
     }
 
     public String getDescription() {

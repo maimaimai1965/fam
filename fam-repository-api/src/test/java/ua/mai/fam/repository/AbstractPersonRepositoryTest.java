@@ -30,7 +30,7 @@ public abstract class AbstractPersonRepositoryTest {
     public void save_NewPersonWithEmptyIdTest() {
         //Если в person идентификатора нет, то генерируется идентификатор и создается новая запись в таблице с этим
         //идентификатором. Идентификатор прописывается в возвращаемом объекте.
-        Person person = PersonTestData.getNewPersons01();
+        Person person = PersonTestData.getNewPerson01();
         //Вставка без Id. Id генерится в БД.
         Person savedPerson = getRepository().save(person);
         Long id = savedPerson.getId();
@@ -45,11 +45,11 @@ public abstract class AbstractPersonRepositoryTest {
      */
     public void save_PersonWithIdWhenPersonExistsInDbTest(){
         //Вставка в БД тестового объекта.
-        Person existsPerson = getRepository().save(PersonTestData.getNewPersons01());
+        Person existsPerson = getRepository().save(PersonTestData.getNewPerson01());
         assertTrue(existsPerson.getId() > 0,
             "При вставке нового объекта без идентификатора (для тестирования) не был сгенерирован Id.");
 
-        Person person = PersonTestData.getPersons02(existsPerson.getId());
+        Person person = PersonTestData.getPerson02(existsPerson.getId());
         Person savedPerson = getRepository().save(person);
         //Проверяем обновленный объект.
         assertEquals(existsPerson.getId(), savedPerson.getId());
@@ -67,7 +67,7 @@ public abstract class AbstractPersonRepositoryTest {
         }
 
         //Сохранение в БД.
-        Person person = PersonTestData.getPersons01(id);
+        Person person = PersonTestData.getPerson01(id);
         assertThrows(Exception.class, () -> getRepository().save(person));
     }
     public void save_NullPersonTest() {
@@ -81,8 +81,8 @@ public abstract class AbstractPersonRepositoryTest {
 
     public void saveAll_ListTest() {
         //Вставка в БД тестовых Entity.
-        Person person1 = getRepository().save(PersonTestData.getNewPersons01());
-        Person person2 = getRepository().save(PersonTestData.getNewPersons02());
+        Person person1 = getRepository().save(PersonTestData.getNewPerson01());
+        Person person2 = getRepository().save(PersonTestData.getNewPerson02());
 
         Object[] persons = ((Collection<Person>)getRepository().saveAll(Arrays.asList(person1, person2))).toArray();
 
@@ -115,7 +115,7 @@ public abstract class AbstractPersonRepositoryTest {
      * запись в таблице с этим идентификатором. Идентификатор прописывается в возвращаемом объекте.
      */
     public void insert_NewPersonWithEmptyIdTest() {
-        Person person = PersonTestData.getNewPersons01();
+        Person person = PersonTestData.getNewPerson01();
         //Вставка без Id. Id генерится в БД.
         Person savedPerson = getRepository().insert(person);
         Long id = savedPerson.getId();
@@ -129,11 +129,11 @@ public abstract class AbstractPersonRepositoryTest {
      */
     public void insert_PersonWithId(){
         //Вставка в БД тестового Entity.
-        Person existsPerson = getRepository().save(PersonTestData.getNewPersons01());
+        Person existsPerson = getRepository().save(PersonTestData.getNewPerson01());
         assertTrue(existsPerson.getId() > 0,
             "При вставке нового объекта без идентификатора (для тестирования) не был сгенерирован Id.");
 
-        Person person = PersonTestData.getPersons02(existsPerson.getId());
+        Person person = PersonTestData.getPerson02(existsPerson.getId());
         assertThrows(FoundException.class, () -> getRepository().insert(person));
     }
     public void insert_NullPersonTest() {
@@ -147,7 +147,7 @@ public abstract class AbstractPersonRepositoryTest {
 
     public void deleteByIdTest() {
         //Вставка в БД тестового Entity.
-        Person existsPerson = getRepository().save(PersonTestData.getNewPersons01());
+        Person existsPerson = getRepository().save(PersonTestData.getNewPerson01());
         assertTrue(existsPerson.getId() > 0,
             "При вставке нового объекта без идентификатора (для тестирования) не был сгенерирован Id.");
         Long id = existsPerson.getId();
@@ -181,7 +181,7 @@ public abstract class AbstractPersonRepositoryTest {
 
     public void deleteTest() {
         //Вставка в БД тестового Entity.
-        Person existsPerson = getRepository().save(PersonTestData.getNewPersons01());
+        Person existsPerson = getRepository().save(PersonTestData.getNewPerson01());
         assertTrue(existsPerson.getId() > 0,
             "При вставке нового объекта без идентификатора (для тестирования) не был сгенерирован Id.");
         Long id = existsPerson.getId();
@@ -201,10 +201,10 @@ public abstract class AbstractPersonRepositoryTest {
 
     public void deleteAll_ListTest() {
         //Вставка в БД тестовых Entity.
-        Person person1 = getRepository().save(PersonTestData.getNewPersons01());
+        Person person1 = getRepository().save(PersonTestData.getNewPerson01());
         assertTrue(person1.getId() > 0,
             "При вставке нового объекта без идентификатора (для тестирования) не был сгенерирован Id.");
-        Person person2 = getRepository().save(PersonTestData.getNewPersons02());
+        Person person2 = getRepository().save(PersonTestData.getNewPerson02());
         assertTrue(person2.getId() > 0,
             "При вставке нового объекта без идентификатора (для тестирования) не был сгенерирован Id.");
 
@@ -223,7 +223,7 @@ public abstract class AbstractPersonRepositoryTest {
     }
 
     public void findByIdTest(){
-        Person person = getRepository().save(PersonTestData.getNewPersons01());
+        Person person = getRepository().save(PersonTestData.getNewPerson01());
         assertTrue(person.getId() > 0,
             "При вставке нового объекта без идентификатора (для тестирования) не был сгенерирован Id.");
 
@@ -251,10 +251,10 @@ public abstract class AbstractPersonRepositoryTest {
 
     public void findAllByIdListTest() {
         //Вставка в БД тестовых Entity.
-        Person person1 = getRepository().save(PersonTestData.getNewPersons01());
+        Person person1 = getRepository().save(PersonTestData.getNewPerson01());
         assertTrue(person1.getId() > 0,
             "При вставке нового объекта без идентификатора (для тестирования) не был сгенерирован Id.");
-        Person person2 = getRepository().save(PersonTestData.getNewPersons02());
+        Person person2 = getRepository().save(PersonTestData.getNewPerson02());
         assertTrue(person2.getId() > 0,
             "При вставке нового объекта без идентификатора (для тестирования) не был сгенерирован Id.");
 
@@ -268,7 +268,7 @@ public abstract class AbstractPersonRepositoryTest {
     }
     public void findAllByIdList_OneEntityNotExistsTest() {
         //Вставка в БД тестовых Entity.
-        Person person1 = getRepository().save(PersonTestData.getNewPersons01());
+        Person person1 = getRepository().save(PersonTestData.getNewPerson01());
         assertTrue(person1.getId() > 0,
             "При вставке нового объекта без идентификатора (для тестирования) не был сгенерирован Id.");
 
@@ -301,7 +301,7 @@ public abstract class AbstractPersonRepositoryTest {
     }
 
     public void existsById_ExistsIdTest(){
-        Person person = getRepository().save(PersonTestData.getNewPersons01());
+        Person person = getRepository().save(PersonTestData.getNewPerson01());
         assertTrue(person.getId() > 0,
             "При вставке нового объекта без идентификатора (для тестирования) не был сгенерирован Id.");
         assertTrue(getRepository().existsById(person.getId()));

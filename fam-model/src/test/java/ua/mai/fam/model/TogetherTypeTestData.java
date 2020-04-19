@@ -1,8 +1,5 @@
 package ua.mai.fam.model;
 
-import ua.mai.fam.model.person.Person;
-import ua.mai.fam.model.person.PersonBuilder;
-
 public class TogetherTypeTestData {
 
     public static final String MARRIAGE_TOGETHER_TYPE_CODE = "MARRIAGE";
@@ -17,12 +14,19 @@ public class TogetherTypeTestData {
     public static final TogetherType MARRIAGE_TOGETHER_TYPE =
         new TogetherType(MARRIAGE_TOGETHER_TYPE_CODE, MARRIAGE_TOGETHER_TYPE_NAME);
 
-    public static TogetherType getTogetherType01() {
-        return new TogetherType(togetherTypeCode01, togetherTypeName01);
+
+    public static TogetherType getNewTogetherType01() {
+        return getTogetherType01(togetherTypeCode01);
+    }
+    public static TogetherType getTogetherType01(String code) {
+        return new TogetherType(code, togetherTypeName01);
     }
 
-    public static TogetherType getTogetherType02() {
-        return new TogetherType(togetherTypeCode02, togetherTypeName02);
+    public static TogetherType getNewTogetherType02() {
+        return getTogetherType02(togetherTypeCode02);
+    }
+    public static TogetherType getTogetherType02(String code) {
+        return new TogetherType(code, togetherTypeName02);
     }
 
 }

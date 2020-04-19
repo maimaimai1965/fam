@@ -51,7 +51,7 @@ class PersonRestController4JdbcTest extends PersonRestControllerTest {
     @Test
     @Override
     void find() throws Exception {
-        Person isertedPesron = getPersonRepository().insert(PersonTestData.getNewPersons01());
+        Person isertedPesron = getPersonRepository().insert(PersonTestData.getNewPerson01());
 
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/persons/" + isertedPesron.getId())
 //            .with(user(TEST_USER_ID))

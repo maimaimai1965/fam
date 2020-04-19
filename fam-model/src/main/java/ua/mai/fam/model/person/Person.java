@@ -3,14 +3,17 @@ package ua.mai.fam.model.person;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.format.annotation.DateTimeFormat;
+import ua.mai.fam.dto.PersonDto;
 import ua.mai.fam.model.Gender;
+import ua.mai.fam.model.ParentChild;
 import ua.mai.fam.util.HasId;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  */
@@ -21,9 +24,6 @@ import java.util.Objects;
 @javax.persistence.Table(name = "PERSON")
 public class Person implements HasId<Long> {
 
-    //--for Data JDBC
-    @org.springframework.data.annotation.Id
-    //--for JPA
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_person")
     @SequenceGenerator(name="seq_person", sequenceName="SEQ_PERSON", allocationSize = 20)
@@ -58,6 +58,12 @@ public class Person implements HasId<Long> {
     @Enumerated(EnumType.STRING)
     @Column(name = "gender", length = 1)
     private Gender gender;
+
+    @OneToMany(mappedBy = "child", fetch = FetchType.LAZY)
+    protected Set<ParentChild> parents = new HashSet<>();
+
+    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
+    protected Set<ParentChild> children = new HashSet<>();
 
 
     public Long getId() {
@@ -109,6 +115,13 @@ public class Person implements HasId<Long> {
         this.gender = gender;
     }
 
+    public Set<ParentChild> getParents() {
+        return parents;
+    }
+
+    public Set<ParentChild> getChildren() {
+        return children;
+    }
 
     /* */
     @Override
@@ -128,6 +141,14 @@ public class Person implements HasId<Long> {
         this.birthDate = birthDate;
         this.deathDate = deathDate;
         this.gender = gender;
+    }
+
+    public PersonDto toDto() {
+        return new PersonDto(id, surname, firstName, middleName, birthDate, deathDate, gender);
+    }
+
+    public static List<PersonDto> toDtos(Collection<Person> entities)  {
+        return entities.stream().map(entity -> entity.toDto()).collect(Collectors.toList());
     }
 
     @Override

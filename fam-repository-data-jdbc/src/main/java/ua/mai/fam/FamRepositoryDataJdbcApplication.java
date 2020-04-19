@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import ua.mai.fam.repository.PersonDtoRepository;
 import ua.mai.fam.repository.PersonRepository;
 import ua.mai.fam.repository.TogetherTypeRepository;
 
@@ -20,7 +21,7 @@ import java.util.List;
 public class FamRepositoryDataJdbcApplication implements CommandLineRunner {
 
     @Autowired
-    PersonRepository personRepository;
+    PersonDtoRepository personRepository;
 
     @Autowired
     TogetherTypeRepository togetherTypeRepository;
@@ -31,17 +32,17 @@ public class FamRepositoryDataJdbcApplication implements CommandLineRunner {
 
     @Override
     public void run(String... arg0) throws Exception {
-        System.out.println("** Person repositoryDataJdbc.count = " + personRepository.count());
-        System.out.println("** Person repositoryDataJdbc.findById(50000L) = " + personRepository.findById(50000L));
+        System.out.println("** PersonDto Repository DataJdbc.count = " + personRepository.count());
+        System.out.println("** PersonDto Repository DataJdbc.findById(50000L) = " + personRepository.findById(50000L));
 
-        System.out.println("** TogetherType repositoryDataJdbc.findById('MARRIAGE') = " +
+        System.out.println("** TogetherType Repository DataJdbc.findById('MARRIAGE') = " +
             togetherTypeRepository.findByCode("MARRIAGE"));
 
-//        System.out.println("** TogetherType repositoryDataJdbc.findById('MARRIAGE') = " +
+//        System.out.println("** TogetherType Repository DataJdbc.findById('MARRIAGE') = " +
 //            togetherTypeRepository.existsByCode("MARRIAGE"));
 //        List<String> list = new ArrayList<>();
 //        list.add("MARRIAGE");
-//        System.out.println("** TogetherType repositoryDataJdbc.findById('MARRIAGE') = " +
+//        System.out.println("** TogetherType Repository DataJdbc.findById('MARRIAGE') = " +
 //            togetherTypeRepository.findAllByCode(list));
 
     }

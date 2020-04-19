@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 //import org.springframework.boot.test.context.SpringBootTest;
 import ua.mai.fam.model.person.Person;
 import ua.mai.fam.restclient.FamClient;
+import ua.mai.fam.restclient.client.PersonClient;
 
 import java.util.List;
 
@@ -22,7 +23,8 @@ class FamRestClientApplicationTests {
 
     @Test
     void contextLoads() {
-        Person person = famClient.findPerson(50_000L);
+        PersonClient personClient = famClient.createPersonClient();
+        Person person = personClient.findPerson(50_000L);
         System.out.println("findPerson(): " + person);
 
 //        List<Person> persons = famClient.findAllPersons();

@@ -10,6 +10,7 @@ import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.client.RestTemplate;
 import ua.mai.fam.model.person.Person;
+import ua.mai.fam.restclient.client.PersonClient;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -20,7 +21,9 @@ public class FamClient {
 
     private RestTemplate restTemplate;
     private String baseUri;
-    private String personUri;
+
+    public static final String PERSON_PATH = "/persons";
+
 
     public FamClient(String baseUri) {
         if ((baseUri == null) || (baseUri.isEmpty())) {
@@ -44,20 +47,32 @@ public class FamClient {
 
     public void setBaseUri(String baseUri) {
         this.baseUri = baseUri;
-        personUri = this.baseUri + "/persons";
+//        personUri = this.baseUri + "/persons";
+    }
+    public String getBaseUri() {
+        return baseUri;
     }
 
-    public Person findPerson(Long id) {
-        Person person = (Person)restTemplate.getForObject(personUri + "/" + id, Person.class);
-        return person;
+    public RestTemplate getRestTemplate() {
+        return restTemplate;
     }
 
-    public List<Person> findAllPersons() {
-        //https://www.baeldung.com/spring-rest-template-list#1-using-arrays
-        ResponseEntity<Person[]> response = restTemplate.getForEntity(personUri, Person[].class);
-        Person[] personArr = response.getBody();
-        //https://stackoverflow.com/questions/53940628/convert-an-array-to-list-with-specific-range-in-java-8#answer-53940664
-        List<Person> personList = Arrays.stream(personArr, 1, personArr.length).collect(Collectors.toList());
-        return personList;
+//    public Person findPerson(Long id) {
+//        Person person = (Person)restTemplate.getForObject(personUri + "/" + id, Person.class);
+//        return person;
+//    }
+//
+//    public List<Person> findAllPersons() {
+//        //https://www.baeldung.com/spring-rest-template-list#1-using-arrays
+//        ResponseEntity<Person[]> response = restTemplate.getForEntity(personUri, Person[].class);
+//        Person[] personArr = response.getBody();
+//        //https://stackoverflow.com/questions/53940628/convert-an-array-to-list-with-specific-range-in-java-8#answer-53940664
+//        List<Person> personList = Arrays.stream(personArr, 1, personArr.length).collect(Collectors.toList());
+//        return personList;
+//    }
+
+    public PersonClient createPersonClient() {
+        return PersonClient.create(this, PERSON_PATH);
     }
+
 }

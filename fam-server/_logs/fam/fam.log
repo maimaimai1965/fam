@@ -560,7 +560,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:13:36,173 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@4bd51d3e]
+2020-04-01 14:13:36,173 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@4bd51d3e]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -896,7 +896,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:13:37,747 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@7c0777b5]
+2020-04-01 14:13:37,747 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@7c0777b5]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -1232,7 +1232,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:13:39,228 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@5e5beb8a]
+2020-04-01 14:13:39,228 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@5e5beb8a]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -1568,7 +1568,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:13:40,641 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@1f782c05]
+2020-04-01 14:13:40,641 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@1f782c05]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -1904,7 +1904,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:13:42,165 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@357c9bd9]
+2020-04-01 14:13:42,165 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@357c9bd9]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -2240,7 +2240,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:13:43,554 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@20cff21e]
+2020-04-01 14:13:43,554 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@20cff21e]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -2576,7 +2576,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:13:44,989 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@14d1737a]
+2020-04-01 14:13:44,989 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@14d1737a]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -2912,7 +2912,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:13:46,375 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@1f39269d]
+2020-04-01 14:13:46,375 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@1f39269d]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -3248,7 +3248,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:13:47,750 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@344f9467]
+2020-04-01 14:13:47,750 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@344f9467]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -3584,7 +3584,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:13:49,129 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@f3876ef]
+2020-04-01 14:13:49,129 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@f3876ef]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -3920,7 +3920,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:13:50,472 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@26cdd4af]
+2020-04-01 14:13:50,472 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@26cdd4af]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -4256,7 +4256,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:13:51,872 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@30665461]
+2020-04-01 14:13:51,872 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@30665461]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -4592,7 +4592,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:13:53,242 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@47d4e28a]
+2020-04-01 14:13:53,242 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@47d4e28a]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -4928,7 +4928,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:13:54,582 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@152035eb]
+2020-04-01 14:13:54,582 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@152035eb]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -5264,7 +5264,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:13:55,931 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@b1fa523]
+2020-04-01 14:13:55,931 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@b1fa523]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -5600,7 +5600,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:13:57,330 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@25a2c4dc]
+2020-04-01 14:13:57,330 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@25a2c4dc]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -5935,7 +5935,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:13:58,660 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@646c872a]
+2020-04-01 14:13:58,660 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@646c872a]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -6270,7 +6270,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:13:59,970 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@11ad327f]
+2020-04-01 14:13:59,970 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@11ad327f]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -6605,7 +6605,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:14:01,340 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@52afcdd8]
+2020-04-01 14:14:01,340 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@52afcdd8]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -6940,7 +6940,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:14:02,681 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@4eb3b690]
+2020-04-01 14:14:02,681 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@4eb3b690]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -7275,7 +7275,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:14:04,040 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@34dda1b4]
+2020-04-01 14:14:04,040 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@34dda1b4]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -7610,7 +7610,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:14:05,390 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@7cd2d3b6]
+2020-04-01 14:14:05,390 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@7cd2d3b6]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -7945,7 +7945,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:14:06,720 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@54ee423f]
+2020-04-01 14:14:06,720 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@54ee423f]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -8280,7 +8280,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:14:08,072 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@36b86248]
+2020-04-01 14:14:08,072 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@36b86248]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -8615,7 +8615,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:14:09,404 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@7d2d5625]
+2020-04-01 14:14:09,404 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@7d2d5625]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -8950,7 +8950,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:14:10,769 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@27ae6f9e]
+2020-04-01 14:14:10,769 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@27ae6f9e]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -9285,7 +9285,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:14:12,075 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@6e925a46]
+2020-04-01 14:14:12,075 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@6e925a46]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -9620,7 +9620,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:14:13,396 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@2138386f]
+2020-04-01 14:14:13,396 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@2138386f]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -9955,7 +9955,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:14:14,686 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@3fcc58f8]
+2020-04-01 14:14:14,686 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@3fcc58f8]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -10559,10 +10559,10 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101)
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
 	... 95 common frames omitted
-2020-04-01 14:14:17,617 INFO  o.s.b.t.context.SpringBootTestContextBootstrapper.buildDefaultMergedContextConfiguration:308 - Neither @ContextConfiguration nor @ContextHierarchy found for test class [ua.mai.fam.repository.jdbc.PersonRepository4JdbcTest], using SpringBootContextLoader
-2020-04-01 14:14:17,617 INFO  o.s.test.context.support.AbstractContextLoader.generateDefaultLocations:264 - Could not detect default resource locations for test class [ua.mai.fam.repository.jdbc.PersonRepository4JdbcTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2020-04-01 14:14:17,617 INFO  o.s.t.c.support.AnnotationConfigContextLoaderUtils.detectDefaultConfigurationClasses:83 - Could not detect default configuration classes for test class [ua.mai.fam.repository.jdbc.PersonRepository4JdbcTest]: PersonRepository4JdbcTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2020-04-01 14:14:17,627 INFO  o.s.b.t.context.SpringBootTestContextBootstrapper.getOrFindConfigurationClasses:235 - Found @SpringBootConfiguration ua.mai.fam.FamApplication for test class ua.mai.fam.repository.jdbc.PersonRepository4JdbcTest
+2020-04-01 14:14:17,617 INFO  o.s.b.t.context.SpringBootTestContextBootstrapper.buildDefaultMergedContextConfiguration:308 - Neither @ContextConfiguration nor @ContextHierarchy found for test class [ua.mai.fam.repository.jdbc.PersonDtoRepository4JdbcTest], using SpringBootContextLoader
+2020-04-01 14:14:17,617 INFO  o.s.test.context.support.AbstractContextLoader.generateDefaultLocations:264 - Could not detect default resource locations for test class [ua.mai.fam.repository.jdbc.PersonDtoRepository4JdbcTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-04-01 14:14:17,617 INFO  o.s.t.c.support.AnnotationConfigContextLoaderUtils.detectDefaultConfigurationClasses:83 - Could not detect default configuration classes for test class [ua.mai.fam.repository.jdbc.PersonDtoRepository4JdbcTest]: PersonRepository4JdbcTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2020-04-01 14:14:17,627 INFO  o.s.b.t.context.SpringBootTestContextBootstrapper.getOrFindConfigurationClasses:235 - Found @SpringBootConfiguration ua.mai.fam.FamApplication for test class ua.mai.fam.repository.jdbc.PersonDtoRepository4JdbcTest
 2020-04-01 14:14:17,627 INFO  o.s.b.t.context.SpringBootTestContextBootstrapper.getDefaultTestExecutionListenerClassNames:248 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener]
 2020-04-01 14:14:17,627 INFO  o.s.b.t.context.SpringBootTestContextBootstrapper.getTestExecutionListeners:177 - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@125c443, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@71d94ab, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@21f3a99c, org.springframework.test.context.support.DirtiesContextTestExecutionListener@76c1ede3, org.springframework.test.context.transaction.TransactionalTestExecutionListener@59e938a4, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@323a47fe, org.springframework.test.context.event.EventPublishingTestExecutionListener@eb9b76c, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@776eedad, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@6752d7fc, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7b7695f, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4476ac12, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@447522b4, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@3569f0f1, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@9a88a92]
 2020-04-01 14:14:17,667 INFO  u.m.fam.repository.jdbc.PersonRepository4JdbcTest.logStarting:55 - Starting PersonRepository4JdbcTest on PC-MAI with PID 10768 (started by mai in D:\JAVA\WORK\idea_home\fam\fam-server)
@@ -10950,7 +10950,7 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101)
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
 	... 95 common frames omitted
-2020-04-01 14:14:19,980 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonRepository4JdbcTest@191a3448]
+2020-04-01 14:14:19,980 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonDtoRepository4JdbcTest@191a3448]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -11447,7 +11447,7 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101)
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
 	... 95 common frames omitted
-2020-04-01 14:14:22,341 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonRepository4JdbcTest@2b45ede]
+2020-04-01 14:14:22,341 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonDtoRepository4JdbcTest@2b45ede]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -11944,7 +11944,7 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101)
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
 	... 95 common frames omitted
-2020-04-01 14:14:24,721 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonRepository4JdbcTest@42cb8174]
+2020-04-01 14:14:24,721 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonDtoRepository4JdbcTest@42cb8174]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -12441,7 +12441,7 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101)
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
 	... 95 common frames omitted
-2020-04-01 14:14:27,096 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonRepository4JdbcTest@74355746]
+2020-04-01 14:14:27,096 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonDtoRepository4JdbcTest@74355746]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -12938,7 +12938,7 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101)
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
 	... 95 common frames omitted
-2020-04-01 14:14:29,481 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonRepository4JdbcTest@4435c9b9]
+2020-04-01 14:14:29,481 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonDtoRepository4JdbcTest@4435c9b9]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -13435,7 +13435,7 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101)
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
 	... 95 common frames omitted
-2020-04-01 14:14:31,833 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonRepository4JdbcTest@6ff08304]
+2020-04-01 14:14:31,833 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonDtoRepository4JdbcTest@6ff08304]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -13932,7 +13932,7 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101)
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
 	... 95 common frames omitted
-2020-04-01 14:14:34,179 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonRepository4JdbcTest@dfb044a]
+2020-04-01 14:14:34,179 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonDtoRepository4JdbcTest@dfb044a]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -14429,7 +14429,7 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101)
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
 	... 95 common frames omitted
-2020-04-01 14:14:36,565 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonRepository4JdbcTest@1ad55833]
+2020-04-01 14:14:36,565 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonDtoRepository4JdbcTest@1ad55833]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -14926,7 +14926,7 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101)
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
 	... 95 common frames omitted
-2020-04-01 14:14:38,925 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonRepository4JdbcTest@10bf4f1c]
+2020-04-01 14:14:38,925 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonDtoRepository4JdbcTest@10bf4f1c]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -15423,7 +15423,7 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101)
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
 	... 95 common frames omitted
-2020-04-01 14:14:41,305 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonRepository4JdbcTest@c7eb2a9]
+2020-04-01 14:14:41,305 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonDtoRepository4JdbcTest@c7eb2a9]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -15898,7 +15898,7 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101)
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
 	... 95 common frames omitted
-2020-04-01 14:14:42,154 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonRepository4JdbcTest@3693deae]
+2020-04-01 14:14:42,154 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonDtoRepository4JdbcTest@3693deae]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -16049,7 +16049,7 @@ Action:
 
 Consider defining a bean of type 'ua.mai.fam.controller.rest.PersonRestController' in your configuration.
 
-2020-04-01 14:14:45,729 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonRepository4JdbcTest@5c275b83]
+2020-04-01 14:14:45,729 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonDtoRepository4JdbcTest@5c275b83]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -16181,7 +16181,7 @@ Action:
 
 Consider defining a bean of type 'ua.mai.fam.controller.rest.PersonRestController' in your configuration.
 
-2020-04-01 14:14:47,653 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonRepository4JdbcTest@16678762]
+2020-04-01 14:14:47,653 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74a15f4] to prepare test instance [ua.mai.fam.repository.jdbc.PersonDtoRepository4JdbcTest@16678762]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -16389,7 +16389,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:15:55,667 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@3bbf6abe]
+2020-04-01 14:15:55,667 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@3bbf6abe]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -16596,7 +16596,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:15:57,514 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@6bee793f]
+2020-04-01 14:15:57,514 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@6bee793f]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -16803,7 +16803,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:15:59,092 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@62765aec]
+2020-04-01 14:15:59,092 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@62765aec]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -17010,7 +17010,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:16:00,747 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@50085d9c]
+2020-04-01 14:16:00,747 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@50085d9c]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -17217,7 +17217,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:16:02,155 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@69796bd0]
+2020-04-01 14:16:02,155 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@69796bd0]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -17424,7 +17424,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:16:03,359 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@649b5891]
+2020-04-01 14:16:03,359 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@649b5891]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -17631,7 +17631,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:16:04,807 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@5599b5bb]
+2020-04-01 14:16:04,807 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@5599b5bb]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -17838,7 +17838,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:16:06,309 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@33ebe4f0]
+2020-04-01 14:16:06,309 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@33ebe4f0]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -18045,7 +18045,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:16:07,661 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@685e6a68]
+2020-04-01 14:16:07,661 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@16612a51] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@685e6a68]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
@@ -18252,7 +18252,7 @@ Caused by: java.lang.IllegalArgumentException: No PersistenceProvider specified 
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1855)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1792)
 	... 78 common frames omitted
-2020-04-01 14:16:18,142 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74ea2410] to prepare test instance [ua.mai.fam.repository.datajdbc.PersonRepository4DataJpaTest@340a8894]
+2020-04-01 14:16:18,142 ERROR o.springframework.test.context.TestContextManager.prepareTestInstance:248 - Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@74ea2410] to prepare test instance [ua.mai.fam.repository.datajpa.PersonRepository4DataJpaTest@340a8894]
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:132)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)

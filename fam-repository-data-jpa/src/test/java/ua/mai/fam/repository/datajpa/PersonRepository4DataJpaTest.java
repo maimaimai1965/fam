@@ -1,57 +1,30 @@
-package ua.mai.fam.repository.jdbc;
+package ua.mai.fam.repository.datajpa;
 
-import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
+import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import ua.mai.fam.repository.PersonRepository;
+import ua.mai.fam.ProfileResolver4RepositoryDataJpa;
 import ua.mai.fam.repository.AbstractPersonRepositoryTest;
-import ua.mai.fam.ProfileResolver4RepositoryJdbc;
-import ua.mai.fam.repository.jdbc.PersonRepository4Jdbc;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import ua.mai.fam.util.SpringUtil;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import ua.mai.fam.repository.PersonRepository;
 
 /**
  *
  */
-@JdbcTest
-@Import(PersonRepository4JdbcTest.TestConfig.class)
-@ActiveProfiles(resolver = ProfileResolver4RepositoryJdbc.class)
-public class PersonRepository4JdbcTest extends AbstractPersonRepositoryTest {
-
-    @TestConfiguration
-    public static class TestConfig {
-        @Bean
-        public PersonRepository4Jdbc personRepository4Jdbc(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
-           return new PersonRepository4Jdbc(jdbcTemplate, namedParameterJdbcTemplate);
-        }
-    }
+@DataJpaTest
+@ActiveProfiles(resolver = ProfileResolver4RepositoryDataJpa.class)
+public class PersonRepository4DataJpaTest extends AbstractPersonRepositoryTest {
 
     @Autowired
-    //Нельзя объявлять класс PersonToRepository, т.к. есть transactionManager - должен быть интерфейс.
+    //Нельзя объявлять класс PersonToRepository4Jpa, т.к. есть transactionManager - должен быть интерфейс.
     //https://ru.stackoverflow.com/questions/663704/unsatisfieddependencyexception-error-creating-beanby-beannotofrequiredtypeexce
     private PersonRepository repository;
 
     @Override
-    public PersonRepository getRepository() {
+    protected PersonRepository getRepository() {
         return repository;
-    }
-
-
-    @Test
-    public void classRepositoryTest() throws Exception {
-        PersonRepository usedRepository;
-        usedRepository = SpringUtil.unproxyBean(repository);
-        assertEquals(PersonRepository4Jdbc.class, usedRepository.getClass(), "Error!!! Not expected repository!!!");
     }
 
     @Test
@@ -59,16 +32,18 @@ public class PersonRepository4JdbcTest extends AbstractPersonRepositoryTest {
     public void save_NewPersonWithEmptyIdTest() {
         super.save_NewPersonWithEmptyIdTest();
     }
-    @Test
+    //@Test
     @Override
     public void save_PersonWithIdWhenPersonExistsInDbTest() {
         super.save_PersonWithIdWhenPersonExistsInDbTest();
     }
-    @Test
+    //TODO Открыть тест, когда будет реализовано для этого случая возникновение исключения для Data JDBC репозитория.
+    //@Test
     @Override
     public void save_PersonWithIdWhenPersonNotExistsInDbTest() {
         super.save_PersonWithIdWhenPersonNotExistsInDbTest();
     }
+    @Test
     @Override
     public void save_NullPersonTest() {
         super.save_NullPersonTest();

@@ -5,8 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import ua.mai.fam.model.person.Person;
 import ua.mai.fam.repository.PersonRepository;
 
-@Profile("da-data-jdbc")
-public interface PersonRepository4DataJdbc extends PersonRepository,
-                                                   CrudRepository<Person, Long>, WithOperations<Person>  {
-
+@Profile("da-data-jdbc-old")
+public interface PersonRepository4DataJdbc extends CrudRepository<Person, Long>, WithOperations<Person>,
+                                                   PersonRepository {
 }

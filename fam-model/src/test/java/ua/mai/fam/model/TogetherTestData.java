@@ -1,8 +1,5 @@
 package ua.mai.fam.model;
 
-import ua.mai.fam.model.person.Person;
-import ua.mai.fam.model.person.PersonBuilder;
-
 import java.time.LocalDate;
 
 public class TogetherTestData {
@@ -20,8 +17,8 @@ public class TogetherTestData {
     public static Together getNewTogether01() {
         return new TogetherBuilder()
             .setTogetherType(TogetherTypeTestData.MARRIAGE_TOGETHER_TYPE)
-            .setPerson1(PersonTestData.getNewPersons01())
-            .setPerson2(PersonTestData.getNewPersons03())
+            .setPerson1(PersonTestData.getNewPerson01())
+            .setPerson2(PersonTestData.getNewPerson03())
             .setStartDate(startDate01)
             .setFinishDate(finishDate01)
             .createTogether();
@@ -30,8 +27,8 @@ public class TogetherTestData {
     public static Together getNewTogether02() {
         return new TogetherBuilder()
             .setTogetherType(TogetherTypeTestData.MARRIAGE_TOGETHER_TYPE)
-            .setPerson1(PersonTestData.getNewPersons02())
-            .setPerson2(PersonTestData.getNewPersons03())
+            .setPerson1(PersonTestData.getNewPerson02())
+            .setPerson2(PersonTestData.getNewPerson03())
             .setStartDate(startDate02)
             .setFinishDate(finishDate02)
             .createTogether();

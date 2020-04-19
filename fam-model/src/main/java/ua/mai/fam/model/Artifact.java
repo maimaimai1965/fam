@@ -2,6 +2,7 @@ package ua.mai.fam.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import ua.mai.fam.model.person.Person;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -26,27 +27,53 @@ public class Artifact {
     @Column(name = "name", length = 100)
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "ARTIFACT_TYPE_CODE", nullable = false)
+    private ArtifactType artifactType;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "OWNER_ID", nullable = false)
+    private Person owner;
+
     @Basic
-    @Column(name = "description", length = 500)
+    @Column(name = "DESCRIPTION", length = 500)
     private String description;
 
     @Basic
-    @Column(name = "link", length = 200)
+    @Column(name = "LINK", length = 200)
     private String link;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "BOX_ID", nullable = true)
+    private Box box;
 
 
     public long getId() {
         return id;
     }
-//    public void setId(long id) {
-//        this.id = id;
-//    }
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
+    }
+
+    public ArtifactType getArtifactType() {
+        return artifactType;
+    }
+    public void setArtifactType(ArtifactType artifactType) {
+        this.artifactType = artifactType;
+    }
+
+    public Person getOwner() {
+        return owner;
+    }
+    public void setOwner(Person owner) {
+        this.owner = owner;
     }
 
     public String getDescription() {
@@ -63,20 +90,36 @@ public class Artifact {
         this.link = link;
     }
 
+    public Box getBox() {
+        return box;
+    }
+    public void setBox(Box box) {
+        this.box = box;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Artifact artifact = (Artifact) o;
-        return id == artifact.id &&
-            Objects.equals(name, artifact.name) &&
-            Objects.equals(description, artifact.description) &&
-            Objects.equals(link, artifact.link);
+
+        if (id != artifact.id) return false;
+        if (name != null ? !name.equals(artifact.name) : artifact.name != null) return false;
+        if (!artifactType.equals(artifact.artifactType)) return false;
+        if (description != null ? !description.equals(artifact.description) : artifact.description != null)
+            return false;
+        return link != null ? link.equals(artifact.link) : artifact.link == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, link);
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + artifactType.hashCode();
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (link != null ? link.hashCode() : 0);
+        return result;
     }
+
 }

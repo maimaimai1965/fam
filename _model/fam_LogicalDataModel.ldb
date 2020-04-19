@@ -1457,7 +1457,7 @@ DESTINATION 0 Arial Unicode MS,8,N</a:FontList>
 <o:RelationshipSymbol Id="o13">
 <a:ModificationDate>1585590960</a:ModificationDate>
 <a:CenterTextOffset>(1431, -1027)</a:CenterTextOffset>
-<a:Rect>((-6536,7383), (30457,13189))</a:Rect>
+<a:Rect>((-6536,7384), (30457,13189))</a:Rect>
 <a:ListOfPoints>((21339,12789),(21339,8937),(-6136,8937))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>55</a:ArrowStyle>
@@ -1572,7 +1572,7 @@ DESTINATION 0 Arial Unicode MS,8,N</a:FontList>
 <o:RelationshipSymbol Id="o27">
 <a:ModificationDate>1585591000</a:ModificationDate>
 <a:CenterTextOffset>(-136, 262)</a:CenterTextOffset>
-<a:Rect>((12858,-1144), (23745,5754))</a:Rect>
+<a:Rect>((12858,-1144), (23745,5761))</a:Rect>
 <a:ListOfPoints>((13258,4379),(19719,4379),(19719,-744))</a:ListOfPoints>
 <a:CornerStyle>2</a:CornerStyle>
 <a:ArrowStyle>0</a:ArrowStyle>
@@ -2007,10 +2007,11 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>gender</a:Code>
 <a:CreationDate>1583263646</a:CreationDate>
 <a:Creator>mai</a:Creator>
-<a:ModificationDate>1583263923</a:ModificationDate>
+<a:ModificationDate>1586860409</a:ModificationDate>
 <a:Modifier>mai</a:Modifier>
 <a:DataType>A1</a:DataType>
 <a:Length>1</a:Length>
+<a:LogicalAttribute.Mandatory>1</a:LogicalAttribute.Mandatory>
 </o:EntityAttribute>
 </c:Attributes>
 </o:Entity>

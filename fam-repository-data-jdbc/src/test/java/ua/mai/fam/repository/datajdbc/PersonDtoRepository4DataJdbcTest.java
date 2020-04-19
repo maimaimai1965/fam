@@ -1,29 +1,31 @@
 package ua.mai.fam.repository.datajdbc;
 
-import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import ua.mai.fam.ProfileResolver4RepositoryDataJpa;
-import ua.mai.fam.repository.AbstractPersonRepositoryTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import ua.mai.fam.ProfileResolver4RepositoryDataJdbc;
+import ua.mai.fam.dto.PersonDto;
+import ua.mai.fam.repository.AbstractPersonDtoRepositoryTest;
+import ua.mai.fam.repository.AbstractPersonRepositoryTest;
+import ua.mai.fam.repository.PersonDtoRepository;
 import ua.mai.fam.repository.PersonRepository;
 
 /**
  *
  */
-@DataJpaTest
-@ActiveProfiles(resolver = ProfileResolver4RepositoryDataJpa.class)
-public class PersonRepository4DataJpaTest extends AbstractPersonRepositoryTest {
+//@DataJdbcTest - не получилось использовать, поэтому используется @SpringBootTest
+@SpringBootTest
+@ActiveProfiles(resolver = ProfileResolver4RepositoryDataJdbc.class)
+public class PersonDtoRepository4DataJdbcTest extends AbstractPersonDtoRepositoryTest {
 
     @Autowired
-    //Нельзя объявлять класс PersonToRepository4Jpa, т.к. есть transactionManager - должен быть интерфейс.
+    //PersonRepository должен быть интерфейсом, т.к. есть transactionManager.
     //https://ru.stackoverflow.com/questions/663704/unsatisfieddependencyexception-error-creating-beanby-beannotofrequiredtypeexce
-    private PersonRepository repository;
+    private PersonDtoRepository repository;
 
     @Override
-    protected PersonRepository getRepository() {
+    protected PersonDtoRepository getRepository() {
         return repository;
     }
 
