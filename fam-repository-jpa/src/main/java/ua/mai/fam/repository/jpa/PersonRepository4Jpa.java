@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ua.mai.fam.model.person.Person;
 import ua.mai.fam.repository.PersonRepository;
 import ua.mai.fam.util.exception.FoundException;
+import ua.mai.fam.util.exception.NotFoundException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,30 +28,37 @@ public class PersonRepository4Jpa implements PersonRepository {
 
     @Transactional
     @Override
-    public Person save(Person person) {
-        if (person == null) {
+    public Person save(Person entity) {
+        if (entity == null) {
             throw new IllegalArgumentException("Person can't be null.");
         }
-        if (person.isNew()) {
+        if (entity.isNew()) {
             //Если новый person
-            entityManager.persist(person);
-            return person;
+            entityManager.persist(entity);
+            return entity;
         } else {
-            return entityManager.merge(person);
+            Person managedPerson = entityManager.merge(entity);
+            if (managedPerson.getId().equals(entity.getId())) {
+                return managedPerson;
+            }
+            else {
+                entityManager.detach(managedPerson);
+                throw new NotFoundException("person", "id", entity.getId().toString());
+            }
         }
     }
 
     @Override
     @Transactional
-    public Person insert(Person person) {
-        if (person == null) {
+    public Person insert(Person entity) {
+        if (entity == null) {
             throw new IllegalArgumentException("Object can't be null.");
         }
-        if (person.getId() != null) {
-            throw new FoundException("Exists id=" + person.getId() + " in new inserted object.");
+        if (entity.getId() != null) {
+            throw new FoundException("Exists id=" + entity.getId() + " in new inserted object.");
         }
-        entityManager.persist(person);
-        return person;
+        entityManager.persist(entity);
+        return entity;
     }
 
     @Transactional
@@ -81,12 +89,12 @@ public class PersonRepository4Jpa implements PersonRepository {
 
     @Transactional
     @Override
-    public void delete(Person person) {
-        if (person == null) {
+    public void delete(Person entity) {
+        if (entity == null) {
             throw new IllegalArgumentException("Person can't be null.");
         }
-        if (!person.isNew()) {
-            deleteById(person.getId());
+        if (!entity.isNew()) {
+            deleteById(entity.getId());
         }
     }
 
@@ -135,10 +143,8 @@ public class PersonRepository4Jpa implements PersonRepository {
 
     @Override
     public long count() {
-        //TODO
-        return -1;
-//        long count = jdbcTemplate.queryForObject("SELECT COUNT(*) FROM person", Long.class);
-//        return count;
+        long count = entityManager.createQuery("SELECT COUNT(*) FROM Person", Long.class).getSingleResult();
+        return count;
     }
 
     @Override

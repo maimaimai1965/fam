@@ -7,6 +7,7 @@ import ua.mai.fam.dto.PersonDto;
 import ua.mai.fam.model.Gender;
 import ua.mai.fam.model.ParentChild;
 import ua.mai.fam.util.HasId;
+import ua.mai.fam.util.ToDto;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -17,46 +18,44 @@ import java.util.stream.Collectors;
 
 /**
  */
-@JsonInclude(JsonInclude.Include.NON_NULL)   //Не выводить null поля в JSON
-@JsonIgnoreProperties(ignoreUnknown = false)
 //--For JPA
 @javax.persistence.Entity
 @javax.persistence.Table(name = "PERSON")
-public class Person implements HasId<Long> {
+public class Person implements HasId<Long>, ToDto<PersonDto> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_person")
     @SequenceGenerator(name="seq_person", sequenceName="SEQ_PERSON", allocationSize = 20)
-    @Column(name = "id", nullable = false)
+    @Column(name = "ID", nullable = false)
     private Long id;
 
     @Basic
     @NotNull
-    @Column(name = "surname", length = 50)
+    @Column(name = "SURNAME", length = 50)
     private String surname;
 
     @Basic
-    @Column(name = "first_name", length = 25)
+    @Column(name = "FIRST_NAME", length = 25)
     private String firstName;
 
     @Basic
-    @Column(name = "middle_name", length = 30)
+    @Column(name = "MIDDLE_NAME", length = 30)
     private String middleName;
 
     @Basic
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "birth_date")
+    @Column(name = "BIRTH_DATE")
     private LocalDate birthDate;
 
     @Basic
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "death_date")
+    @Column(name = "DEATH_DATE")
     private LocalDate deathDate;
 
     @Basic
     @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "gender", length = 1)
+    @Column(name = "GENDER", length = 1)
     private Gender gender;
 
     @OneToMany(mappedBy = "child", fetch = FetchType.LAZY)
@@ -143,31 +142,41 @@ public class Person implements HasId<Long> {
         this.gender = gender;
     }
 
+    @Override
     public PersonDto toDto() {
         return new PersonDto(id, surname, firstName, middleName, birthDate, deathDate, gender);
     }
 
     public static List<PersonDto> toDtos(Collection<Person> entities)  {
-        return entities.stream().map(entity -> entity.toDto()).collect(Collectors.toList());
+        return (List<PersonDto>)ToDto.toDtos(entities);
+//        return entities.stream().map(entity -> entity.toDto()).collect(Collectors.toList());
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person personTo = (Person) o;
-        return Objects.equals(id, personTo.id) &&
-            surname.equals(personTo.surname) &&
-            Objects.equals(firstName, personTo.firstName) &&
-            Objects.equals(middleName, personTo.middleName) &&
-            Objects.equals(birthDate, personTo.birthDate) &&
-            Objects.equals(deathDate, personTo.deathDate) &&
-            Objects.equals(gender, personTo.gender);
+        if (!(o instanceof Person)) return false;
+
+        Person person = (Person) o;
+
+        if (!getId().equals(person.getId())) return false;
+        if (!getSurname().equals(person.getSurname())) return false;
+        if (getFirstName() != null ? !getFirstName().equals(person.getFirstName()) : person.getFirstName() != null)
+            return false;
+        if (getMiddleName() != null ? !getMiddleName().equals(person.getMiddleName()) : person.getMiddleName() != null)
+            return false;
+        if (getBirthDate() != null ? !getBirthDate().equals(person.getBirthDate()) : person.getBirthDate() != null)
+            return false;
+        if (getDeathDate() != null ? !getDeathDate().equals(person.getDeathDate()) : person.getDeathDate() != null)
+            return false;
+        return getGender() == person.getGender();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        int result = getId().hashCode();
+        result = 31 * result + getSurname().hashCode();
+        return result;
     }
 
     @Override

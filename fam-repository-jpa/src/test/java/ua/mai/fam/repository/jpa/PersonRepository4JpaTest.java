@@ -38,13 +38,14 @@ public class PersonRepository4JpaTest extends AbstractPersonRepositoryTest {
     public void save_NewPersonWithEmptyIdTest() {
         super.save_NewPersonWithEmptyIdTest();
     }
+
     //@Test
     @Override
     public void save_PersonWithIdWhenPersonExistsInDbTest() {
         super.save_PersonWithIdWhenPersonExistsInDbTest();
     }
     //TODO Открыть тест, когда будет реализовано для этого случая возникновение исключения для Data JDBC репозитория.
-    //@Test
+    @Test
     @Override
     public void save_PersonWithIdWhenPersonNotExistsInDbTest() {
         super.save_PersonWithIdWhenPersonNotExistsInDbTest();

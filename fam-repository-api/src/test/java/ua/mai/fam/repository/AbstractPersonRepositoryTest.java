@@ -296,8 +296,15 @@ public abstract class AbstractPersonRepositoryTest {
 
     public void countTest(){
         long count = getRepository().count();
-        Collection<Person> persons = (Collection<Person>)getRepository().findAll();
-        assertEquals(count, persons.size());
+        Person addedPerson = getRepository().save(PersonTestData.getNewPerson01());
+
+        long countPlusOne = getRepository().count();
+        assertEquals(countPlusOne, count+1);
+
+        getRepository().deleteById(addedPerson.getId());
+
+        long countRestored = getRepository().count();
+        assertEquals(countRestored, count);
     }
 
     public void existsById_ExistsIdTest(){

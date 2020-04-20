@@ -61,7 +61,7 @@ PersonDtoRepository4Jdbc implements PersonDtoRepository {
                           "birth_date=:birth_date, death_date=:death_date, gender=:gender " +
                       "WHERE id=:id"
                 , paramMap) == 0) {
-                throw new NotFoundException("Not exists person with id=" + entity.getId() + ".");
+                throw new NotFoundException("person", "id", entity.getId().toString());
             }
             return entity;
         }

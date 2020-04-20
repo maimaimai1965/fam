@@ -1,31 +1,27 @@
-package ua.mai.fam.model;
+package ua.mai.fam.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import ua.mai.fam.dto.PersonDto;
-import ua.mai.fam.dto.TogetherTypeDto;
+import ua.mai.fam.model.TogetherType;
 import ua.mai.fam.model.person.Person;
 import ua.mai.fam.util.HasId;
 import ua.mai.fam.util.ToDto;
+import ua.mai.fam.util.ToEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
-//--For JPA
-@Entity
-@Table(name = "TOGETHER_TYPE", schema = "public", catalog = "fam")
-public class TogetherType implements HasId<String>, ToDto<TogetherTypeDto> {
+@JsonInclude(JsonInclude.Include.NON_NULL)   //Не выводить null поля в JSON
+@JsonIgnoreProperties(ignoreUnknown = false)
+public class TogetherTypeDto implements HasId<String>, ToEntity<TogetherType> {
 
-    @Id
-    @Column(name = "CODE", nullable = false, length = 30)
+    //--for Data JDBC
+    @org.springframework.data.annotation.Id
     private String code;
 
-    @Basic
     @NotNull
-    @Column(name = "NAME", length = 100)
     private String name;
 
 
@@ -53,29 +49,30 @@ public class TogetherType implements HasId<String>, ToDto<TogetherTypeDto> {
     }
 
 
-    public TogetherType() {}
+    public TogetherTypeDto() {}
 
-    public TogetherType(String code, String name) {
+    public TogetherTypeDto(String code, String name) {
         this.code = code;
         this.name = name;
     }
 
 
     @Override
-    public TogetherTypeDto toDto() {
-        return new TogetherTypeDto(code, name);
+    public TogetherType toEntity() {
+        return new TogetherType(code, name);
     }
 
-    public static List<TogetherTypeDto> toDtos(Collection<TogetherType> entities)  {
-        return (List<TogetherTypeDto>) ToDto.toDtos(entities);
+    public static List<TogetherType> toEntities(Collection<PersonDto> dtos)  {
+        return (List<TogetherType>) ToEntity.toEntities(dtos);
     }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof TogetherType)) return false;
+        if (!(o instanceof TogetherTypeDto)) return false;
 
-        TogetherType that = (TogetherType) o;
+        TogetherTypeDto that = (TogetherTypeDto) o;
 
         if (!getCode().equals(that.getCode())) return false;
         return getName() != null ? getName().equals(that.getName()) : that.getName() == null;

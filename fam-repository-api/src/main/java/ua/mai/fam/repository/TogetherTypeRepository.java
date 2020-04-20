@@ -9,7 +9,7 @@ import java.util.Optional;
 /**
  * Содержит все методы которые определяет org.springframework.data.repository.CrudRepository.
  */
-public interface TogetherTypeRepository {
+public interface TogetherTypeRepository extends TogetherTypeRepositoryMarker {
 
     /** ------------------ Методы соответствующие интерфейсу CrudRepository ------------------------------------------*/
     /**

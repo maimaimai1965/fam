@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import ua.mai.fam.model.Gender;
 import ua.mai.fam.model.person.Person;
 import ua.mai.fam.util.HasId;
+import ua.mai.fam.util.ToEntity;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -26,7 +27,7 @@ import java.util.stream.Collectors;
 //Для DATA JDBC
 //https://stackoverflow.com/questions/53063266/how-to-map-entity-to-table-in-spring-data-jdbc#53077343
 @org.springframework.data.relational.core.mapping.Table("PERSON")
-public class PersonDto implements HasId<Long> {
+public class PersonDto implements HasId<Long>, ToEntity<Person> {
 
     //--for Data JDBC
     @org.springframework.data.annotation.Id
@@ -132,26 +133,16 @@ public class PersonDto implements HasId<Long> {
         this.gender = gender;
     }
 
+
+    @Override
     public Person toEntity() {
         return new Person(id, surname, firstName, middleName, birthDate, deathDate, gender);
     }
 
     public static List<Person> toEntities(Collection<PersonDto> dtos)  {
-        return dtos.stream().map(dto -> dto.toEntity()).collect(Collectors.toList());
+        return (List<Person>)ToEntity.toEntities(dtos);
     }
-    
-    @Override
-    public String toString() {
-        return "PersonDto {" +
-            "id=" + id +
-            ", surname='" + surname + '\'' +
-            ", firstName='" + firstName + '\'' +
-            ", middleName='" + middleName + '\'' +
-            ", birthDate=" + birthDate +
-            ", deathDate=" + deathDate +
-            ", gender='" + gender + '\'' +
-            '}';
-    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -180,4 +171,19 @@ public class PersonDto implements HasId<Long> {
         result = 31 * result + gender.hashCode();
         return result;
     }
+
+
+    @Override
+    public String toString() {
+        return "PersonDto {" +
+            "id=" + id +
+            ", surname='" + surname + '\'' +
+            ", firstName='" + firstName + '\'' +
+            ", middleName='" + middleName + '\'' +
+            ", birthDate=" + birthDate +
+            ", deathDate=" + deathDate +
+            ", gender='" + gender + '\'' +
+            '}';
+    }
+
 }
