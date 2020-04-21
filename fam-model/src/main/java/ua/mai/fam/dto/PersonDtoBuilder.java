@@ -8,6 +8,7 @@ import java.time.LocalDate;
 public class PersonDtoBuilder {
 
     private Long id;
+    private Long version;
     private String surname;
     private String firstName;
     private String middleName;
@@ -17,6 +18,11 @@ public class PersonDtoBuilder {
 
     public PersonDtoBuilder setId(Long id) {
         this.id = id;
+        return this;
+    }
+
+    public PersonDtoBuilder setVersion(Long version) {
+        this.version = version;
         return this;
     }
 
@@ -51,7 +57,7 @@ public class PersonDtoBuilder {
     }
 
     public PersonDto createPersonDto() {
-        return new PersonDto(id, surname, firstName, middleName, birthDate, deathDate, gender);
+        return new PersonDto(id, version, surname, firstName, middleName, birthDate, deathDate, gender);
     }
 
 }

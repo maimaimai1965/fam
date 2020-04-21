@@ -1,10 +1,6 @@
 package ua.mai.fam.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import ua.mai.fam.dto.PersonDto;
 import ua.mai.fam.dto.TogetherTypeDto;
-import ua.mai.fam.model.person.Person;
 import ua.mai.fam.util.HasId;
 import ua.mai.fam.util.ToDto;
 
@@ -12,7 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 //--For JPA
 @Entity
@@ -43,15 +38,6 @@ public class TogetherType implements HasId<String>, ToDto<TogetherTypeDto> {
         this.name = name;
     }
 
-    @Override
-    public String getTableName() {
-        return "TOGETHER_TYPE";
-    }
-    @Override
-    public String getId() {
-        return code;
-    }
-
 
     public TogetherType() {}
 
@@ -62,6 +48,16 @@ public class TogetherType implements HasId<String>, ToDto<TogetherTypeDto> {
 
 
     @Override
+    public String getId() {
+        return code;
+    }
+
+    @Override
+    public String getTableName() {
+        return "TOGETHER_TYPE";
+    }
+
+    @Override
     public TogetherTypeDto toDto() {
         return new TogetherTypeDto(code, name);
     }
@@ -69,6 +65,7 @@ public class TogetherType implements HasId<String>, ToDto<TogetherTypeDto> {
     public static List<TogetherTypeDto> toDtos(Collection<TogetherType> entities)  {
         return (List<TogetherTypeDto>) ToDto.toDtos(entities);
     }
+
 
     @Override
     public boolean equals(Object o) {

@@ -4,7 +4,7 @@ import ua.mai.fam.AbstractTimingExtension;
 import ua.mai.fam.AbstractTimingTest;
 import ua.mai.fam.model.PersonTestData;
 import ua.mai.fam.model.PersonTestUtil;
-import ua.mai.fam.model.person.Person;
+import ua.mai.fam.model.Person;
 import ua.mai.fam.repository.datajdbc.PersonRepository4DataJdbc;
 import ua.mai.fam.util.exception.FoundException;
 import org.junit.jupiter.api.extension.ExtendWith;

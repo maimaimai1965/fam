@@ -3,7 +3,7 @@ package ua.mai.fam.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
-import ua.mai.fam.model.person.Person;
+import ua.mai.fam.model.Person;
 import ua.mai.fam.repository.PersonRepository;
 import ua.mai.fam.util.SpringUtil;
 

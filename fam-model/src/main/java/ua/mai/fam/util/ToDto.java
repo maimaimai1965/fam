@@ -1,8 +1,5 @@
 package ua.mai.fam.util;
 
-import ua.mai.fam.dto.PersonDto;
-import ua.mai.fam.model.person.Person;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;

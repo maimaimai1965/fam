@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import ua.mai.fam.model.person.Person;
+import ua.mai.fam.model.Person;
 import ua.mai.fam.repository.PersonRepository;
 import ua.mai.fam.util.exception.FoundException;
 import ua.mai.fam.util.exception.NotFoundException;
@@ -120,10 +120,8 @@ public class PersonRepository4Jpa implements PersonRepository {
 
     @Override
     public Iterable<Person> findAll() {
-        //TODO
-        return null;
-//        List<Person> persons = jdbcTemplate.query("SELECT * FROM person", ROW_MAPPER);
-//        return persons;
+        List<Person> list = entityManager.createQuery("SELECT p FROM Person AS p").getResultList();
+        return list;
     }
 
     @Override

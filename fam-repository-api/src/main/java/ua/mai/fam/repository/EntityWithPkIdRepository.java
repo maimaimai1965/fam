@@ -1,7 +1,5 @@
 package ua.mai.fam.repository;
 
-import ua.mai.fam.model.person.Person;
-import ua.mai.fam.util.HasId;
 import ua.mai.fam.util.exception.FoundException;
 import ua.mai.fam.util.exception.NotFoundException;
 

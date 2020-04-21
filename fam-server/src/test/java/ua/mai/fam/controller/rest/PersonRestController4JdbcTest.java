@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import ua.mai.fam.config.JdbcConfig;
 import ua.mai.fam.model.PersonTestData;
-import ua.mai.fam.model.person.Person;
+import ua.mai.fam.model.Person;
 import ua.mai.fam.repository.PersonRepository;
 import ua.mai.fam.repository.jdbc.PersonRepository4Jdbc;
 

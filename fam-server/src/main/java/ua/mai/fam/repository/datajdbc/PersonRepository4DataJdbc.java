@@ -1,6 +1,6 @@
 package ua.mai.fam.repository.datajdbc;
 
-import ua.mai.fam.model.person.Person;
+import ua.mai.fam.model.Person;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.repository.CrudRepository;
 

@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 import ua.mai.fam.ProfileResolver4RepositoryJpa;
-import ua.mai.fam.config.JpaConfig;
 import ua.mai.fam.repository.AbstractPersonRepositoryTest;
 import ua.mai.fam.repository.PersonRepository;
 
@@ -39,12 +38,11 @@ public class PersonRepository4JpaTest extends AbstractPersonRepositoryTest {
         super.save_NewPersonWithEmptyIdTest();
     }
 
-    //@Test
+    @Test
     @Override
     public void save_PersonWithIdWhenPersonExistsInDbTest() {
         super.save_PersonWithIdWhenPersonExistsInDbTest();
     }
-    //TODO Открыть тест, когда будет реализовано для этого случая возникновение исключения для Data JDBC репозитория.
     @Test
     @Override
     public void save_PersonWithIdWhenPersonNotExistsInDbTest() {

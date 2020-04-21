@@ -1,12 +1,11 @@
-package ua.mai.fam.model.person;
-
-import ua.mai.fam.model.Gender;
+package ua.mai.fam.model;
 
 import java.time.LocalDate;
 
 public class PersonBuilder {
 
     private Long id;
+    private Long version;
     private String surname;
     private String firstName;
     private String middleName;
@@ -16,6 +15,11 @@ public class PersonBuilder {
 
     public PersonBuilder setId(Long id) {
         this.id = id;
+        return this;
+    }
+
+    public PersonBuilder setVersion(Long version) {
+        this.version = version;
         return this;
     }
 
@@ -50,7 +54,7 @@ public class PersonBuilder {
     }
 
     public Person createPerson() {
-        return new Person(id, surname, firstName, middleName, birthDate, deathDate, gender);
+        return new Person(id, version, surname, firstName, middleName, birthDate, deathDate, gender);
     }
 
 }

@@ -3,7 +3,7 @@ package ua.mai.fam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import ua.mai.fam.model.person.Person;
+import ua.mai.fam.model.Person;
 import ua.mai.fam.restclient.FamClient;
 import ua.mai.fam.restclient.RestClientConfiguration;
 import ua.mai.fam.restclient.client.PersonClient;

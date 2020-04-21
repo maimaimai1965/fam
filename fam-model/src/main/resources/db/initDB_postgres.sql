@@ -9,6 +9,7 @@
 CREATE SEQUENCE seq_person START WITH 100000 INCREMENT BY 20;
 create table person (
   id                   BIGINT               DEFAULT nextval('seq_person'),
+  version              BIGINT               not null,
   surname              VARCHAR(50)          not null,
   first_name           VARCHAR(25)          null,
   middle_name          VARCHAR(30)          null,
@@ -83,6 +84,7 @@ CREATE SEQUENCE seq_box START WITH 100000 INCREMENT BY 20;
 
 create table box (
   id                   BIGINT               DEFAULT nextval('seq_box'),
+  version              BIGINT               not null,
   description          VARCHAR(100)         null,
   box_type_code        VARCHAR(30)          not null,
   box_char             TEXT                 null,
@@ -152,6 +154,7 @@ CREATE SEQUENCE seq_artifact START WITH 100000 INCREMENT BY 20;
 
 create table artifact (
   id                   BIGINT               DEFAULT nextval('seq_artifact'),
+  version              BIGINT               not null,
   artifact_type_code   VARCHAR(30)          not null,
   owner_id             BIGINT               not null,
   name                 VARCHAR(100)         null,
@@ -198,11 +201,12 @@ alter table artifact
 CREATE SEQUENCE seq_note START WITH 100000 INCREMENT BY 20;
 
 create table note (
-                      id                   BIGINT               DEFAULT nextval('seq_note'),
-                      person_id            BIGINT               not null,
-                      artifact_id          BIGINT               not null,
-                      description          VARCHAR(500)         not null,
-                      constraint PK_NOTE primary key (id)
+  id                   BIGINT               DEFAULT nextval('seq_note'),
+  version              BIGINT               not null,
+  person_id            BIGINT               not null,
+  artifact_id          BIGINT               not null,
+  description          VARCHAR(500)         not null,
+  constraint PK_NOTE primary key (id)
 );
 /*==============================================================*/
 /* Index: I_note_PK                                             */
@@ -255,6 +259,7 @@ CREATE SEQUENCE seq_together START WITH 100000 INCREMENT BY 20;
 
 create table together (
    id                   BIGINT               DEFAULT nextval('seq_together'),
+   version              BIGINT               not null,
    together_type_code   VARCHAR(30)          not null,
    person1_id           BIGINT               not null,
    person2_id           BIGINT               not null,

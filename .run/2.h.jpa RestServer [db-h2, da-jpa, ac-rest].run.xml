@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="2.h.jpa RestServer [db-h2, da-jpa, ac-rest]" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="fam-rest-server" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="ua.mai.fam.FamRestServerApplication" />
+    <option name="ACTIVE_PROFILES" value="db-h2, da-jpa, ac-rest" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import ua.mai.fam.model.person.Person;
-import ua.mai.fam.model.person.PersonBuilder;
+import ua.mai.fam.model.Person;
+import ua.mai.fam.model.PersonBuilder;
 import ua.mai.fam.repository.PersonRepository;
 
 @EnableTransactionManagement

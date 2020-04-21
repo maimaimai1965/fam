@@ -60,8 +60,8 @@ public abstract class AbstractPersonDtoRepositoryTest {
     public void save_PersonWithIdWhenPersonNotExistsInDbTest(){
         Long id = -100L;
 
-        Optional<PersonDto> findedPersonDto = getRepository().findById(id);
-        if (findedPersonDto.isPresent()) {
+        Optional<PersonDto> foundPersonDto = getRepository().findById(id);
+        if (foundPersonDto.isPresent()) {
             assertTrue(false, "Объекта с Id = " + id + " не должно быть в БД!");
         }
 

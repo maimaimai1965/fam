@@ -1,7 +1,5 @@
 package ua.mai.fam.model;
 
-import ua.mai.fam.model.person.Person;
-
 import java.time.LocalDate;
 
 public class TogetherBuilder {

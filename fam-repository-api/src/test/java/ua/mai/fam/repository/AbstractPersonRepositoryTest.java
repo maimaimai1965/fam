@@ -3,7 +3,7 @@ package ua.mai.fam.repository;
 import ua.mai.fam.AbstractTimingExtension;
 import ua.mai.fam.model.PersonTestData;
 import ua.mai.fam.model.util.PersonTestUtil;
-import ua.mai.fam.model.person.Person;
+import ua.mai.fam.model.Person;
 import ua.mai.fam.util.exception.FoundException;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -49,11 +49,16 @@ public abstract class AbstractPersonRepositoryTest {
         assertTrue(existsPerson.getId() > 0,
             "При вставке нового объекта без идентификатора (для тестирования) не был сгенерирован Id.");
 
-        Person person = PersonTestData.getPerson02(existsPerson.getId());
-        Person savedPerson = getRepository().save(person);
-        //Проверяем обновленный объект.
+        existsPerson.setSurname(PersonTestData.surname02);
+        existsPerson.setFirstName(PersonTestData.firstName02);
+        existsPerson.setMiddleName(PersonTestData.middleName02);
+
+        Person savedPerson = getRepository().save(existsPerson);
+        Optional<Person> readedPerson = getRepository().findById(existsPerson.getId());
         assertEquals(existsPerson.getId(), savedPerson.getId());
-        PersonTestUtil.assertMatch(savedPerson, person);
+        PersonTestUtil.assertMatch(readedPerson.get(), savedPerson);
+        //version должен увеличиться
+        assertTrue(readedPerson.get().getId() > existsPerson.getVersion());
     }
     /**
      * Когда в person есть идентификатор, а в таблице нет записи с этим идентификатором, то вызывается исключение.
@@ -316,6 +321,7 @@ public abstract class AbstractPersonRepositoryTest {
     public void existsById_NonExistsIdTest(){
         assertFalse(getRepository().existsById(-100L));
     }
+
     public void existsById_NullIdTest(){
         existsById_NullIdTest(null);
     }

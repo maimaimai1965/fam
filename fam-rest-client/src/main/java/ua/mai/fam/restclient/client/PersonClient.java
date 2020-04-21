@@ -1,7 +1,7 @@
 package ua.mai.fam.restclient.client;
 
 import org.springframework.http.ResponseEntity;
-import ua.mai.fam.model.person.Person;
+import ua.mai.fam.model.Person;
 import ua.mai.fam.restclient.FamClient;
 
 import java.util.Arrays;

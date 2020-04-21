@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      PostgreSQL 9.x                               */
-/* Created on:     30.03.2020 22:26:22                          */
+/* Created on:     21.04.2020 19:43:26                          */
 /*==============================================================*/
 
 
@@ -48,11 +48,26 @@ drop index person_PK;
 
 drop table person;
 
+drop index together3together_type_code_FK;
+
+drop index together3person1_id_2_person_FK;
+
+drop index together3person2_id_2_person_FK;
+
+drop index together_PK;
+
+drop table together;
+
+drop index together_type_PK;
+
+drop table together_type;
+
 /*==============================================================*/
 /* Table: artifact                                              */
 /*==============================================================*/
 create table artifact (
    id                   BIGINT               not null,
+   version              BIGINT               not null,
    artifact_type_code   VARCHAR(30)          not null,
    owner_id             BIGINT               not null,
    name                 VARCHAR(100)         null,
@@ -120,10 +135,11 @@ id
 /*==============================================================*/
 create table box (
    id                   BIGINT               not null,
-   description          VARCHAR(100)         null,
+   version              BIGINT               not null,
    box_type_code        VARCHAR(30)          not null,
-   box_char             VARCHAR(1)           null,
-   box_bin              CHAR                 null,
+   description          VARCHAR(100)         null,
+   box_char             TEXT                 null,
+   box_bin              BYTEA                null,
    constraint PK_BOX primary key (id)
 );
 
@@ -163,6 +179,7 @@ code
 /*==============================================================*/
 create table note (
    id                   BIGINT               not null,
+   version              BIGINT               not null,
    person_id            BIGINT               not null,
    artifact_id          BIGINT               not null,
    description          VARCHAR(500)         not null,
@@ -214,21 +231,19 @@ create  index I_PARENT_CHILD3CHILD_ID_FK on parent_child (
 child_id
 );
 
-DROP SEQUENCE IF EXISTS seq_person;
-CREATE SEQUENCE seq_person START WITH 100000;
 /*==============================================================*/
 /* Table: person                                                */
 /*==============================================================*/
 create table person (
-   id                   BIGINT               DEFAULT nextval('seq_person'),
+   id                   BIGINT               not null,
+   version              BIGINT               not null,
    surname              VARCHAR(50)          not null,
    first_name           VARCHAR(25)          null,
    middle_name          VARCHAR(30)          null,
    birth_date           TIMESTAMP            null,
    death_date           TIMESTAMP            null,
-   gender               CHAR(1)              null,
-   constraint PK_PERSON primary key (id),
-   CONSTRAINT cnstr_person_gender CHECK (gender IN ('M','F'))
+   gender               CHAR(1)              not null,
+   constraint PK_PERSON primary key (id)
 );
 
 /*==============================================================*/
@@ -236,6 +251,65 @@ create table person (
 /*==============================================================*/
 create unique index person_PK on person (
 id
+);
+
+/*==============================================================*/
+/* Table: together                                              */
+/*==============================================================*/
+create table together (
+   id                   BIGINT               not null,
+   version              BIGINT               not null,
+   together_type_code   VARCHAR(30)          not null,
+   person1_id           BIGINT               not null,
+   person2_id           BIGINT               not null,
+   start_date           DATE                 null,
+   finish_date          DATE                 null,
+   description          VARCHAR(500)         null,
+   constraint PK_TOGETHER primary key (id)
+);
+
+/*==============================================================*/
+/* Index: together_PK                                           */
+/*==============================================================*/
+create unique index together_PK on together (
+id
+);
+
+/*==============================================================*/
+/* Index: together3person2_id_2_person_FK                       */
+/*==============================================================*/
+create  index together3person2_id_2_person_FK on together (
+person2_id
+);
+
+/*==============================================================*/
+/* Index: together3person1_id_2_person_FK                       */
+/*==============================================================*/
+create  index together3person1_id_2_person_FK on together (
+person1_id
+);
+
+/*==============================================================*/
+/* Index: together3together_type_code_FK                        */
+/*==============================================================*/
+create  index together3together_type_code_FK on together (
+together_type_code
+);
+
+/*==============================================================*/
+/* Table: together_type                                         */
+/*==============================================================*/
+create table together_type (
+   code                 VARCHAR(30)          not null,
+   name                 VARCHAR(100)         not null,
+   constraint PK_TOGETHER_TYPE primary key (code)
+);
+
+/*==============================================================*/
+/* Index: together_type_PK                                      */
+/*==============================================================*/
+create unique index together_type_PK on together_type (
+code
 );
 
 alter table artifact
@@ -281,5 +355,20 @@ alter table parent_child
 alter table parent_child
    add constraint FK_PARENT_CHILD3PARENT_ID foreign key (parent_id)
       references person (id)
+      on delete restrict on update restrict;
+
+alter table together
+   add constraint FK_TOGETHER3MEMBER1 foreign key (person1_id)
+      references person (id)
+      on delete restrict on update restrict;
+
+alter table together
+   add constraint FK_TOGETHER3MEMBER2 foreign key (person2_id)
+      references person (id)
+      on delete restrict on update restrict;
+
+alter table together
+   add constraint FK_TOGETHER3TOGETHER_TYPE_CODE foreign key (together_type_code)
+      references together_type (code)
       on delete restrict on update restrict;
 

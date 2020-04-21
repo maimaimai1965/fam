@@ -1,6 +1,6 @@
 package ua.mai.fam.service;
 
-import ua.mai.fam.model.person.Person;
+import ua.mai.fam.model.Person;
 import ua.mai.fam.util.exception.FoundException;
 import ua.mai.fam.util.exception.NotFoundException;
 

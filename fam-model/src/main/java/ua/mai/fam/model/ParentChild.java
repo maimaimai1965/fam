@@ -1,7 +1,5 @@
 package ua.mai.fam.model;
 
-import ua.mai.fam.model.person.Person;
-
 import javax.persistence.*;
 
 @Entity
@@ -12,7 +10,7 @@ public class ParentChild {
     private ParentChildId id = new ParentChildId();
 
     @ManyToOne
-    @JoinColumn(name = "PERSON_ID", insertable = false, updatable = false)
+    @JoinColumn(name = "PARENT_ID", insertable = false, updatable = false)
     protected Person parent;
 
     @ManyToOne

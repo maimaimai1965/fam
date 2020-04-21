@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="1.h.data-jpa RepositoryDataJpa [db-h2, da-data-jpa]" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="fam-repository-data-jpa" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="ua.mai.fam.FamRepositoryDataJpaApplication" />
+    <option name="ACTIVE_PROFILES" value="db-h2, da-data-jpa" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

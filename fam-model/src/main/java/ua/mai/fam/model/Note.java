@@ -2,11 +2,9 @@ package ua.mai.fam.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import ua.mai.fam.model.person.Person;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)   //Не выводить null поля в JSON
 @JsonIgnoreProperties(ignoreUnknown = false)

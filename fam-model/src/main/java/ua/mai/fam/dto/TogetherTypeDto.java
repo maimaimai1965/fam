@@ -3,12 +3,9 @@ package ua.mai.fam.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import ua.mai.fam.model.TogetherType;
-import ua.mai.fam.model.person.Person;
 import ua.mai.fam.util.HasId;
-import ua.mai.fam.util.ToDto;
 import ua.mai.fam.util.ToEntity;
 
-import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.List;
@@ -17,7 +14,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = false)
 public class TogetherTypeDto implements HasId<String>, ToEntity<TogetherType> {
 
-    //--for Data JDBC
+    //for Data JDBC
     @org.springframework.data.annotation.Id
     private String code;
 
@@ -39,15 +36,6 @@ public class TogetherTypeDto implements HasId<String>, ToEntity<TogetherType> {
         this.name = name;
     }
 
-    @Override
-    public String getTableName() {
-        return "TOGETHER_TYPE";
-    }
-    @Override
-    public String getId() {
-        return code;
-    }
-
 
     public TogetherTypeDto() {}
 
@@ -56,6 +44,15 @@ public class TogetherTypeDto implements HasId<String>, ToEntity<TogetherType> {
         this.name = name;
     }
 
+
+    @Override
+    public String getTableName() {
+        return "TOGETHER_TYPE";
+    }
+    @Override
+    public String getId() {
+        return code;
+    }
 
     @Override
     public TogetherType toEntity() {
@@ -70,17 +67,19 @@ public class TogetherTypeDto implements HasId<String>, ToEntity<TogetherType> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof TogetherTypeDto)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         TogetherTypeDto that = (TogetherTypeDto) o;
 
-        if (!getCode().equals(that.getCode())) return false;
-        return getName() != null ? getName().equals(that.getName()) : that.getName() == null;
+        if (!code.equals(that.code)) return false;
+        return name.equals(that.name);
     }
 
     @Override
     public int hashCode() {
-        return getCode().hashCode();
+        int result = code.hashCode();
+        result = 31 * result + name.hashCode();
+        return result;
     }
 
     @Override

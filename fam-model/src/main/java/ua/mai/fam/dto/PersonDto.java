@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.format.annotation.DateTimeFormat;
 import ua.mai.fam.model.Gender;
-import ua.mai.fam.model.person.Person;
+import ua.mai.fam.model.Person;
 import ua.mai.fam.util.HasId;
 import ua.mai.fam.util.ToEntity;
 
@@ -16,9 +16,6 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 /**
  */
@@ -33,41 +30,48 @@ public class PersonDto implements HasId<Long>, ToEntity<Person> {
     @org.springframework.data.annotation.Id
     private Long id;
 
-    @Basic
+    @org.springframework.data.annotation.Version
+    private Long version;
+
+//    @Basic
     @NotNull
-    @Column(name = "surname", length = 50)
+//    @Column(name = "surname", length = 50)
     private String surname;
 
-    @Basic
-    @Column(name = "first_name", length = 25)
+//    @Basic
+//    @Column(name = "first_name", length = 25)
     private String firstName;
 
-    @Basic
-    @Column(name = "middle_name", length = 30)
+//    @Basic
+//    @Column(name = "middle_name", length = 30)
     private String middleName;
 
-    @Basic
+//    @Basic
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "birth_date")
+//    @Column(name = "birth_date")
     private LocalDate birthDate;
 
-    @Basic
+//    @Basic
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "death_date")
+//    @Column(name = "death_date")
     private LocalDate deathDate;
 
-    @Basic
+//    @Basic
     @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "gender", length = 1)
+//    @Column(name = "gender", length = 1)
     private Gender gender;
 
-
+    @Override
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getVersion() {
+        return version;
     }
 
     public String getSurname() {
@@ -113,18 +117,12 @@ public class PersonDto implements HasId<Long>, ToEntity<Person> {
     }
 
 
-    /* */
-    @Override
-    public String getTableName() {
-        return "PERSON";
-    }
-
-
     public PersonDto() {}
 
-    public PersonDto(Long id, String surname, String firstName, String middleName, LocalDate birthDate,
+    public PersonDto(Long id, Long version, String surname, String firstName, String middleName, LocalDate birthDate,
                      LocalDate deathDate, Gender gender) {
         this.id = id;
+        this.version = version;
         this.surname = surname;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -134,9 +132,15 @@ public class PersonDto implements HasId<Long>, ToEntity<Person> {
     }
 
 
+    /* */
+    @Override
+    public String getTableName() {
+        return "PERSON";
+    }
+
     @Override
     public Person toEntity() {
-        return new Person(id, surname, firstName, middleName, birthDate, deathDate, gender);
+        return new Person(id, version, surname, firstName, middleName, birthDate, deathDate, gender);
     }
 
     public static List<Person> toEntities(Collection<PersonDto> dtos)  {
@@ -177,6 +181,7 @@ public class PersonDto implements HasId<Long>, ToEntity<Person> {
     public String toString() {
         return "PersonDto {" +
             "id=" + id +
+            ", version='" + version + '\'' +
             ", surname='" + surname + '\'' +
             ", firstName='" + firstName + '\'' +
             ", middleName='" + middleName + '\'' +

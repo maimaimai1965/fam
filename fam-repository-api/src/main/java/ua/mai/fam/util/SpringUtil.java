@@ -42,7 +42,7 @@ public class SpringUtil {
         if (nedeedDbProfile.equals(dbProfile)) {
             System.out.println("** Loaded driver '" + driverClassName + "' for db profile '" + dbProfile + "'");
         } else {
-            throw new RuntimeException("Unexpexted driver '" + driverClassName + "' for db profile '" +
+            throw new RuntimeException("Unexpected driver '" + driverClassName + "' for db profile '" +
                 nedeedDbProfile +"'!");
         }
     }

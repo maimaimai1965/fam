@@ -17,7 +17,7 @@ package ua.mai.fam.repository.datajpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
-import ua.mai.fam.model.person.Person;
+import ua.mai.fam.model.Person;
 import ua.mai.fam.repository.PersonRepository;
 import ua.mai.fam.util.HasId;
 import ua.mai.fam.util.exception.FoundException;

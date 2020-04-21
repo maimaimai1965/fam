@@ -1,6 +1,6 @@
 package ua.mai.fam.repository.jdbc;
 
-import ua.mai.fam.model.person.Person;
+import ua.mai.fam.model.Person;
 import ua.mai.fam.util.DateTimeUtil;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;

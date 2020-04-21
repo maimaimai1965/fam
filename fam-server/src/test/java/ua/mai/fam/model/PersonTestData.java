@@ -1,8 +1,5 @@
 package ua.mai.fam.model;
 
-import ua.mai.fam.model.person.Person;
-import ua.mai.fam.model.person.PersonBuilder;
-
 public class PersonTestData {
 
     public static final String surname01 = "Иванов_TEST";

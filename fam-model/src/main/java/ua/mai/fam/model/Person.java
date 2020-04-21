@@ -1,20 +1,14 @@
-package ua.mai.fam.model.person;
+package ua.mai.fam.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import org.springframework.format.annotation.DateTimeFormat;
 import ua.mai.fam.dto.PersonDto;
-import ua.mai.fam.model.Gender;
-import ua.mai.fam.model.ParentChild;
 import ua.mai.fam.util.HasId;
 import ua.mai.fam.util.ToDto;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  */
@@ -28,6 +22,9 @@ public class Person implements HasId<Long>, ToDto<PersonDto> {
     @SequenceGenerator(name="seq_person", sequenceName="SEQ_PERSON", allocationSize = 20)
     @Column(name = "ID", nullable = false)
     private Long id;
+
+    @Version
+    private Long version;
 
     @Basic
     @NotNull
@@ -65,11 +62,16 @@ public class Person implements HasId<Long>, ToDto<PersonDto> {
     protected Set<ParentChild> children = new HashSet<>();
 
 
+    @Override
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getVersion() {
+        return version;
     }
 
     public String getSurname() {
@@ -122,18 +124,13 @@ public class Person implements HasId<Long>, ToDto<PersonDto> {
         return children;
     }
 
-    /* */
-    @Override
-    public String getTableName() {
-        return "PERSON";
-    }
-
 
     public Person() {}
 
-    public Person(Long id, String surname, String firstName, String middleName, LocalDate birthDate,
+    public Person(Long id, Long version, String surname, String firstName, String middleName, LocalDate birthDate,
                   LocalDate deathDate, Gender gender) {
         this.id = id;
+        this.version = version;
         this.surname = surname;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -142,15 +139,22 @@ public class Person implements HasId<Long>, ToDto<PersonDto> {
         this.gender = gender;
     }
 
+
+    /* */
+    @Override
+    public String getTableName() {
+        return "PERSON";
+    }
+
     @Override
     public PersonDto toDto() {
-        return new PersonDto(id, surname, firstName, middleName, birthDate, deathDate, gender);
+        return new PersonDto(id, version, surname, firstName, middleName, birthDate, deathDate, gender);
     }
 
     public static List<PersonDto> toDtos(Collection<Person> entities)  {
         return (List<PersonDto>)ToDto.toDtos(entities);
-//        return entities.stream().map(entity -> entity.toDto()).collect(Collectors.toList());
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -183,6 +187,7 @@ public class Person implements HasId<Long>, ToDto<PersonDto> {
     public String toString() {
         return "Person{" +
             "id=" + id +
+            ", version='" + version + '\'' +
             ", surname='" + surname + '\'' +
             ", firstName='" + firstName + '\'' +
             ", middleName='" + middleName + '\'' +
