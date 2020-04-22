@@ -13,6 +13,7 @@ import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
@@ -24,7 +25,7 @@ import java.util.List;
 //Для DATA JDBC
 //https://stackoverflow.com/questions/53063266/how-to-map-entity-to-table-in-spring-data-jdbc#53077343
 @org.springframework.data.relational.core.mapping.Table("PERSON")
-public class PersonDto implements HasId<Long>, ToEntity<Person> {
+public class PersonDto implements HasId<Long>, ToEntity<Person>, Serializable {
 
     //--for Data JDBC
     @org.springframework.data.annotation.Id

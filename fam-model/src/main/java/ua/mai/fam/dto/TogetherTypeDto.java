@@ -7,12 +7,13 @@ import ua.mai.fam.util.HasId;
 import ua.mai.fam.util.ToEntity;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)   //Не выводить null поля в JSON
 @JsonIgnoreProperties(ignoreUnknown = false)
-public class TogetherTypeDto implements HasId<String>, ToEntity<TogetherType> {
+public class TogetherTypeDto implements HasId<String>, ToEntity<TogetherType>, Serializable {
 
     //for Data JDBC
     @org.springframework.data.annotation.Id

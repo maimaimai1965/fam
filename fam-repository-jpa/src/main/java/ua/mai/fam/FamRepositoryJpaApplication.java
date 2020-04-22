@@ -8,7 +8,9 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import ua.mai.fam.repository.PersonRepository;
+import ua.mai.fam.repository.TogetherTypeRepository;
 import ua.mai.fam.service.PersonService;
+import ua.mai.fam.service.TogetherTypeService;
 
 @EnableTransactionManagement
 //Не используем Security
@@ -17,9 +19,13 @@ public class FamRepositoryJpaApplication implements CommandLineRunner {
 
     @Autowired
     PersonRepository personRepository;
-
     @Autowired
     PersonService personService;
+
+    @Autowired
+    TogetherTypeRepository togetherTypeRepository;
+    @Autowired
+    TogetherTypeService togetherTypeService;
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(FamRepositoryJpaApplication.class, args);
@@ -38,6 +44,14 @@ public class FamRepositoryJpaApplication implements CommandLineRunner {
 
         System.out.println("** Person Service Jpa.count = " + personService.count());
         System.out.println("** Person Service Jpa.findById(50000L) = " + personService.findById(50000L));
+
+        System.out.println("** TogetherType Repository Jpa.count = " + togetherTypeRepository.count());
+        System.out.println("** TogetherType Repository Jpa.findByCode(\"MARRIAGE\") = " +
+            togetherTypeRepository.findByCode("MARRIAGE"));
+
+        System.out.println("** TogetherType Service Jpa.count = " + togetherTypeService.count());
+        System.out.println("** TogetherType Service Jpa.findByCode(\"MARRIAGE\") = " +
+            togetherTypeService.findByCode("MARRIAGE"));
 
     }
 

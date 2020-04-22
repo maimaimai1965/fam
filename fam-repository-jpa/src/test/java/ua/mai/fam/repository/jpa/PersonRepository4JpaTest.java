@@ -53,6 +53,11 @@ public class PersonRepository4JpaTest extends AbstractPersonRepositoryTest {
     public void save_NullPersonTest() {
         super.save_NullPersonTest(RuntimeException.class);
     }
+    @Test
+    @Override
+    public void save_PersonWhenVersionChangedInDb(){
+        super.save_PersonWhenVersionChangedInDb();
+    }
 
     @Test
     @Override

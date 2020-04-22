@@ -7,6 +7,7 @@ import ua.mai.fam.model.Person;
 import ua.mai.fam.util.exception.FoundException;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import javax.persistence.OptimisticLockException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -54,11 +55,11 @@ public abstract class AbstractPersonRepositoryTest {
         existsPerson.setMiddleName(PersonTestData.middleName02);
 
         Person savedPerson = getRepository().save(existsPerson);
-        Optional<Person> readedPerson = getRepository().findById(existsPerson.getId());
+        Optional<Person> readPerson = getRepository().findById(existsPerson.getId());
         assertEquals(existsPerson.getId(), savedPerson.getId());
-        PersonTestUtil.assertMatch(readedPerson.get(), savedPerson);
+        PersonTestUtil.assertMatch(readPerson.get(), savedPerson);
         //version должен увеличиться
-        assertTrue(readedPerson.get().getId() > existsPerson.getVersion());
+        assertTrue(readPerson.get().getVersion() > existsPerson.getVersion());
     }
     /**
      * Когда в person есть идентификатор, а в таблице нет записи с этим идентификатором, то вызывается исключение.
@@ -66,8 +67,8 @@ public abstract class AbstractPersonRepositoryTest {
     public void save_PersonWithIdWhenPersonNotExistsInDbTest(){
         Long id = -100L;
 
-        Optional<Person> findedPerson = getRepository().findById(id);
-        if (findedPerson.isPresent()) {
+        Optional<Person> foundPerson = getRepository().findById(id);
+        if (foundPerson.isPresent()) {
             assertTrue(false, "Объекта с Id = " + id + " не должно быть в БД!");
         }
 
@@ -83,6 +84,36 @@ public abstract class AbstractPersonRepositoryTest {
         assertThrows((expectedExceptionClass != null) ? expectedExceptionClass : IllegalArgumentException.class,
                      () -> getRepository().save(null));
     }
+    /**
+     * Когда между чтением person и его сохранением было проведено изменение этого person в БД.
+     */
+    public void save_PersonWhenVersionChangedInDb(){
+        //Вставка в БД тестового объекта.
+        Person existsPerson = getRepository().save(PersonTestData.getNewPerson01());
+        assertTrue(existsPerson.getId() > 0,
+            "При вставке нового объекта без идентификатора (для тестирования) не был сгенерирован Id.");
+
+        Optional<Person> readPerson = getRepository().findById(existsPerson.getId());
+        readPerson.get().setSurname("NewSurname TEST");
+        Person rereadPerson = getRepository().save(readPerson.get());
+
+        //version должен увеличиться
+        assertTrue(rereadPerson.getVersion() > existsPerson.getVersion());
+        try {
+            getRepository().save(existsPerson);
+        }
+        catch (RuntimeException e) {
+            //Нельзя проверить на org.springframework.orm.ObjectOptimisticLockingFailureException, т.к. библиотека
+            //spring-orm не подключена.
+            if (e.getClass().getName().contains("OptimisticLocking")) {
+                return;
+            }
+            assertTrue(false, "Thrown exception must be OptimisticLock exception, but was " +
+                e.getClass() +"!");
+        }
+        assertTrue(false, "Didn't throw exception!");
+    }
+
 
     public void saveAll_ListTest() {
         //Вставка в БД тестовых Entity.
@@ -98,10 +129,10 @@ public abstract class AbstractPersonRepositoryTest {
         assertTrue(savedPerson2.getId() > 0,
             "При вставке нового объекта без идентификатора (для тестирования) не был сгенерирован Id.");
 
-        Optional<Person> findedPerson1 = getRepository().findById(savedPerson1.getId());
-        PersonTestUtil.assertMatch(findedPerson1.get(), savedPerson1);
-        Optional<Person> findedPerson2 = getRepository().findById(savedPerson2.getId());
-        PersonTestUtil.assertMatch(findedPerson2.get(), savedPerson2);
+        Optional<Person> foundPerson1 = getRepository().findById(savedPerson1.getId());
+        PersonTestUtil.assertMatch(foundPerson1.get(), savedPerson1);
+        Optional<Person> foundPerson2 = getRepository().findById(savedPerson2.getId());
+        PersonTestUtil.assertMatch(foundPerson2.get(), savedPerson2);
     }
     public void saveAll_OneEntityNullInListTest() {
         assertThrows(NullPointerException.class, () -> getRepository().saveAll(Arrays.asList(null)));

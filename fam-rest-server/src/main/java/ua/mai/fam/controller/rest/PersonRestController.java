@@ -32,6 +32,10 @@ public class PersonRestController implements BaseController {
 
     public static final String REST_PERSON_PATH = APPLICATION_REST_PATH  + "/persons";
 
+    private boolean jdbcImplementation;
+    private PersonService service;
+    private PersonDtoRepository dtoRepository;
+
     @Autowired
     public PersonRestController(PersonServiceMarker service, PersonRepositoryMarker repository) {
         if (service instanceof PersonDtoService) {
@@ -46,9 +50,6 @@ public class PersonRestController implements BaseController {
         }
     }
 
-    private boolean jdbcImplementation;
-    private PersonService service;
-    private PersonDtoRepository dtoRepository;
 
     @Override
     public boolean isJdbcImplementation() {

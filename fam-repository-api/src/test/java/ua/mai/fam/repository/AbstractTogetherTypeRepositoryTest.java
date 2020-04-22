@@ -41,7 +41,7 @@ public abstract class AbstractTogetherTypeRepositoryTest {
         checkNotExsist(code);
 
         //Сохранение в БД.
-        TogetherType togetherType = TogetherTypeTestData.getTogetherType01(code);
+        TogetherType togetherType = TogetherTypeTestData.getTogetherType01();
         getRepository().save(togetherType);
         TogetherTypeTestUtil.assertMatch(getRepository().findByCode(code).get(), togetherType);
 
@@ -53,9 +53,9 @@ public abstract class AbstractTogetherTypeRepositoryTest {
         checkNotExsist(code);
 
         //Вставка в БД тестового объекта.
-        TogetherType existsTogetherType = getRepository().save(TogetherTypeTestData.getNewTogetherType01());
+        TogetherType existsTogetherType = getRepository().save(TogetherTypeTestData.getTogetherType01());
 
-        TogetherType changedTogetherType = TogetherTypeTestData.getNewTogetherType02();
+        TogetherType changedTogetherType = TogetherTypeTestData.getTogetherType02();
         changedTogetherType.setCode(existsTogetherType.getCode());
         getRepository().save(changedTogetherType);
         Optional<TogetherType> savedTogetherType = getRepository().findByCode(existsTogetherType.getCode());

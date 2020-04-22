@@ -27,7 +27,7 @@ public class PersonService4Jpa implements PersonService {
     }
 
     @Override
-    public <S extends Person> Iterable<S> saveAll(Iterable<S> entities) {
+    public Iterable<Person> saveAll(Iterable<Person> entities) {
         return personRepository.saveAll(entities);
     }
 
@@ -47,7 +47,7 @@ public class PersonService4Jpa implements PersonService {
     }
 
     @Override
-    public void deleteAll(Iterable<? extends Person> entities) {
+    public void deleteAll(Iterable<Person> entities) {
         personRepository.deleteAll(entities);
     }
 
